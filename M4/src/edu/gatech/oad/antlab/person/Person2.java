@@ -30,7 +30,7 @@ public class Person2 {
 	 * @return the modified string
 	 */
 	private String calc(String input) {
-	  return ("......Captain......Captain ").concat(input)
+	  return ("......Captain......Captain ").concat(input);
 	}
 	/**
 	 * Return a string rep of this object

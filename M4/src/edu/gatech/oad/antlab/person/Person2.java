@@ -1,5 +1,4 @@
 package edu.gatech.oad.antlab.person;
-
 /**
  *  A simple class for person 2
  *  returns their name and a
@@ -30,7 +29,18 @@ public class Person2 {
 	 * @return the modified string
 	 */
 	private String calc(String input) {
-	  return ("......Captain......Captain ").concat(input);
+		String randomOut = "";
+		int i = 0;
+		if(input.length() % 2 == 0){
+			while(i < input.length() - 1){
+				randomOut = randomOut.concat(input.substring(i+1, i+2).concat(input.substring(i,i+1)));
+				i+=2;
+			}
+		}
+		else{
+			randomOut = randomOut.concat(input.substring(input.length()/2).concat(input.substring(0,input.length()/2)));
+		}
+		return randomOut; 
 	}
 	/**
 	 * Return a string rep of this object

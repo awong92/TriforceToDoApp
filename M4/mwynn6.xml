@@ -19,7 +19,6 @@
 		<mkdir dir="${}"/>
 		<javac srcdir="${src.dir}" destdir="${build.dir}">
 		<classpath path="${classpath}"/>
-
 		</javac>
 	</target>
 	
@@ -43,16 +42,23 @@
 		</javadoc>
 	</target>
 	
+	<target name="clean">
+		<delete dir="${build.dir}"/>
+		<delete dir="${apidoc.dir}"/>
+	</target>
+	
 
 	<target name="run" depends="jar">
-		<java 
+		<java jar="edu.gatech.oad.antlab.pkg1.AntLabMain" fork="true">
+    		<classpath>
+				<pathelement location="${build.dir}"/>
+				<pathelement location="${build.dir}/{jar.dir}/AntLabMain.jar"/>
+			</classpath>
+ 	 	</java>
 	</target>
 	
 	<target name="all" depends="run"/>
 		
-	<target name="clean">
-		<delete dir="${build.dir}"/>
-	</target>
 	
 
 	

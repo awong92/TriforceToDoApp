@@ -1,5 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- M4 -->
 <!-- build.xml file -->
+
 
 <project name="M4" basedir="." default="all">
 	<target name="init">

@@ -1,5 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
 
 <!-- M4 -->
 <project name="M4" default="all" basedir=".">
@@ -23,7 +21,7 @@
 	<!-- compile the code -->
 	<target name="compile" depends="prepare">
 		<mkdir dir="${build.dir}/classes"/>
-		<javac srcdir="${src.dir}" destdir="${build.dir}">
+		<javac srcdir="${src.dir}" destdir="${build.dir}/classes">
 			<classpath path="${classpath}"/>
 		</javac>
 	</target>
@@ -35,7 +33,7 @@
 		<include name="edu/gatech/oad/antlab/pkg1/*.class" />
 		<include name="edu/gatech/oad/antlab/pkg2/*.class" />
 		<manifest>
-			<attribute name="Main-Class" value="edu.gatech.oad.antlab.pkg1.AntLabMain"/>
+			<attribute name="Main-Class" value="edu.gatech.oad.antlab.pkg1.AntLabMain.java"/>
 			<attribute name="Class-Path" value="lib/resources.jar" />
 		</manifest>
 	</target>
@@ -53,10 +51,11 @@
 
 <!-- run the application -->
 <target name="run" depends="jar">
-	<java classname="edu.gatech.oad.antlab.pkg1.AntLabMain">
+	<java classname="edu.gatech.oad.antlab.pkg1.AntLabMain.java">
 		<classpath>
 			<pathelement location="${build.dir}" />
-			<pathelement location="${build.dir}/{jar.dir}/AntLabMain.jar" />
+			<pathelement location="${build.dir}/jar/AntLabMain.jar" />
+			<pathelement location="${lib.dir}/resources.jar"/>
 		</classpath>
 	</java>
 </target>

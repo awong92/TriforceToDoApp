@@ -1,0 +1,48 @@
+<!-- Ant Hello World -->
+<!-- build.xml file -->
+
+<project name="M4" basedir="." default="main">
+	<property name="classes.dir" value="${build.dir}/classes"/>
+	<property name="jar.dir" value ="${build.dir}/jar"/>
+	
+	<target name="init">
+		<property name="build.dir" value="build"/>
+		<property name="AntLabMain" value="src.edu.gatech.oad.antlab.pkg1"/>
+	</target>
+	
+	<target name="prepare" depends="init">
+		<mkdir dir="${build.dir}"/>
+	</target>
+	
+	
+	<target name="clean">
+		<delete dir="${build.dir}"/>
+	</target>
+	
+	<target name="compile">
+		<mkdir dir="${classes.dir}"/>
+		<javac srcdir="${src.dir}" destdir="${classes.dir}"/>
+	</target>
+	
+	<target name="jar" depends="compile">
+		<mkdir dir="${jar.dir}"/>
+		<jar destfile="${jar.dir}/${ant.project.name}.jar" basedir="${classes.dir}">
+			<manifest>
+				<attribute name="Main-Class" value="${main-class}"/>
+			</manifest>
+		</jar>
+	</target>
+	
+	<target name="run" depends="jar">
+		<java jar="${jar.dir}/${ant.project.name}.jar" fork="true"/>
+	</target>
+	
+	<target name="clean-build" depends="clean,jar">
+	</target>
+	
+	<target name="main" depends="clean,run">
+	</target>
+	
+</project>
+
+

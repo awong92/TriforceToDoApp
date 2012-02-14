@@ -1,9 +1,10 @@
-<!-- Ant Hello World -->
+<!-- M4 -->
 <!-- build.xml file -->
 
-<project name="M4" basedir="." default="main">
+<project name="M4" basedir="." default="all">
 	<property name="classes.dir" value="${build.dir}/classes"/>
-	<property name="jar.dir" value ="${build.dir}/jar"/>
+	<property name="jar.dir" value="${build.dir}/jar"/>
+	<property name="" value="${}"/>
 	
 	<target name="init">
 		<property name="build.dir" value="build"/>
@@ -14,15 +15,15 @@
 		<mkdir dir="${build.dir}"/>
 	</target>
 	
+	<target name="compile">
+		<mkdir dir="${classes.dir}"/>
+		<javac srcdir="${src.dir}" destdir="${classes.dir}"/>
+	</target>
 	
 	<target name="clean">
 		<delete dir="${build.dir}"/>
 	</target>
 	
-	<target name="compile">
-		<mkdir dir="${classes.dir}"/>
-		<javac srcdir="${src.dir}" destdir="${classes.dir}"/>
-	</target>
 	
 	<target name="jar" depends="compile">
 		<mkdir dir="${jar.dir}"/>
@@ -33,15 +34,12 @@
 		</jar>
 	</target>
 	
+	
 	<target name="run" depends="jar">
 		<java jar="${jar.dir}/${ant.project.name}.jar" fork="true"/>
 	</target>
 	
-	<target name="clean-build" depends="clean,jar">
-	</target>
-	
-	<target name="main" depends="clean,run">
-	</target>
+	<target name="all" depends="run"/>
 	
 </project>
 

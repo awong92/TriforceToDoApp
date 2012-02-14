@@ -47,12 +47,10 @@
 	
 	<!-- run the application -->
 	<target name="run" depends="jar">
-		<java classname="edu.gatech.oad.antlab.pkg1">
-			<arg value="-g"/>
-			<arg value="test.arg" />
+		<java classname="edu.gatech.oad.antlab.pkg1.AntLabMain">
 			<classpath>
-				<pathelement path="${java.class.path}" />
 				<pathelement location="${build.dir}" />
+				<pathelement location="${build.dir}/{jar.dir}/AntLabMain.jar" />
 			</classpath>
 		</java>
 	</target>

@@ -46,7 +46,7 @@
 	</target>
 	
 	<!-- run the application -->
-	<target name="run" depends="compile">
+	<target name="run" depends="jar">
 		<java classname="edu.gatech.oad.antlab.pkg1">
 			<arg value="-g"/>
 			<arg value="test.arg" />

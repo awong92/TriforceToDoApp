@@ -24,9 +24,14 @@
 		<javac srcdir="${src.dir}" destdir="${build.dir}/classes"
 			classpath="${lib.dir}" />
 	</target>
-	
+
 	<target name="javadoc" depends="compile">
-		
+		<javadoc sourcepath="${src.dir}" access="public" destdir="${apidoc.dir}"
+			extdir="lib.dir">
+			<bottom>
+					<![CDATA[<i>Copyright &#169; 2011 Team 36 CS2340.  All Rights Reserved.</i>]]>
+			</bottom>
+		</javadoc>
 	</target>
 	
 	<target name="jar" depends="compile">

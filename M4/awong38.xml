@@ -12,7 +12,7 @@
 		<property name="classes.dir" value="build/classes" />
 		<property name="jar.dir" value="build/jar" />
 		<property name="apidoc.dir" value="apidoc" />
-		<property name="classpath" value="lib.dir/resources.jar" />
+		<property name="classpath" value="lib/resources.jar" />
 	</target>
 
 	<target name="prepare" depends="init">
@@ -23,11 +23,7 @@
 	</target>
 
 	<target name="compile" depends="prepare">
-		<javac srcdir="${src.dir}" destdir="${classes.dir}" sourcepath="${src.dir}">
-			<classpath>
-				<pathelement location="${classpath}" />
-			</classpath>
-		</javac>
+		<javac srcdir="${src.dir}" classpath="${classpath}" destdir="${classes.dir}" />
 	</target>
 
 	<target name="javadoc" depends="compile">
@@ -38,33 +34,28 @@
 			<bottom>
 				<![CDATA[<i>Copyright &#169; 2011 Team 36 CS2340.  All Rights Reserved.</i>]]>
 			</bottom>
-	</javadoc>
-</target>
-
-<target name="jar" depends="compile">
-	<jar destfile="${jar.dir}/AntLabRun.jar">
-		<include name="${classes.dir}" />
-		<manifest>
-			<attribute name="Main-Class" value="edu/gatech/oad/antlab/pkg1/AntLabMain" />
-			<attribute name="Class-Path" value="../lib/resources.jar" />
-		</manifest>
-	</jar>
-</target>
-
-<target name="run" depends="jar">
-	<java jar="${jar.dir}/AntLabRun.jar" fork="true">
-		<classpath>
-			<pathelement location="${classpath}" />
-			<pathelement location="java.class.path" />
-		</classpath>
-	</java>
-</target>
-
-<target name="all" depends="run" />
-
-<target name="clean" depends="init">
-	<delete dir="build" />
-	<delete dir="apidoc" />
-</target>
+		</javadoc>
+	</target>
+	
+	<target name="jar" depends="compile">
+		<jar destfile="${jar.dir}/AntLabRun.jar">
+			<include name="${classes.dir}" />
+			<manifest>
+				<attribute name="Main-Class" value="edu.gatech.oad.antlab.pkg1.AntLabMain" />
+				<attribute name="Class-Path" value="${classpath}" />
+			</manifest>
+		</jar>
+	</target>
+	
+	<target name="run" depends="jar">
+		<java jar="${jar.dir}/AntLabRun.jar" fork="true" />
+	</target>
+	
+	<target name="all" depends="run" />
+	
+	<target name="clean" depends="init">
+		<delete dir="build" />
+		<delete dir="apidoc" />
+	</target>
 
 </project>

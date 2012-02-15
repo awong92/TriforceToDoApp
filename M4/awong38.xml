@@ -50,7 +50,8 @@
 		<java classname="edu.gatech.oad.antlab.pkg1.AntLabMain">
 			<classpath>
 				<pathelement location="${build.dir}" />
-				<pathelement location="${build.dir}/{jar.dir}/AntLabMain.jar" />
+				<pathelement location="${build.dir}/jar/AntLabMain.jar" />
+				<pathelement location="${lib.dir}/resources.jar" />
 			</classpath>
 		</java>
 	</target>

@@ -27,10 +27,7 @@
 	</target>
 
 	<target name="javadoc" depends="compile">
-		<javadoc sourcepath="${src.dir}" access="public" destdir="${apidoc.dir}" packagenames="edu.gatech.oad.antlab">
-			<fileset dir="${src.dir}">
-				<include name="**/*.java" />
-			</fileset>
+		<javadoc sourcepath="${src.dir}" access="public" destdir="${apidoc.dir}">
 			<bottom>
 				<![CDATA[<i>Copyright &#169; 2011 Team 36 CS2340.  All Rights Reserved.</i>]]>
 			</bottom>

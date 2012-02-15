@@ -37,7 +37,7 @@
 	</target>
 
 	<target name="jar" depends="compile">
-		<jar destfile="build.dir/jar/AntLabRun.jar" basedir="build.dir/classes">
+		<jar destfile="build.dir.jar.AntLabRun.jar" basedir="build.dir/classes">
 			<manifest>
 				<attribute name="Main-Class" value="edu.gatech.oad.antlab.pkg1.AntLabMain" />
 				<attribute name="Class-Path" value="${classpath}" />

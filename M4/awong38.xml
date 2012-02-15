@@ -23,7 +23,7 @@
 	</target>
 
 	<target name="compile" depends="prepare">
-		<javac srcdir="${src.dir}" classpath="${classpath}" destdir="${classes.dir}" />
+		<javac srcdir="${src.dir}" classpath="${classpath}" destdir="${classes.dir}" includeantruntime="false" />
 	</target>
 
 	<target name="javadoc" depends="compile">
@@ -33,7 +33,7 @@
 			</bottom>
 		</javadoc>
 	</target>
-	
+
 	<target name="jar" depends="compile">
 		<jar destfile="${jar.dir}/AntLabRun.jar" basedir="${classes.dir}">
 			<manifest>

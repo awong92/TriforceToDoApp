@@ -49,7 +49,7 @@
 	
 	<target name="all" depends="run, javadoc" />
 	
-	<target name="clean" depends="init">
+	<target name="clean">
 		<delete dir="build" />
 		<delete dir="apidoc" />
 	</target>

@@ -12,15 +12,14 @@
 	</target>
 	
 	<target name="prepare" depends="init">
-		<mkdir dir="build.dir" />
-		<mkdir dir="apidoc.dir" />
-		<mkdir dir="build.dir/classes" />
-		<mkdir dir="build.dir/jar" />
+		<mkdir dir="build" />
+		<mkdir dir="apidoc" />
+		<mkdir dir="build/classes" />
+		<mkdir dir="build/jar" />
 	</target>
 
 	<target name="compile" depends="prepare">
-		<javac srcdir="${src.dir}" destdir="build.dir/classes">
-			<src path="${src.dir}" />
+		<javac srcdir="${src.dir}" destdir="build/classes" sourcepath="${src.dir}">
 			<classpath>
 				<pathelement path="${classpath}"/> 
 			</classpath>
@@ -28,8 +27,11 @@
 	</target>
 
 	<target name="javadoc" depends="compile">
-		<javadoc sourcepath="${src.dir}" access="public" destdir="apidoc.dir"
-			extdir="${lib.dir}">
+		<javadoc sourcepath="${src.dir}" access="public" destdir="apidoc"
+			extdir="${lib.dir}" packagenames="edu.gatech.oad.antlab">
+			<fileset dir="${src.dir}">
+	       		<include name="**/*.java" />
+	    	</fileset>
 			<bottom>
 					<![CDATA[<i>Copyright &#169; 2011 Team 36 CS2340.  All Rights Reserved.</i>]]>
 			</bottom>
@@ -37,16 +39,16 @@
 	</target>
 
 	<target name="jar" depends="compile">
-		<jar destfile="build.dir/jar/AntLabRun.jar" basedir="build.dir/classes">
+		<jar destfile="build/jar/AntLabRun.jar" basedir="build/classes">
 			<manifest>
-				<attribute name="Main-Class" value="edu.gatech.oad.antlab.pkg1/AntLabMain" />
+				<attribute name="Main-Class" value="edu/gatech/oad/antlab/pkg1/AntLabMain" />
 				<attribute name="Class-Path" value="${classpath}" />
 			</manifest>
 		</jar>
 	</target>
 
 	<target name="run" depends="jar">
-		<java jar="build.dir/jar/AntLabRun.jar" fork="true">
+		<java jar="build/jar/AntLabRun.jar" fork="true">
 			<classpath>
 				<pathelement location="${classpath}"/>
 	        	<pathelement location="java.class.path"/>
@@ -57,8 +59,8 @@
 	<target name="all" depends="run" />
 	
 	<target name="clean" depends="init" >
-		<delete dir="build.dir" />
-		<delete dir="apidoc.dir" />
+		<delete dir="build" />
+		<delete dir="apidoc" />
 	</target>
 
 </project>

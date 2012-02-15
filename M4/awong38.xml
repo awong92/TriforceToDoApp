@@ -27,7 +27,7 @@
 	</target>
 
 	<target name="javadoc" depends="compile">
-		<javadoc sourcepath="${src.dir}" access="public" destdir="${apidoc.dir}" extdir="${lib.dir}" packagenames="edu.gatech.oad.antlab">
+		<javadoc sourcepath="${src.dir}" access="public" destdir="${apidoc.dir}" packagenames="edu.gatech.oad.antlab">
 			<fileset dir="${src.dir}">
 				<include name="**/*.java" />
 			</fileset>
@@ -41,7 +41,7 @@
 		<jar destfile="${jar.dir}/AntLabRun.jar">
 			<include name="${classes.dir}" />
 			<manifest>
-				<attribute name="Main-Class" value="edu.gatech.oad.antlab.pkg1.AntLabMain" />
+				<attribute name="Main-Class" value="${classes.dir}.edu.gatech.oad.antlab.pkg1.AntLabMain" />
 				<attribute name="Class-Path" value="${classpath}" />
 			</manifest>
 		</jar>
@@ -51,7 +51,7 @@
 		<java jar="${jar.dir}/AntLabRun.jar" fork="true" />
 	</target>
 	
-	<target name="all" depends="run" />
+	<target name="all" depends="run, javadoc" />
 	
 	<target name="clean" depends="init">
 		<delete dir="build" />

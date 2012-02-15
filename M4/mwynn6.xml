@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- M4 Ant -->
 <!-- Mallory Wynn -->
+<!-- mwynn6@gatech.edu -->
+<!-- Team Triforce [36] --> 
 <!-- build.xml -->
 
 <project name="M4" basedir="." default="all">
 
+	<!-- Init: Initializes new directories and the classpath -->
 	<target name="init">
+		<echo>Initializing...</echo>
 		<property name="src.dir" value="src"/>
 		<property name="lib.dir" value="lib"/>
 		<property name="build.dir" value="build"/>
@@ -15,18 +19,24 @@
 		<property name="jar.dir" value="build/jar"/>
 	</target>
 	
+	<!-- Prepare: makes required directories -->
 	<target name="prepare" depends="init">
+		<echo>Making directories...</echo>
 		<mkdir dir="apidoc"/>
 		<mkdir dir="build"/>
 		<mkdir dir="build/classes"/>
 		<mkdir dir="build/jar"/>
 	</target>
 	 
+	<!-- Compile: Compiles required java files -->
 	<target name="compile" depends="prepare">
+		<echo>Compiling...</echo>
 		<javac srcdir="${src.dir}" destdir="${classes.dir}" classpath="${classpath}"/>
 	</target>
 	
-		<target name="javadoc" depends="compile">
+	<!-- Javadoc: Creates Javadoc for the files -->
+	<target name="javadoc" depends="compile">
+		<echo>Creating Javadocs...</echo>
 		<javadoc sourcepath="${src.dir}" access="public" destdir="${classes.dir}" classpath="${classpath}">
 			<bottom>
 				<![CDATA[<i>Copyright &#169' 2011 Team 36 CS2340. All Rights Reserved.</i>]]>
@@ -34,7 +44,9 @@
 		</javadoc>
 	</target>
 	
+	<!-- Jar: Creates Jar file... -->
 	<target name="jar" depends="compile">
+		<echo>Creating AntLabRun.jar...</echo>
 		<jar destfile="${jar.dir}/AntLabRun.jar" basedir="${classes.dir}">
 			<manifest>
 				<attribute name="Main-Class" value="edu/gatech/oad/antlab/pkg1/AntLabMain"/>
@@ -42,14 +54,18 @@
 			</manifest>
 		</jar>
 	</target>
-		
+	
+	<!-- Run: Runs something -->
 	<target name="run" depends="jar">
+		<echo>Running...</echo>
 		<java jar="${jar.dir}/AntLabRun.jar" fork="true"/>
 	</target>
 	
 	<target name="all" depends="run, javadoc"/>
 		
+	<!-- Clean: delets previously created directories -->
 	<target name="clean" depends="init">
+		<echo>Cleaning...</echo>
 		<delete dir="build"/>
 		<delete dir="apidoc"/>
 	</target>

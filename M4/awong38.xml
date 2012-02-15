@@ -21,7 +21,7 @@
 	<target name="compile" depends="prepare">
 		<javac srcdir="${src.dir}" destdir="build/classes" sourcepath="${src.dir}">
 			<classpath>
-				<pathelement path="${classpath}"/> 
+				<pathelement location="${classpath}"/> 
 			</classpath>
 		</javac>
 	</target>

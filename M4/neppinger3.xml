@@ -30,8 +30,7 @@
 	<target name="jar" depends="compile">
 		<mkdir dir ="${build.dir}/jar"/>
 		<jar destfile="$AntlabRun.jar"/>
-		<include name="edu/gatech/oad/antlab/pkg1/*.class" />
-		<include name="edu/gatech/oad/antlab/pkg2/*.class" />
+		<include name="edu/gatech/oad/antlab/**/*.class" />
 		<manifest>
 			<attribute name="Main-Class" value="edu.gatech.oad.antlab.pkg1.AntLabMain.java"/>
 			<attribute name="Class-Path" value="lib/resources.jar" />

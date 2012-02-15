@@ -27,7 +27,7 @@
 	</target>
 
 	<target name="javadoc" depends="compile">
-		<javadoc sourcepath="${src.dir}" access="public" destdir="${apidoc.dir}">
+		<javadoc sourcepath="${src.dir}" access="public" destdir="${apidoc.dir}" classpath="${classpath}">
 			<bottom>
 				<![CDATA[<i>Copyright &#169; 2011 Team 36 CS2340.  All Rights Reserved.</i>]]>
 			</bottom>

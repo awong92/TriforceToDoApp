@@ -22,7 +22,9 @@
 	<target name="compile" depends="prepare">
 		<mkdir dir="${build.dir}/classes"/>
 		<javac srcdir="${src.dir}" destdir="${build.dir}/classes">
-			<classpath path="${classpath}"/>
+			<classpath>
+				<pathelement path= "${lib.dir}/resources.jar"/>
+			</classpath>
 		</javac>
 	</target>
 
@@ -30,9 +32,17 @@
 	<target name="jar" depends="compile">
 		<mkdir dir ="${build.dir}/jar"/>
 		<jar destfile="$AntlabRun.jar"/>
+<<<<<<< .mine
+		<include name="edu/gatech/oad/antlab/**/*.class"/>
+=======
 		<include name="edu/gatech/oad/antlab/**/*.class" />
+>>>>>>> .r55
 		<manifest>
+<<<<<<< .mine
+			<attribute name="Main-Class" value="edu.gateh.oad.antlab.pkg1.AntLabMain"/>
+=======
 			<attribute name="Main-Class" value="edu.gatech.oad.antlab.pkg1.AntLabMain.java"/>
+>>>>>>> .r55
 			<attribute name="Class-Path" value="lib/resources.jar" />
 		</manifest>
 	</target>

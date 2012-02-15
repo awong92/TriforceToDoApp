@@ -37,7 +37,7 @@
 	<!-- Javadoc: Creates Javadoc for the files -->
 	<target name="javadoc" depends="compile">
 		<echo>Creating Javadocs...</echo>
-		<javadoc sourcepath="${src.dir}" access="public" destdir="${classes.dir}" classpath="${classpath}">
+		<javadoc sourcepath="${src.dir}" access="public" destdir="${apidoc.dir}" classpath="${classpath}">
 			<bottom>
 				<![CDATA[<i>Copyright &#169' 2011 Team 36 CS2340. All Rights Reserved.</i>]]>
 			</bottom>

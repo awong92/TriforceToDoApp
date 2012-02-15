@@ -5,22 +5,21 @@
 
 <project name="M4" basedir="." default="all">
 	<target name="init">
-		<property name="build.dir" value="build"/>
-		<property name="jar.dir" value="${build.dir}/jar"/>
-		<property name="AntLabMain" value="src.edu.gatech.oad.antlab.pkg1"/>
-		<property name="apidoc.dir" value="apidoc"/>
+		<property name="src.dir" value="src" />
+		<property name="lib.dir" value="lib" />
 	</target>
 	
 	<target name="prepare" depends="init">
-		<mkdir dir="${build.dir}"/>
 		<mkdir dir="${apidoc.dir}"/>
-		<mkdir dir="${src.dir}"/>
+		<mkdir dir="${build.dir}"/>
 	</target>
 	
 	<target name="compile" depends="prepare">
-		<mkdir dir="${}"/>
+		<mkdir dir="${build.dir}/classes"/>
 		<javac srcdir="${src.dir}" destdir="${build.dir}">
-		<classpath path="${classpath}"/>
+			<classpath>
+				<pathelement path= "lib/resources.jar"/>
+			</classpath>
 		</javac>
 	</target>
 	
@@ -29,7 +28,7 @@
 		<jar destfile="AntLabRun.jar">
 			<include name="edu/gatech/oad/antlab/**/*.class"/>
 			<manifest>
-				<attribute name="Main-Class" value="edu.gateh.oad.antlab.pkg1.AntLabMain"/>
+				<attribute name="Main-Class" value="edu/gateh/oad/antlab/pkg1/AntLabMain"/>
 				<attribute name="Class-Path" value="lib/resources.jar"/>
 			</manifest>
 		</jar>
@@ -51,7 +50,7 @@
 	
 
 	<target name="run" depends="jar">
-		<java jar="edu.gatech.oad.antlab.pkg1.AntLabMain" fork="true">
+		<java jar="edu/gatech/oad/antlab/pkg1/AntLabMain" fork="true">
     		<classpath>
 				<pathelement location="${build.dir}"/>
 				<pathelement location="${build.dir}/{jar.dir}/AntLabMain.jar"/>

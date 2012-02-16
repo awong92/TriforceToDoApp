@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 
 <!-- M4 -->
 <project name="M4" default="all" basedir=".">

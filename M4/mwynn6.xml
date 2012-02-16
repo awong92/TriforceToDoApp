@@ -61,9 +61,10 @@
 		<java jar="${jar.dir}/AntLabRun.jar" fork="true"/>
 	</target>
 	
+	<!-- All: Makes it go; except for clean -->
 	<target name="all" depends="run, javadoc"/>
 		
-	<!-- Clean: delets previously created directories -->
+	<!-- Clean: deletes previously created directories -->
 	<target name="clean" depends="init">
 		<echo>Cleaning...</echo>
 		<delete dir="build"/>

@@ -31,31 +31,31 @@
 	<!-- Compile: Compiles required java files -->
 	<target name="compile" depends="prepare">
 		<echo>Compiling...</echo>
-		<javac srcdir="${src.dir}" destdir="${classes.dir}" classpath="${classpath}"/>
+		<javac srcdir="src" destdir="build/classes" classpath="lib/resources.jar"/>
 	</target>
 	
-	<!-- Javadoc: Creates Javadoc for the files -->
+	<!-- Javadoc: Creates Javadoc for all src files; stored in apidoc -->
 	<target name="javadoc" depends="compile">
 		<echo>Creating Javadocs...</echo>
-		<javadoc sourcepath="${src.dir}" access="public" destdir="${apidoc.dir}" classpath="${classpath}">
+		<javadoc sourcepath="src" access="public" destdir="apidoc" classpath="lib/resources.jar">
 			<bottom>
 				<![CDATA[<i>Copyright &#169' 2011 Team 36 CS2340. All Rights Reserved.</i>]]>
 			</bottom>
 		</javadoc>
 	</target>
 	
-	<!-- Jar: Creates Jar file... -->
+	<!-- Jar: Package compiled classes; saved as AntLabRun.jar... -->
 	<target name="jar" depends="compile">
 		<echo>Creating AntLabRun.jar...</echo>
-		<jar destfile="${jar.dir}/AntLabRun.jar" basedir="${classes.dir}">
+		<jar destfile="build/jar/AntLabRun.jar" basedir="build/classes">
 			<manifest>
 				<attribute name="Main-Class" value="edu/gatech/oad/antlab/pkg1/AntLabMain"/>
-				<attribute name="Class-Path" value="../../${classpath}"/>
+				<attribute name="Class-Path" value="../../lib/resources.jar"/>
 			</manifest>
 		</jar>
 	</target>
 	
-	<!-- Run: Runs something -->
+	<!-- Run: Start program execution; run jar file -->
 	<target name="run" depends="jar">
 		<echo>Running...</echo>
 		<java jar="${jar.dir}/AntLabRun.jar" fork="true"/>
@@ -70,7 +70,5 @@
 		<delete dir="build"/>
 		<delete dir="apidoc"/>
 	</target>
-		
 
-	
 </project>

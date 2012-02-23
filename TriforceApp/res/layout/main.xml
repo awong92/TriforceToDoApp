@@ -4,6 +4,7 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
+    <!-- Image at the top of the app which we plan to change to our created logo later -->
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="90dp"
@@ -12,6 +13,7 @@
         android:layout_marginRight="100dp"
         android:src="@android:drawable/ic_menu_month" />
 
+    <!--  The Username tag above the Text enter field to signify where the user should enter there username -->
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
@@ -19,6 +21,7 @@
         android:text="@string/username"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
+    <!-- Making the txt the right size -->
     <EditText
         android:id="@+id/editText1"
         android:layout_width="match_parent"
@@ -32,7 +35,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" >
-
+		
+        <!--  password string that works a lot like the username string -->
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
@@ -42,6 +46,7 @@
 
     </LinearLayout>
 
+    <!--  again making the txt the right size  -->
     <EditText
         android:id="@+id/editText2"
         android:layout_width="match_parent"
@@ -49,6 +54,7 @@
         android:inputType="textPassword"
         />
 
+    <!--  Login button -->
     <Button
         android:id="@+id/button1"
         android:layout_width="match_parent"
@@ -56,6 +62,7 @@
         android:layout_gravity="center_horizontal"
         android:text="@string/enter" />
 
+    <!--  Register Button -->
     <Button
         android:id="@+id/button2"
         android:layout_width="match_parent"

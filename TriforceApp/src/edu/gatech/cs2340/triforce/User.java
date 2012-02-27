@@ -9,11 +9,10 @@ public class User {
 	private String password, username;
 
 	/**
+	 * Constructor for User
 	 * 
 	 * @param password
-	 *            -new User's password
 	 * @param username
-	 *            -new User's username
 	 */
 	public User(String password, String username) {
 		this.password = password;
@@ -21,15 +20,17 @@ public class User {
 	}
 
 	/**
-	 * getter for password
+	 * Getter for password
 	 * 
-	 * @return password of User
+	 * @return password
 	 */
 	public String getPassword() {
 		return password;
 	}
 
 	/**
+	 * Getter for username
+	 * 
 	 * @return username
 	 */
 	public String getUsername() {

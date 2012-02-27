@@ -6,26 +6,22 @@ package edu.gatech.cs2340.triforce;
  * @version 1.0
  */
 public class User {
-	private String password, username;
+	private String username, password, name, email;
 
 	/**
 	 * Constructor for User
 	 * 
-	 * @param password
 	 * @param username
+	 * @param password
+	 * @param name
+	 * @Param email
 	 */
-	public User(String password, String username) {
-		this.password = password;
+	public User(String username, String password, String name, String email) {
+		
 		this.username = username;
-	}
-
-	/**
-	 * Getter for password
-	 * 
-	 * @return password
-	 */
-	public String getPassword() {
-		return password;
+		this.password = password;
+		this.name = name;
+		this.email = email;
 	}
 
 	/**
@@ -35,5 +31,32 @@ public class User {
 	 */
 	public String getUsername() {
 		return username;
+	}
+	
+	/**
+	 * Getter for password
+	 * 
+	 * @return password
+	 */
+	public String getPassword() {
+		return password;
+	}
+	
+	/**
+	 * Getter for name
+	 * 
+	 * @return name
+	 */
+	public String getName() {
+		return name;
+	}
+	
+	/**
+	 * Getter for email
+	 * 
+	 * @return email
+	 */
+	public String getEmail() {
+		return email;
 	}
 }

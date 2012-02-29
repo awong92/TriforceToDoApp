@@ -56,16 +56,18 @@
         />
 
     <!--  Login button -->
+
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="@string/enter" />
 
     <!--  Register Button -->
+
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/register" />

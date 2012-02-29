@@ -45,7 +45,8 @@ public class UserManager {
 	 * @return The password to be checked against the entered password
 	 */
 	public boolean getPassword(String logUser, String password) {
-		return userList.get(userList.indexOf(logUser)).getPassword()
+		User temp = new User(logUser, "", "", "");
+		return userList.get(userList.indexOf(temp)).getPassword()
 				.equals(password);
 	}
 

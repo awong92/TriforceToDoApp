@@ -8,13 +8,15 @@ package edu.gatech.cs2340.triforce;
 import java.util.ArrayList;
 
 public class UserManager {
-	ArrayList<User> users;
+	ArrayList<User> userList;
+	User currentUser;
 
 	/**
-	 * constructor
+	 * Constructor for UserManager
 	 */
 	public UserManager() {
-		users = new ArrayList<User>();
+		userList = new ArrayList<User>();
+		currentUser = null;
 	}
 
 	/**
@@ -23,26 +25,49 @@ public class UserManager {
 	 *            new user to be added to list of users
 	 */
 	public void addUser(User newUser) {
-		users.add(newUser);
+		userList.add(newUser);
 	}
 
 	/**
+	 * Getter for current user
+	 * 
+	 * @return current user
+	 */
+	public User getCurrent() {
+		return currentUser;
+	}
+
+	/**
+	 * 
 	 * 
 	 * @param logUser
 	 *            user logging in
 	 * @return The password to be checked against the entered password
 	 */
-	public String getPassword(User logUser) {
-		return users.get(users.indexOf(logUser)).getPassword();
+	public boolean getPassword(String logUser, String password) {
+		return userList.get(userList.indexOf(logUser)).getPassword()
+				.equals(password);
 	}
 
 	/**
+	 * Setter for current user
+	 * 
+	 * @param u
+	 *            new current user
+	 */
+	public void setCurrent(User u) {
+		currentUser = u;
+	}
+
+	/**
+	 * Checks if the user trying to log in is in the list
 	 * 
 	 * @param logUser
 	 *            user trying to log in
-	 * @return true if the username is a valid user
+	 * @return true if username is valid
 	 */
-	public boolean isUser(User logUser) {
-		return users.contains(logUser);
+	public boolean isUser(String logUser) {
+		User temp = new User(logUser, "", "", "");
+		return userList.contains(temp);
 	}
 }

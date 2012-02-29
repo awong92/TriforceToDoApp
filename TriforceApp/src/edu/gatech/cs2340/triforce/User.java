@@ -2,6 +2,7 @@ package edu.gatech.cs2340.triforce;
 
 /**
  * Team 36 -- Triforce
+ * 
  * @author Nathan Eppinger, Mallory Wynn, Alex Wong.
  * @version 1.0
  */
@@ -17,7 +18,7 @@ public class User {
 	 * @Param email
 	 */
 	public User(String username, String password, String name, String email) {
-		
+
 		this.username = username;
 		this.password = password;
 		this.name = name;
@@ -32,7 +33,7 @@ public class User {
 	public String getUsername() {
 		return username;
 	}
-	
+
 	/**
 	 * Getter for password
 	 * 
@@ -41,7 +42,7 @@ public class User {
 	public String getPassword() {
 		return password;
 	}
-	
+
 	/**
 	 * Getter for name
 	 * 
@@ -58,5 +59,35 @@ public class User {
 	 */
 	public String getEmail() {
 		return email;
+	}
+
+	/**
+	 * Setter for email
+	 * 
+	 * @param p
+	 *            new password
+	 */
+	public void setPassword(String p) {
+		password = p;
+	}
+
+	/**
+	 * Setter for password
+	 * 
+	 * @param e
+	 *            new email
+	 */
+	public void setEmail(String e) {
+		email = e;
+	}
+
+	/**
+	 * Equals method
+	 */
+	public boolean equals(User use) {
+		if (use.getUsername().equals(username))
+			return true;
+		else
+			return false;
 	}
 }

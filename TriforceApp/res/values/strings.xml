@@ -10,5 +10,6 @@
     <string name="triforceapp_logo">TriforceApp Logo</string>
     <string name="name">name</string>
     <string name="email">email</string>
+    <string name="registration">REGISTRATION</string>
 
 </resources>

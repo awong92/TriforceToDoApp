@@ -5,6 +5,15 @@
     android:orientation="vertical" >
 
     <!-- Image at the top of the app which we plan to change to our created logo later -->
+
+    <TextView
+        android:id="@+id/login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/login"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="90dp"

@@ -1,7 +1,7 @@
 package edu.gatech.cs2340.triforce;
 
 /**
- * 
+ * Team 36 -- Triforce
  * @author Nathan Eppinger, Mallory Wynn, Alex Wong.
  * @version 1.0
  */
@@ -50,7 +50,7 @@ public class User {
 	public String getName() {
 		return name;
 	}
-	
+
 	/**
 	 * Getter for email
 	 * 

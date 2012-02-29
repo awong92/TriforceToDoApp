@@ -1,15 +1,12 @@
-/**
- * 
- */
 package edu.gatech.cs2340.triforce;
 
+/**
+ * Team 36 -- Triforce
+ * @author Nathan Eppinger, Mallory Wynn, Alex Wong.
+ * @version 1.0
+ */
 import java.util.ArrayList;
 
-/**
- * @author Nathan Eppinger, Mallory Wynn, Alex Wong.
- * @Version 1.0
- * 
- */
 public class UserManager {
 	ArrayList<User> users;
 

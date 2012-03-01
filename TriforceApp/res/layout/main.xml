@@ -14,16 +14,15 @@
         android:text="@string/login"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="90dp"
-        android:layout_height="220dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginRight="100dp"
-        android:src="@android:drawable/ic_menu_month" 
-        android:contentDescription="@string/triforceapp_logo"/>
+    <!-- The Username tag above the Text enter field to signify where the user should enter there username -->
 
-    <!--  The Username tag above the Text enter field to signify where the user should enter there username -->
+    <ImageButton
+        android:id="@+id/imageButton1"
+        android:layout_width="199dp"
+        android:layout_height="225dp"
+        android:layout_gravity="center"
+        android:src="@drawable/tforce_app_logo" />
+
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
@@ -32,48 +31,49 @@
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <!-- Making the txt the right size -->
+
     <EditText
         android:id="@+id/usernameField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:inputType="textPersonName"
-       />
+        android:inputType="textPersonName" />
 
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" >
-		
-        <!--  password string that works a lot like the username string -->
+
+        <!-- password string that works a lot like the username string -->
+
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/password"
             android:textAppearance="?android:attr/textAppearanceSmall" />
-
     </LinearLayout>
 
-    <!--  again making the txt the right size  -->
+    <!-- again making the txt the right size -->
+
     <EditText
         android:id="@+id/passwordField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPassword" />
 
-    <!--  Login button -->
+    <!-- Login button -->
 
     <Button
         android:id="@+id/loginButton"
-        android:onClick="loginButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:onClick="loginButton"
         android:text="@string/enter" />
 
-    <!--  Register Button -->
+    <!-- Register Button -->
 
     <Button
         android:id="@+id/registerButton"
@@ -82,5 +82,5 @@
         android:layout_gravity="center_horizontal"
         android:onClick="registerButton"
         android:text="@string/register" />
-    
+
 </LinearLayout>

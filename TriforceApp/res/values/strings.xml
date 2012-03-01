@@ -14,5 +14,6 @@
     <string name="email">email</string>
     <string name="registration">REGISTRATION</string>
     <string name="login">LOGIN</string>
+    <string name="cancel">cancel</string>
 
 </resources>

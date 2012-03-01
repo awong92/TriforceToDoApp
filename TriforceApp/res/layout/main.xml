@@ -33,7 +33,7 @@
 
     <!-- Making the txt the right size -->
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/usernameField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -58,7 +58,7 @@
 
     <!--  again making the txt the right size  -->
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/passwordField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
@@ -78,9 +78,10 @@
 
     <Button
         android:id="@+id/registerButton"
-        android:onClick="registerButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:onClick="registerButton"
         android:text="@string/register" />
-
+    
 </LinearLayout>

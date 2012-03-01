@@ -40,12 +40,12 @@ public class TriforceMain extends Activity {
 		String passwordStr = passwordText.getText().toString();
 
 		// makes a toast of the Username String
-		Toast.makeText(this, usernameStr, Toast.LENGTH_LONG).show();
+		Toast.makeText(this, usernameStr, Toast.LENGTH_SHORT).show();
 
 	}
 
 	public void registerButton(View v) {
-		Toast.makeText(this, "REGISTER!", Toast.LENGTH_LONG).show();
+		Toast.makeText(this, "REGISTER!", Toast.LENGTH_SHORT).show();
 
 	}
 

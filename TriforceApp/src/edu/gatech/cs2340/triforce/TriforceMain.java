@@ -28,13 +28,23 @@ public class TriforceMain extends Activity {
 										// its opened
 	}
 
+	
+	
 	public void loginButton(View v) {
-		Toast.makeText(this, "ENTER!", Toast.LENGTH_LONG).show();
+		final EditText usernameText = (EditText) findViewById(R.id.usernameField); 
+		String usernameStr = usernameText.getText().toString();
+		
+		final EditText passwordText = (EditText) findViewById(R.id.passwordField);
+		String passwordStr = passwordText.getText().toString(); 
+		
+		Toast.makeText(this, usernameStr, Toast.LENGTH_LONG).show();
 		
 	}
 
 	public void registerButton(View v) {
 		Toast.makeText(this, "REGISTER!", Toast.LENGTH_LONG).show();
+	
+	
 	}
 	
 }

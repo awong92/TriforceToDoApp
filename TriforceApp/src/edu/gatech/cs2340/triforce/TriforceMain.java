@@ -13,8 +13,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-//import android.widget.Toast;
-
 public class TriforceMain extends Activity {
 
 	Button loginButton;
@@ -28,23 +26,27 @@ public class TriforceMain extends Activity {
 										// its opened
 	}
 
-	
-	
+	/**
+	 * Makes Enter button do stuff; Password turned into a string
+	 * 
+	 * @param v
+	 */
 	public void loginButton(View v) {
-		final EditText usernameText = (EditText) findViewById(R.id.usernameField); 
+		final EditText usernameText = (EditText) findViewById(R.id.usernameField);
 		String usernameStr = usernameText.getText().toString();
-		
+
+		// Password EditText to String object
 		final EditText passwordText = (EditText) findViewById(R.id.passwordField);
-		String passwordStr = passwordText.getText().toString(); 
-		
+		String passwordStr = passwordText.getText().toString();
+
+		// makes a toast of the Username String
 		Toast.makeText(this, usernameStr, Toast.LENGTH_LONG).show();
-		
+
 	}
 
 	public void registerButton(View v) {
 		Toast.makeText(this, "REGISTER!", Toast.LENGTH_LONG).show();
-	
-	
+
 	}
-	
+
 }

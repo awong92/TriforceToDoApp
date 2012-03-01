@@ -67,7 +67,8 @@
     <!--  Login button -->
 
     <Button
-        android:id="@+id/login"
+        android:id="@+id/loginButton"
+        android:onClick="loginButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -76,7 +77,8 @@
     <!--  Register Button -->
 
     <Button
-        android:id="@+id/register"
+        android:id="@+id/registerButton"
+        android:onClick="registerButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/register" />

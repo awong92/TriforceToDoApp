@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+//import android.widget.Toast;
 
 
 public class TriforceMain extends Activity {
@@ -21,7 +22,10 @@ public class TriforceMain extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main); //loads the main view into the app when its opened 
         
-        Button loginButton = (Button) this.findViewById(R.id.login);
+        
+        
+        
+        Button loginButton = (Button) this.findViewById(R.id.loginButton);
         loginButton.setOnClickListener(new OnClickListener() {
           @Override
           public void onClick(View v) {
@@ -29,7 +33,7 @@ public class TriforceMain extends Activity {
           }
         });
         
-        Button registerButton = (Button) this.findViewById(R.id.register);
+        Button registerButton = (Button) this.findViewById(R.id.registerButton);
         registerButton.setOnClickListener(new OnClickListener(){
         	public void onClick(View w){
         		finish();

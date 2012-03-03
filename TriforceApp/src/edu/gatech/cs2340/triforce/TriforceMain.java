@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.content.Intent;
 
 public class TriforceMain extends Activity {
 
@@ -42,11 +43,17 @@ public class TriforceMain extends Activity {
 		// makes a toast of the Username String
 		Toast.makeText(this, usernameStr, Toast.LENGTH_SHORT).show();
 
+		Button regBtn = (Button) findViewById(R.id.registerButton);
+		regBtn.setOnClickListener(new View.OnClickListener() {
+
+			public void onClick(View v) {
+				Intent nextScreen = new Intent(getApplicationContext(),
+						RegisterActivity.class);
+
+				startActivity(nextScreen);
+			}
+
+		});
+
 	}
-
-	public void registerButton(View v) {
-		Toast.makeText(this, "REGISTER!", Toast.LENGTH_SHORT).show();
-
-	}
-
 }

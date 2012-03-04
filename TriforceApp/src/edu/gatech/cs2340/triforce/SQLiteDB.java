@@ -73,6 +73,19 @@ public class SQLiteDB {
 		return ourDatabase.insert(DATABASE_TABLE, null, cv);
 	}
 
+	public boolean isAvailable(String username) {
+		String[] columns = new String[] { KEY_USERNAME };
+		Cursor c = ourDatabase.query(DATABASE_TABLE, columns, null, null, null, null, null);
+		
+		int iUsername = c.getColumnIndex(KEY_USERNAME);
+		
+		for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
+			if (c.getString(iUsername).equals(username))
+				return false;
+		}
+		return true;
+	}
+	
 	public boolean isValid(String username, String password) {
 		String[] columns = new String[] { KEY_ROWID, KEY_USERNAME, KEY_PASSWORD };
 		Cursor c = ourDatabase.query(DATABASE_TABLE, columns, null, null, null,

@@ -68,8 +68,6 @@ public class RegisterActivity extends Activity implements OnClickListener {
 
 			break;
 		case R.id.cancelRegButton:
-			//Intent openLoginPage = new Intent("edu.gatech.cs2340.triforce.MAIN");
-			//startActivity(openLoginPage);
 			break;
 		}
 	}

@@ -15,37 +15,14 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:text="IDs" />
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:text="Usernames" />
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:text="Passwords" />
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:text="Names" />
-            
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:text="Emails" />
+                android:text="IDs / Usernames / Passwords / Names / Emails" />
         </TableRow>
     </TableLayout>
+
     <TextView
-        		android:id="@+id/tvSQLinfo"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:text="get info from db" />
+        android:id="@+id/tvSQLinfo"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:text="get info from db" />
 
 </LinearLayout>

@@ -24,7 +24,7 @@ public class TriforceMain extends Activity implements OnClickListener {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.main); // loads the main view into the app when its opened
+		setContentView(R.layout.main);
 		loginButton = (Button) findViewById(R.id.loginButton);
 		regButton = (Button) findViewById(R.id.GotoRegisterButton);
 		loginName = (EditText) findViewById(R.id.usernameField);

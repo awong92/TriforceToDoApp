@@ -1,10 +1,9 @@
 package edu.gatech.cs2340.triforce;
 
 import edu.gatech.cs2340.r.R;
-import edu.gatech.cs2340.r.R.id;
-import edu.gatech.cs2340.r.R.layout;
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -50,20 +49,27 @@ public class RegisterActivity extends Activity implements OnClickListener {
 				entry.close();
 			} catch (Exception e) {
 				didItWork = false;
+				Dialog dFail = new Dialog(this);
+				dFail.setTitle("Error: Registration Failed");
+				TextView tv = new TextView(this);
+				tv.setText("DEBUG NOW");
+				dFail.setContentView(tv);
+				dFail.show();
 			} finally {
 				if (didItWork) {
-					Dialog d = new Dialog(this);
-					d.setTitle("The following data was entered!");
+					Dialog dPass = new Dialog(this);
+					dPass.setTitle("Registration Completed");
 					TextView tv = new TextView(this);
 					tv.setText("You're the best!");
-					d.setContentView(tv);
-					d.show();
+					dPass.setContentView(tv);
+					dPass.show();
 				}
 			}
 
 			break;
 		case R.id.cancelRegButton:
-
+			//Intent openLoginPage = new Intent("edu.gatech.cs2340.triforce.MAIN");
+			//startActivity(openLoginPage);
 			break;
 		}
 	}

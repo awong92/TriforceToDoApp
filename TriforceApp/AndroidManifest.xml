@@ -10,29 +10,34 @@
         android:icon="@drawable/tforce_app_logo"
         android:label="@string/app_name" >
         <activity
-            android:theme="@android:style/Theme.NoTitleBar"
             android:name="edu.gatech.cs2340.triforce.TriforceMain"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.NoTitleBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity 
-            android:theme="@android:style/Theme.NoTitleBar" 
+        <activity android:name=".RegisterActivity" >
+        </activity>
+        <activity
             android:name="edu.gatech.cs2340.triforce.RegisterActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.NoTitleBar" >
             <intent-filter>
                 <action android:name="edu.gatech.cs2340.triforce.REGISTERACTIVITY" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity 
-            android:theme="@android:style/Theme.NoTitleBar" 
+        <activity
             android:name="edu.gatech.cs2340.triforce.SQLView"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.NoTitleBar" >
             <intent-filter>
                 <action android:name="edu.gatech.cs2340.triforce.SQLVIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

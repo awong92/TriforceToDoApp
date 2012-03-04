@@ -15,6 +15,6 @@
     <string name="registration">REGISTRATION</string>
     <string name="login">LOGIN</string>
     <string name="cancel">cancel</string>
-    <string name="MAINPAGE">MAINPAGE</string>
+    <string name="main">MAIN</string>
 
 </resources>

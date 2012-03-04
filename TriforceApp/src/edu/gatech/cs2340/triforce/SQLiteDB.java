@@ -2,6 +2,7 @@ package edu.gatech.cs2340.triforce;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -71,6 +72,44 @@ public class SQLiteDB {
 		cv.put(KEY_NAME, name);
 		cv.put(KEY_EMAIL, email);
 		return ourDatabase.insert(DATABASE_TABLE, null, cv);
+	}
+
+	public boolean isValid(String username, String password) {
+		String[] columns = new String[] { KEY_ROWID, KEY_USERNAME, KEY_PASSWORD };
+		Cursor c = ourDatabase.query(DATABASE_TABLE, columns, null, null, null,
+				null, null);
+
+		int iUsername = c.getColumnIndex(KEY_USERNAME);
+		int iPassword = c.getColumnIndex(KEY_PASSWORD);
+
+		for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
+			if (c.getString(iUsername).equals(username))
+				if (c.getString(iPassword).equals(password))
+					return true;
+		}
+		return false;
+	}
+
+	public String getData() {
+		String[] columns = new String[] { KEY_ROWID, KEY_USERNAME,
+				KEY_PASSWORD, KEY_NAME, KEY_EMAIL};
+		Cursor c = ourDatabase.query(DATABASE_TABLE, columns, null, null, null,
+				null, null);
+		String result = "";
+
+		int iRow = c.getColumnIndex(KEY_ROWID);
+		int iUsername = c.getColumnIndex(KEY_USERNAME);
+		int iPassword = c.getColumnIndex(KEY_PASSWORD);
+		int iName = c.getColumnIndex(KEY_NAME);
+		int iEmail = c.getColumnIndex(KEY_EMAIL);
+
+		for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
+			result = result + c.getString(iRow) + " / "
+					+ c.getString(iUsername) + " / " + c.getString(iPassword)
+					+ " / " + c.getString(iName) + " / " + c.getString(iEmail)
+					+ "\n";
+		}
+		return result;
 	}
 	
 }

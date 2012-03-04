@@ -49,10 +49,11 @@ public class RegisterActivity extends Activity implements OnClickListener {
 				entry.close();
 			} catch (Exception e) {
 				didItWork = false;
+				String error = e.toString();
 				Dialog dFail = new Dialog(this);
 				dFail.setTitle("Error: Registration Failed");
 				TextView tv = new TextView(this);
-				tv.setText("DEBUG NOW");
+				tv.setText(error);
 				dFail.setContentView(tv);
 				dFail.show();
 			} finally {

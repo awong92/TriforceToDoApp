@@ -27,6 +27,15 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity 
+            android:theme="@android:style/Theme.NoTitleBar" 
+            android:name="edu.gatech.cs2340.triforce.SQLView"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="edu.gatech.cs2340.triforce.SQLVIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

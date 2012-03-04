@@ -25,8 +25,13 @@ public class SQLiteDB {
 		}
 
 		@Override
-		public void onCreate(SQLiteDatabase arg0) {
+		public void onCreate(SQLiteDatabase db) {
 			// TODO Auto-generated method stub
+			db.execSQL("CREATE TABLE " + DATABASE_TABLE + " (" + 
+					KEY_ROWID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + 
+					KEY_NAME + " TEXT NOT NULL, " + 
+					KEY_PASSWORD + " TEXT NOT NULL)"
+			);
 
 		}
 

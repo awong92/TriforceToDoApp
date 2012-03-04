@@ -1,6 +1,8 @@
 package edu.gatech.cs2340.triforce;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -52,7 +54,7 @@ public class SQLiteDB {
 		ourContext = c;
 	}
 	
-	public SQLiteDB open(){
+	public SQLiteDB open() throws SQLException{
 		ourHelper = new DbHelper(ourContext);
 		ourDatabase = ourHelper.getWritableDatabase();
 		return this;
@@ -62,8 +64,13 @@ public class SQLiteDB {
 		ourHelper.close();
 	}
 	
-	public void createEntry(String username, String password, String name, String email) {
-		
+	public long createEntry(String username, String password, String name, String email) {
+		ContentValues cv = new ContentValues();
+		cv.put(KEY_USERNAME, username);
+		cv.put(KEY_PASSWORD, password);
+		cv.put(KEY_NAME, name);
+		cv.put(KEY_EMAIL, email);
+		return ourDatabase.insert(DATABASE_TABLE, null, cv);
 	}
 	
 }

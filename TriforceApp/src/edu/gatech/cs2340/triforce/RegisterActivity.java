@@ -4,11 +4,13 @@ import edu.gatech.cs2340.r.R;
 import edu.gatech.cs2340.r.R.id;
 import edu.gatech.cs2340.r.R.layout;
 import android.app.Activity;
+import android.app.Dialog;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class RegisterActivity extends Activity implements OnClickListener {
 
@@ -33,20 +35,35 @@ public class RegisterActivity extends Activity implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		switch(v.getId()){
+		switch (v.getId()) {
 		case R.id.registerUserButton:
-			String username = usernameField.getText().toString();
-			String password = passwordField.getText().toString();
-			String name = nameField.getText().toString();
-			String email = emailField.getText().toString();
-			
-			SQLiteDB entry = new SQLiteDB(RegisterActivity.this);
-			entry.open();
-			entry.createEntry(username, password, name, email);
-			entry.close();
+			boolean didItWork = true;
+			try {
+				String username = usernameField.getText().toString();
+				String password = passwordField.getText().toString();
+				String name = nameField.getText().toString();
+				String email = emailField.getText().toString();
+
+				SQLiteDB entry = new SQLiteDB(RegisterActivity.this);
+				entry.open();
+				entry.createEntry(username, password, name, email);
+				entry.close();
+			} catch (Exception e) {
+				didItWork = false;
+			} finally {
+				if (didItWork) {
+					Dialog d = new Dialog(this);
+					d.setTitle("The following data was entered!");
+					TextView tv = new TextView(this);
+					tv.setText("You're the best!");
+					d.setContentView(tv);
+					d.show();
+				}
+			}
+
 			break;
 		case R.id.cancelRegButton:
-			
+
 			break;
 		}
 	}

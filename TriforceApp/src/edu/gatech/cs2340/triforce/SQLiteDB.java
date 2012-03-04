@@ -32,13 +32,11 @@ public class SQLiteDB {
 		@Override
 		public void onCreate(SQLiteDatabase db) {
 			// TODO Auto-generated method stub
-			db.execSQL("CREATE TABLE " + DATABASE_TABLE + " (" + 
-					KEY_ROWID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + 
-					KEY_USERNAME + " TEXT NOT NULL, " + 
-					KEY_PASSWORD + " TEXT NOT NULL, " +
-					KEY_NAME + " TEXT NOT NULL, " + 
-					KEY_EMAIL + " TEXT NOT NULL)"
-			);
+			db.execSQL("CREATE TABLE " + DATABASE_TABLE + " (" + KEY_ROWID
+					+ " INTEGER PRIMARY KEY AUTOINCREMENT, " + KEY_USERNAME
+					+ " TEXT NOT NULL, " + KEY_PASSWORD + " TEXT NOT NULL, "
+					+ KEY_NAME + " TEXT NOT NULL, " + KEY_EMAIL
+					+ " TEXT NOT NULL)");
 
 		}
 
@@ -54,18 +52,19 @@ public class SQLiteDB {
 	public SQLiteDB(Context c) {
 		ourContext = c;
 	}
-	
-	public SQLiteDB open() throws SQLException{
+
+	public SQLiteDB open() throws SQLException {
 		ourHelper = new DbHelper(ourContext);
 		ourDatabase = ourHelper.getWritableDatabase();
 		return this;
 	}
-	
+
 	public void close() {
 		ourHelper.close();
 	}
-	
-	public long createEntry(String username, String password, String name, String email) {
+
+	public long createEntry(String username, String password, String name,
+			String email) {
 		ContentValues cv = new ContentValues();
 		cv.put(KEY_USERNAME, username);
 		cv.put(KEY_PASSWORD, password);
@@ -92,7 +91,7 @@ public class SQLiteDB {
 
 	public String getData() {
 		String[] columns = new String[] { KEY_ROWID, KEY_USERNAME,
-				KEY_PASSWORD, KEY_NAME, KEY_EMAIL};
+				KEY_PASSWORD, KEY_NAME, KEY_EMAIL };
 		Cursor c = ourDatabase.query(DATABASE_TABLE, columns, null, null, null,
 				null, null);
 		String result = "";
@@ -111,5 +110,5 @@ public class SQLiteDB {
 		}
 		return result;
 	}
-	
+
 }

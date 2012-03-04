@@ -63,16 +63,22 @@
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress" />
 
-    <Button
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/cancelRegButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cancel" />
+
+        <Button
         android:id="@+id/registerUserButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/register" />
-
-    <Button
-        android:id="@+id/cancelRegButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/cancel" />
+    </TableRow>
 
 </LinearLayout>

@@ -7,8 +7,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class SQLiteDB {
 
 	public static final String KEY_ROWID = "_id";
-	public static final String KEY_NAME = "users_name";
-	public static final String KEY_PASSWORD = "users_pw";
+	public static final String KEY_USERNAME = "user_username";
+	public static final String KEY_PASSWORD = "user_pw";
+	public static final String KEY_NAME = "user_name";
+	public static final String KEY_EMAIL = "user_email";
 
 	private static final String DATABASE_NAME = "UserManagerdb";
 	private static final String DATABASE_TABLE = "userTable";
@@ -29,8 +31,10 @@ public class SQLiteDB {
 			// TODO Auto-generated method stub
 			db.execSQL("CREATE TABLE " + DATABASE_TABLE + " (" + 
 					KEY_ROWID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + 
+					KEY_USERNAME + " TEXT NOT NULL, " + 
+					KEY_PASSWORD + " TEXT NOT NULL)" +
 					KEY_NAME + " TEXT NOT NULL, " + 
-					KEY_PASSWORD + " TEXT NOT NULL)"
+					KEY_EMAIL + " TEXT NOT NULL)"
 			);
 
 		}
@@ -38,7 +42,8 @@ public class SQLiteDB {
 		@Override
 		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 			// TODO Auto-generated method stub
-
+			db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE);
+			onCreate(db);
 		}
 
 	}
@@ -46,5 +51,19 @@ public class SQLiteDB {
 	public SQLiteDB(Context c) {
 		ourContext = c;
 	}
-
+	
+	public SQLiteDB open(){
+		ourHelper = new DbHelper(ourContext);
+		ourDatabase = ourHelper.getWritableDatabase();
+		return this;
+	}
+	
+	public void close() {
+		ourHelper.close();
+	}
+	
+	public void createEntry(String username, String password, String name, String email) {
+		
+	}
+	
 }

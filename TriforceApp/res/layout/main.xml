@@ -7,7 +7,7 @@
     <!-- Image at the top of the app which we plan to change to our created logo later -->
 
     <TextView
-        android:id="@+id/login"
+        android:id="@+id/titleLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -17,7 +17,7 @@
     <!-- The Username tag above the Text enter field to signify where the user should enter there username -->
 
     <ImageView
-        android:id="@+id/imageView1"
+        android:id="@+id/tforceLogo"
         android:layout_width="193dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -77,7 +77,7 @@
     <!-- Register Button -->
 
     <Button
-        android:id="@+id/registerButton"
+        android:id="@+id/GotoRegisterButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"

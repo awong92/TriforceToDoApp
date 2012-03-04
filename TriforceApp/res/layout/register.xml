@@ -5,7 +5,7 @@
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/registration"
+        android:id="@+id/titeRegistration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -13,7 +13,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
-        android:id="@+id/username"
+        android:id="@+id/regTitleUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/username"
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content" />
 
     <TextView
-        android:id="@+id/password"
+        android:id="@+id/regTitlePassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/password"
@@ -38,7 +38,7 @@
         android:inputType="textPassword" />
 
     <TextView
-        android:id="@+id/name"
+        android:id="@+id/regTitlename"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/name"
@@ -51,7 +51,7 @@
         android:inputType="textPersonName" />
 
     <TextView
-        android:id="@+id/email"
+        android:id="@+id/regTitleEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/email"
@@ -64,13 +64,13 @@
         android:inputType="textEmailAddress" />
 
     <Button
-        android:id="@+id/registerButton"
+        android:id="@+id/registerUserButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/register" />
 
     <Button
-        android:id="@+id/cancelButton"
+        android:id="@+id/cancelRegButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/cancel" />

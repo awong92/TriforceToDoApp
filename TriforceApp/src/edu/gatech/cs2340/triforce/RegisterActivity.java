@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 public class RegisterActivity extends Activity implements OnClickListener {
 
-	Button registerButton, cancelButton;
+	Button registerButton;
 	EditText usernameField, passwordField, nameField, emailField;
 
 	// Called when the activity is first created
@@ -26,14 +26,12 @@ public class RegisterActivity extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.register);
 		registerButton = (Button) findViewById(R.id.registerUserButton);
-		cancelButton = (Button) findViewById(R.id.cancelRegButton);
 		usernameField = (EditText) findViewById(R.id.newUsername);
 		passwordField = (EditText) findViewById(R.id.newPassword);
 		nameField = (EditText) findViewById(R.id.newName);
 		emailField = (EditText) findViewById(R.id.newEmail);
 
 		registerButton.setOnClickListener(this);
-		cancelButton.setOnClickListener(this);
 	}
 
 	// Called when the activity is first created
@@ -89,8 +87,6 @@ public class RegisterActivity extends Activity implements OnClickListener {
 				}
 			}
 
-			break;
-		case R.id.cancelRegButton:
 			break;
 		}
 	}

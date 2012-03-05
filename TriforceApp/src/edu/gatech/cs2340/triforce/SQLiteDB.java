@@ -95,6 +95,15 @@ public class SQLiteDB {
 		ourHelper.close();
 	}
 
+	/**
+	 * Creates a new entry/row in the database
+	 * 
+	 * @param username
+	 * @param password
+	 * @param name
+	 * @param email
+	 * @return new row of data in DATABASE_TABLE
+	 */
 	public long createEntry(String username, String password, String name,
 			String email) {
 		ContentValues cv = new ContentValues();
@@ -105,6 +114,13 @@ public class SQLiteDB {
 		return ourDatabase.insert(DATABASE_TABLE, null, cv);
 	}
 
+	/**
+	 * Checks if a username is already taken or not
+	 * 
+	 * @param username
+	 *            new username to be checked against the db
+	 * @return true if available, false otherwise
+	 */
 	public boolean isAvailable(String username) {
 		String[] columns = new String[] { KEY_USERNAME };
 		Cursor c = ourDatabase.query(DATABASE_TABLE, columns, null, null, null,
@@ -119,6 +135,14 @@ public class SQLiteDB {
 		return true;
 	}
 
+	/**
+	 * Checks if the input username is available and its password matches
+	 * 
+	 * @param username
+	 * @param password
+	 * @return true if the username exists and the password belongs, false
+	 *         otherwise
+	 */
 	public boolean isValid(String username, String password) {
 		String[] columns = new String[] { KEY_ROWID, KEY_USERNAME, KEY_PASSWORD };
 		Cursor c = ourDatabase.query(DATABASE_TABLE, columns, null, null, null,
@@ -135,6 +159,11 @@ public class SQLiteDB {
 		return false;
 	}
 
+	/**
+	 * Getter for a table view of all the data in the db
+	 * 
+	 * @return a String/table of all the data in the db
+	 */
 	public String getData() {
 		String[] columns = new String[] { KEY_ROWID, KEY_USERNAME,
 				KEY_PASSWORD, KEY_NAME, KEY_EMAIL };

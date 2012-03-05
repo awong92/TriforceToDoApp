@@ -1,7 +1,7 @@
 package edu.gatech.cs2340.triforce;
 
 /**
- * Team 36 -- Triforce
+ * Team Triforce (36)
  * @author Nathan Eppinger, Mallory Wynn, Alex Wong
  * @version 1.0
  */
@@ -21,25 +21,26 @@ public class TriforceMain extends Activity implements OnClickListener {
 	Button loginButton, regButton, viewButton;
 	EditText loginName, loginPassword;
 
-	/** Called when the activity is first created. */
+	// Called when the activity is first created
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+		
 		loginButton = (Button) findViewById(R.id.loginButton);
 		regButton = (Button) findViewById(R.id.GotoRegisterButton);
 		viewButton = (Button) findViewById(R.id.viewdbButton);
 		loginName = (EditText) findViewById(R.id.usernameField);
 		loginPassword = (EditText) findViewById(R.id.passwordField);
-		
+
 		loginButton.setOnClickListener(this);
 		regButton.setOnClickListener(this);
 		viewButton.setOnClickListener(this);
 	}
 
+	// Handles cases when a certain button is clicked
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
 		switch (v.getId()) {
 		case R.id.loginButton:
 			String loginNameStr = loginName.getText().toString();
@@ -65,8 +66,7 @@ public class TriforceMain extends Activity implements OnClickListener {
 			}
 			break;
 		case R.id.viewdbButton:
-			Intent viewDB = new Intent(
-					"edu.gatech.cs2340.triforce.SQLVIEW");
+			Intent viewDB = new Intent("edu.gatech.cs2340.triforce.SQLVIEW");
 			startActivity(viewDB);
 			break;
 		case R.id.GotoRegisterButton:

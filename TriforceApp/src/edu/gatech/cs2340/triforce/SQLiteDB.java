@@ -1,5 +1,10 @@
 package edu.gatech.cs2340.triforce;
 
+/**
+ * Team Triforce (36)
+ * @author Nathan Eppinger, Mallory Wynn, Alex Wong
+ * @version 1.0
+ */
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -25,11 +30,21 @@ public class SQLiteDB {
 
 	private static class DbHelper extends SQLiteOpenHelper {
 
+		/**
+		 * Constructor for Helper
+		 * 
+		 * @param context
+		 */
 		public DbHelper(Context context) {
 			super(context, DATABASE_NAME, null, DATABASE_VERSION);
 		}
 
 		@Override
+		/**
+		 * Initialize Activity
+		 * 
+		 * @param db Database of where to store data
+		 */
 		public void onCreate(SQLiteDatabase db) {
 			// TODO Auto-generated method stub
 			db.execSQL("CREATE TABLE " + DATABASE_TABLE + " (" + KEY_ROWID
@@ -40,6 +55,9 @@ public class SQLiteDB {
 
 		}
 
+		/**
+		 * Updates database
+		 */
 		@Override
 		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 			// TODO Auto-generated method stub
@@ -49,16 +67,30 @@ public class SQLiteDB {
 
 	}
 
+	/**
+	 * Constructor for database
+	 * 
+	 * @param c
+	 */
 	public SQLiteDB(Context c) {
 		ourContext = c;
 	}
 
+	/**
+	 * Make database writable
+	 * 
+	 * @return database
+	 * @throws SQLException
+	 */
 	public SQLiteDB open() throws SQLException {
 		ourHelper = new DbHelper(ourContext);
 		ourDatabase = ourHelper.getWritableDatabase();
 		return this;
 	}
 
+	/**
+	 * Close database
+	 */
 	public void close() {
 		ourHelper.close();
 	}
@@ -75,17 +107,18 @@ public class SQLiteDB {
 
 	public boolean isAvailable(String username) {
 		String[] columns = new String[] { KEY_USERNAME };
-		Cursor c = ourDatabase.query(DATABASE_TABLE, columns, null, null, null, null, null);
-		
+		Cursor c = ourDatabase.query(DATABASE_TABLE, columns, null, null, null,
+				null, null);
+
 		int iUsername = c.getColumnIndex(KEY_USERNAME);
-		
+
 		for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
 			if (c.getString(iUsername).equals(username))
 				return false;
 		}
 		return true;
 	}
-	
+
 	public boolean isValid(String username, String password) {
 		String[] columns = new String[] { KEY_ROWID, KEY_USERNAME, KEY_PASSWORD };
 		Cursor c = ourDatabase.query(DATABASE_TABLE, columns, null, null, null,

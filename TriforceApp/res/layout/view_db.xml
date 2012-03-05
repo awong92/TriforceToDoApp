@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Team Triforce (36) : database display page -->
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical" >
+
+    <!-- Lists how the info is displayed -->
 
     <TableLayout
         android:id="@+id/tableLayout1"
@@ -18,6 +22,8 @@
                 android:text="IDs / Usernames / Passwords / Names / Emails" />
         </TableRow>
     </TableLayout>
+
+    <!-- Begins the list of users in the database -->
 
     <TextView
         android:id="@+id/tvSQLinfo"

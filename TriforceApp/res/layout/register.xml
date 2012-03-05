@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Team Triforce (36) : registration page -->
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
+
+    <!-- title of register screen -->
 
     <TextView
         android:id="@+id/titeRegistration"
@@ -11,6 +15,8 @@
         android:layout_gravity="center_horizontal"
         android:text="@string/registration"
         android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <!-- Username tag above the text field where the user inputs a new username -->
 
     <TextView
         android:id="@+id/regTitleUsername"
@@ -23,6 +29,8 @@
         android:id="@+id/newUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <!-- Password tag above the text field where the user inputs a new password -->
 
     <TextView
         android:id="@+id/regTitlePassword"
@@ -37,6 +45,8 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword" />
 
+    <!-- Name tag above the text field where the user inputs a new name -->
+
     <TextView
         android:id="@+id/regTitlename"
         android:layout_width="wrap_content"
@@ -49,6 +59,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName" />
+
+    <!-- Email tag above the text field where the user inputs a new email -->
 
     <TextView
         android:id="@+id/regTitleEmail"
@@ -63,6 +75,8 @@
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress" />
 
+    <!-- Register button to create new account and cancel button -->
+
     <TableRow
         android:id="@+id/tableRow1"
         android:layout_width="match_parent"
@@ -75,10 +89,10 @@
             android:text="@string/cancel" />
 
         <Button
-        android:id="@+id/registerUserButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/register" />
+            android:id="@+id/registerUserButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/register" />
     </TableRow>
 
 </LinearLayout>

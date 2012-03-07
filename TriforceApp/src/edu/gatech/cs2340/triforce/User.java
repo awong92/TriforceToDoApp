@@ -1,5 +1,7 @@
 package edu.gatech.cs2340.triforce;
 
+import java.util.ArrayList;
+
 /**
  * Team 36 -- Triforce
  * @author Nathan Eppinger, Mallory Wynn, Alex Wong.
@@ -7,7 +9,7 @@ package edu.gatech.cs2340.triforce;
  */
 public class User {
 	private String username, password, name, email;
-
+	private ArrayList<List> lists = new ArrayList<List>();
 	/**
 	 * Constructor for User
 	 * 
@@ -80,6 +82,9 @@ public class User {
 		email = e;
 	}
 
+	public void add(List list){
+		lists.add(list);
+	}
 	/**
 	 * Equals method
 	 */

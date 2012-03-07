@@ -16,5 +16,22 @@
     <string name="login">LOGIN</string>
     <string name="cancel">cancel</string>
     <string name="main">MAIN</string>
+    
+    <string name="taskNameNT">Task Name</string>
+    <string name="headerNT">New Task</string>
+    <string name="typeOfTaskNT">Type of Task</string>
+    <string name="taskDescriptionNT">Description</string>
+    <string name="taskTypeNT">Task Type</string>
+    <string name="taskDateNT">Date</string>
+    <string name="taskTimeNT">Time</string>
+    <string name="taskLocationNT">Location</string>
+    <string name="taskSaveNT">Save</string>
+    <string name="taskCancelNT">Cancel</string>
+    <string name="selectPromptNT">Select One</string>
+    	<string-array name="spinner_options">   
+   		 	<item name="personalSpinnerNT">Personal</item>
+    		<item name="schoolSpinnerNT">School</item>
+   			<item name="workSpinnerNT">Work</item>   			
+   		</string-array>
 
 </resources>

@@ -9,13 +9,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Large Text"
+        android:text="@string/userTaskMainHeader"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Spinner
-        android:id="@+id/spinner1"
+        android:id="@+id/typeOfTaskMain"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:prompt="@string/selectPromptNT" />
 
     <ListView
         android:id="@+id/listView1"
@@ -33,20 +34,20 @@
             android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:text="Button" />
+            android:text="@string/cancelButtonMain" />
 
         <Button
             android:id="@+id/button3"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:text="Button" />
+            android:text="@string/newTaskButton" />
     </FrameLayout>
 
     <Button
         android:id="@+id/button2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="@string/logoutMain" />
 
 </LinearLayout>

@@ -48,8 +48,8 @@ public class SQLiteDB {
 		public void onCreate(SQLiteDatabase db) {
 			// TODO Auto-generated method stub
 			db.execSQL("CREATE TABLE " + DATABASE_TABLE + " (" + KEY_ROWID
-					+ " INTEGER PRIMARY KEY AUTOINCREMENT, " + KEY_USERNAME
-					+ " TEXT NOT NULL, " + KEY_PASSWORD + " TEXT NOT NULL, "
+					+ " INTEGER AUTOINCREMENT, " + KEY_USERNAME
+					+ " TEXT NOT NULL PRIMARY KEY, " + KEY_PASSWORD + " TEXT NOT NULL, "
 					+ KEY_NAME + " TEXT NOT NULL, " + KEY_EMAIL
 					+ " TEXT NOT NULL)");
 

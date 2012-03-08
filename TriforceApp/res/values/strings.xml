@@ -8,7 +8,6 @@
     <string name="register">register</string>
     <string name="enter">enter</string>
     <string name="user_email">user_email</string>
-
     <string name="triforceapp_logo">TriforceApp Logo</string>
     <string name="name">name</string>
     <string name="email">email</string>
@@ -16,7 +15,6 @@
     <string name="login">LOGIN</string>
     <string name="cancel">cancel</string>
     <string name="main">MAIN</string>
-    
     <string name="taskNameNT">Task Name</string>
     <string name="headerNT">New Task</string>
     <string name="typeOfTaskNT">Type of Task</string>
@@ -28,10 +26,11 @@
     <string name="taskSaveNT">Save</string>
     <string name="taskCancelNT">Cancel</string>
     <string name="selectPromptNT">Select One</string>
-    	<string-array name="spinner_options">   
-   		 	<item name="personalSpinnerNT">Personal</item>
-    		<item name="schoolSpinnerNT">School</item>
-   			<item name="workSpinnerNT">Work</item>   			
-   		</string-array>
+
+    <string-array name="spinner_options">
+        <item name="personalSpinnerNT">Personal</item>
+        <item name="schoolSpinnerNT">School</item>
+        <item name="workSpinnerNT">Work</item>
+    </string-array>
 
 </resources>

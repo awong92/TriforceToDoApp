@@ -41,7 +41,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:text="Button" />
-
     </FrameLayout>
 
     <Button

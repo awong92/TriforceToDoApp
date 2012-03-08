@@ -17,7 +17,6 @@
             android:layout_gravity="center_horizontal"
             android:text="@string/headerNT"
             android:textAppearance="?android:attr/textAppearanceLarge" />
-
     </LinearLayout>
 
     <TextView
@@ -70,7 +69,6 @@
             android:layout_centerVertical="true"
             android:text="@string/taskTypeNT"
             android:textAppearance="?android:attr/textAppearanceSmall" />
-
     </RelativeLayout>
 
     <RelativeLayout
@@ -96,7 +94,6 @@
             android:layout_toRightOf="@+id/timePromptNT"
             android:text="@string/taskDateNT"
             android:textAppearance="?android:attr/textAppearanceSmall" />
-
     </RelativeLayout>
 
     <RelativeLayout
@@ -121,7 +118,6 @@
             android:layout_alignParentTop="true"
             android:layout_toRightOf="@+id/timeStringNT"
             android:inputType="date|time" />
-
     </RelativeLayout>
 
     <TextView
@@ -158,7 +154,6 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:text="@string/taskCancelNT" />
-
     </RelativeLayout>
-   
+
 </LinearLayout>

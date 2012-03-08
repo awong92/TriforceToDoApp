@@ -30,18 +30,12 @@
         android:layout_height="wrap_content" >
 
         <Button
-            android:id="@+id/button1"
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:text="@string/cancelButtonMain" />
-
-        <Button
             android:id="@+id/button3"
-            android:layout_width="160dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:text="@string/newTaskButton" />
+
     </FrameLayout>
 
     <Button

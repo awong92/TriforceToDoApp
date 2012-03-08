@@ -30,6 +30,8 @@
         android:id="@+id/editText1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
         android:inputType="textCapWords" >
 
         <requestFocus />
@@ -46,6 +48,8 @@
         android:id="@+id/editText2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
         android:inputType="textCapSentences" />
 
     <RelativeLayout
@@ -59,6 +63,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
             android:prompt="@string/selectPromptNT" />
 
         <TextView
@@ -107,6 +113,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
             android:layout_toLeftOf="@+id/editText5"
             android:inputType="time" />
 
@@ -116,6 +124,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
             android:layout_toRightOf="@+id/timeStringNT"
             android:inputType="date|time" />
     </RelativeLayout>
@@ -131,6 +141,8 @@
         android:id="@+id/locationStringNT"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
         android:inputType="textPostalAddress" />
 
     <RelativeLayout
@@ -145,6 +157,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="30dp"
             android:text="@string/taskSaveNT" />
 
         <Button
@@ -153,7 +167,16 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="30dp"
             android:text="@string/taskCancelNT" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="68dp" />
     </RelativeLayout>
 
 </LinearLayout>

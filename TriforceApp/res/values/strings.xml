@@ -36,5 +36,13 @@
         <string name="newTaskButton">New Task</string>
         <string name="logoutMain">Logout</string>
         <string name="cancelButtonMain">Cancel</string>
+        
+        <string name="taskNameVT">Task Name</string>
+        <string name="editTaskVT">Edit Task</string>
+        <string name="descriptionStrVT">Task Description: </string>
+        <string name="dateStrVT">Date: </string>
+        <string name="timeStrVT">Time: </string>
+        <string name="typeStrVT">Type of Task: </string>
+        <string name="locationStrVT">Location: </string>
 
 </resources>

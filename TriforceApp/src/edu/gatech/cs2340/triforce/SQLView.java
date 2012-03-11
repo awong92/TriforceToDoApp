@@ -20,7 +20,7 @@ public class SQLView extends Activity {
 		TextView tv = (TextView) findViewById(R.id.tvSQLinfo);
 		SQLiteDB info = new SQLiteDB(this);
 		info.open();
-		String data = info.getData();
+		String data = info.getUserData();
 		info.close();
 		tv.setText(data);
 	}

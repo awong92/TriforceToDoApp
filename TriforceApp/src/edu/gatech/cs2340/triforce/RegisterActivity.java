@@ -48,24 +48,8 @@ public class RegisterActivity extends Activity implements OnClickListener {
 
 				SQLiteDB entry = new SQLiteDB(RegisterActivity.this);
 				entry.open();
-				// if(!(username.equals(null))) {
-				if (entry.isAvailable(username))
-					// if(!(password.equals(null)) && !(name.equals(null)))
-					entry.createEntry(username, password, name, email);
-				/*
-				 * else { didItWork = false; Dialog dTaken = new Dialog(this);
-				 * dTaken.setTitle("Error"); TextView tv = new TextView(this);
-				 * tv.setText("Password AND Name must be filled in.");
-				 * dTaken.setContentView(tv); dTaken.show(); } else { didItWork
-				 * = false; Dialog dTaken = new Dialog(this);
-				 * dTaken.setTitle("Error"); TextView tv = new TextView(this);
-				 * tv.setText("The Username is already taken.");
-				 * dTaken.setContentView(tv); dTaken.show(); } } else {
-				 * didItWork = false; Dialog dNoUser = new Dialog(this);
-				 * dNoUser.setTitle("Error"); TextView tv = new TextView(this);
-				 * tv.setText("Missing Username."); dNoUser.setContentView(tv);
-				 * dNoUser.show(); }
-				 */
+				if (entry.isUserAvailable(username))
+					entry.createUserEntry(username, password, name, email);
 				entry.close();
 			} catch (Exception e) {
 				didItWork = false;

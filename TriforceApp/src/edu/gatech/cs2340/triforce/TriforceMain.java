@@ -47,7 +47,7 @@ public class TriforceMain extends Activity implements OnClickListener {
 			String loginPasswordStr = loginPassword.getText().toString();
 			SQLiteDB info = new SQLiteDB(this);
 			info.open();
-			boolean validLogin = info.isValid(loginNameStr, loginPasswordStr);
+			boolean validLogin = info.isValidUser(loginNameStr, loginPasswordStr);
 			info.close();
 			if (validLogin) {
 				Dialog dPass = new Dialog(this);

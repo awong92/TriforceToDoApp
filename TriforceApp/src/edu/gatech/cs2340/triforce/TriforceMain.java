@@ -50,6 +50,7 @@ public class TriforceMain extends Activity implements OnClickListener {
 			boolean validLogin = info.isValidUser(loginNameStr, loginPasswordStr);
 			info.close();
 			if (validLogin) {
+				
 				Dialog dPass = new Dialog(this);
 				dPass.setTitle("Login Successful");
 				TextView tv = new TextView(this);

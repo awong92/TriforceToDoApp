@@ -60,7 +60,7 @@ public class TaskListActivity extends Activity implements OnClickListener {
 
 	    public void onItemSelected(AdapterView<?> parent,
 	        View view, int pos, long id) {
-	      Toast.makeText(parent.getContext(), "The type is " +
+	      Toast.makeText(parent.getContext(), "Filtering by " +
 	          parent.getItemAtPosition(pos).toString(), Toast.LENGTH_LONG).show();
 	    }
 

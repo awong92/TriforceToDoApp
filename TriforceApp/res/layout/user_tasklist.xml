@@ -30,7 +30,7 @@
         android:layout_height="wrap_content" >
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/newTaskButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
@@ -39,7 +39,7 @@
     </FrameLayout>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/logoutButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/logoutMain" />

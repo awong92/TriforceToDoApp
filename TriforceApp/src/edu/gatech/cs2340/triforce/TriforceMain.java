@@ -56,6 +56,8 @@ public class TriforceMain extends Activity implements OnClickListener {
 				tv.setText("User is available");
 				dPass.setContentView(tv);
 				dPass.show();
+				Intent viewTaskList = new Intent("edu.gatech.cs2340.triforce.TASKLISTACTIVITY");
+				startActivity(viewTaskList);
 			} else {
 				Dialog dPass = new Dialog(this);
 				dPass.setTitle("Login Failed");

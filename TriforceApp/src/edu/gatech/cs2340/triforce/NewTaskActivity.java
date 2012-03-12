@@ -32,7 +32,7 @@ public class NewTaskActivity extends Activity implements OnClickListener {
 	Spinner typeSpinner;
 
 	static final int DATE_DIALOG_ID = 0;
-	static final int TIME_DIALOG_ID = 0;
+	static final int TIME_DIALOG_ID = 1;
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -107,17 +107,11 @@ public class NewTaskActivity extends Activity implements OnClickListener {
 		}
 	};
 
-	protected Dialog onCreateDateDialog(int id) {
+	protected Dialog onCreateDialog(int id) {
 		switch (id) {
 		case DATE_DIALOG_ID:
 			return new DatePickerDialog(this, mDateSetListener, mYear, mMonth,
 					mDay);
-		}
-		return null;
-	}
-
-	protected Dialog onCreateTimeDialog(int id) {
-		switch (id) {
 		case TIME_DIALOG_ID:
 			return new TimePickerDialog(this, mTimeSetListener, mHour, mMinute,
 					false);
@@ -163,6 +157,7 @@ public class NewTaskActivity extends Activity implements OnClickListener {
 			task.close();
 			break;
 		case R.id.cancelButtonNT:
+			finish();
 			break;
 		}
 	}

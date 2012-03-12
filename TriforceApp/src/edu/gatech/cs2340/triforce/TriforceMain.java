@@ -53,12 +53,6 @@ public class TriforceMain extends Activity implements OnClickListener {
 			info.close();
 			if (validLogin) {
 				currentUser = loginNameStr;
-				Dialog dPass = new Dialog(this);
-				dPass.setTitle("Login Successful");
-				TextView tv = new TextView(this);
-				tv.setText("User is available");
-				dPass.setContentView(tv);
-				dPass.show();
 				Intent viewTaskList = new Intent(
 						"edu.gatech.cs2340.triforce.TASKLISTACTIVITY");
 				startActivity(viewTaskList);

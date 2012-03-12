@@ -66,10 +66,8 @@ public class RegisterActivity extends Activity implements OnClickListener {
 				if (didItWork) {
 					Dialog dPass = new Dialog(this);
 					dPass.setTitle("Registration Completed");
-					TextView tv = new TextView(this);
-					tv.setText("You're the best!");
-					dPass.setContentView(tv);
 					dPass.show();
+					finish();
 				}
 			}
 

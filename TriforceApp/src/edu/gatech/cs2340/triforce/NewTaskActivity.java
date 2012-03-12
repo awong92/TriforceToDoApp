@@ -28,7 +28,7 @@ public class NewTaskActivity extends Activity implements OnClickListener {
 	EditText nameField, descField, locationField;
 	Button mPickDate, mPickTime, saveButton, cancelButton;
 	int mYear, mMonth, mDay, mHour, mMinute;
-	String taskType;
+	String taskType = "Personal";
 	Spinner typeSpinner;
 
 	static final int DATE_DIALOG_ID = 0;

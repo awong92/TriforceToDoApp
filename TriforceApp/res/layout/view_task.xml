@@ -87,7 +87,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
-            android:text="@string/editTaskVT" />
+            android:text="@string/taskSaveButton" />
 
         <Button
             android:id="@+id/cancelVT"

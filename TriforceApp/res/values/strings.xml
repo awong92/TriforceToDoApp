@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">TriforceApp</string>
-    <string name="username">username</string>
-    <string name="password">password</string>
-    <string name="register">register</string>
-    <string name="enter">enter</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="register">Register</string>
+    <string name="enter">Enter</string>
     <string name="user_email">user_email</string>
     <string name="triforceapp_logo">TriforceApp Logo</string>
-    <string name="name">name</string>
-    <string name="email">email</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
     <string name="registration">REGISTRATION</string>
     <string name="login">LOGIN</string>
-    <string name="cancel">cancel</string>
+    <string name="cancel">Cancel</string>
     <string name="main">MAIN</string>
     <string name="taskNameNT">Task Name</string>
-    <string name="headerNT">New Task</string>
+    <string name="headerNT">NEW TASK</string>
+    <string name="headerET">EDIT TASK</string>
     <string name="typeOfTaskNT">Type of Task</string>
     <string name="taskDescriptionNT">Description</string>
     <string name="taskTypeNT">Task Type</string>
     <string name="taskDateNT">Date</string>
     <string name="taskTimeNT">Time</string>
     <string name="taskLocationNT">Location</string>
-    <string name="taskSaveNT">Save</string>
-    <string name="taskCancelNT">Cancel</string>
+    <string name="taskSaveButton">Save</string>
     <string name="selectPromptNT">Select One</string>
 
     <string name="task_types_prompt">Choose a Task Type</string>
@@ -45,7 +45,6 @@
     <string name="logoutMain">Logout</string>
     <string name="cancelButtonMain">Cancel</string>
     <string name="taskNameVT">Task Name</string>
-    <string name="editTaskVT">Edit Task</string>
     <string name="descriptionStrVT">Task Description: </string>
     <string name="dateStrVT">Date: </string>
     <string name="timeStrVT">Time: </string>

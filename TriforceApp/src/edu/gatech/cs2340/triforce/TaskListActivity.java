@@ -50,8 +50,8 @@ public class TaskListActivity extends Activity implements OnClickListener {
 			startActivity(createNewTask);
 			break;
 		case R.id.logoutButton:
-			Intent loginPage = new Intent("edu.gatech.cs2340.triforce.MAIN");
-			startActivity(loginPage);
+			TriforceMain.currentUser = null;
+			finish();
 			break;
 		}
 	}

@@ -31,6 +31,14 @@
         <item name="schoolSpinnerNT">School</item>
         <item name="workSpinnerNT">Work</item>
     </string-array>
+    
+    <string name="filter_by_prompt">Filter</string>
+    <string-array name="filter_array">
+        <item name="allSpinnerNT">All</item>
+        <item name="personalSpinnerNT">Personal</item>
+        <item name="schoolSpinnerNT">School</item>
+        <item name="workSpinnerNT">Work</item>
+    </string-array>
 
     <string name="userTaskListHeader">TASK LIST</string>
     <string name="newTaskButton">New Task</string>

@@ -21,6 +21,7 @@ import android.widget.Toast;
 public class TaskListActivity extends Activity implements OnClickListener {
 
 	Button newTaskButton, logoutButton;
+	String filterBy = "All";
 	Spinner typeSpinner;
 	
 	
@@ -30,7 +31,7 @@ public class TaskListActivity extends Activity implements OnClickListener {
 		
 		typeSpinner = (Spinner) findViewById(R.id.typeOfTask);
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
-	            this, R.array.types_array, android.R.layout.simple_spinner_item);
+	            this, R.array.filter_array, android.R.layout.simple_spinner_item);
 	    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 	    typeSpinner.setAdapter(adapter);
 	    
@@ -60,8 +61,7 @@ public class TaskListActivity extends Activity implements OnClickListener {
 
 	    public void onItemSelected(AdapterView<?> parent,
 	        View view, int pos, long id) {
-	      Toast.makeText(parent.getContext(), "Filtering by " +
-	          parent.getItemAtPosition(pos).toString(), Toast.LENGTH_LONG).show();
+	      filterBy = parent.getItemAtPosition(pos).toString();
 	    }
 
 	    public void onNothingSelected(AdapterView parent) {

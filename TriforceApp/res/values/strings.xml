@@ -32,7 +32,7 @@
         <item name="workSpinnerNT">Work</item>
     </string-array>
 
-    <string name="userTaskMainHeader">User\'s Tasks</string>
+    <string name="userTaskListHeader">TASK LIST</string>
     <string name="newTaskButton">New Task</string>
     <string name="logoutMain">Logout</string>
     <string name="cancelButtonMain">Cancel</string>

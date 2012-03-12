@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TriforceApp.edu.gatech.cs2340.triforce.chekableList xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical" >
-    
+
     <TextView
         android:id="@+id/titleTaskList"
         android:layout_width="wrap_content"
@@ -18,20 +18,30 @@
         android:layout_height="wrap_content"
         android:prompt="@string/task_types_prompt" />
 
-  <!--   <ListView
-        android:id="@+id/listView1"
-        android:layout_width="wrap_content"
-        android:layout_height="328dp" >
-    </ListView>
--->
-	<CheckedTextView 
-	    	android:id="@+id/checkableList" 
-	    	android:layout_width="fill_parent"
-	    	android:layout_height="wrap_content"
-	    	android:gravity="center_vertical"
-				android:ellipsize="marquee"
-			android:singleLine="true"
-	 />
+  	<TriforceApp.edu.gatech.cs2340.triforce.chekableList xmlns:android="http://schemas.android.com/apk/res/android"
+    	android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+    	android:orientation="vertical">
+		
+		<CheckedTextView
+	    	android:id="@+id/username"
+	    	android:layout_width="match_parent"	
+    		android:layout_height="wrap_content"
+    		android:gravity="center_vertical"
+    		android:ellipsize="marquee"
+    		android:singleLine="true"
+  		/>
+    
+		<TextView
+		    	android:id="@+id/enter"
+		    	android:layout_width ="fill_parent"
+		    	android:layout_height="wrap_content"
+		    	android:gravity="center_vertical"
+		    	android:ellipsize="marquee"
+		    	android:singleLine="true"
+		
+		/>
+    </TriforceApp.edu.gatech.cs2340.triforce.chekableList>
     <FrameLayout
         android:id="@+id/frameLayout1"
         android:layout_width="match_parent"
@@ -51,4 +61,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/logoutMain" />
-</TriforceApp.edu.gatech.cs2340.triforce.chekableList>
+
+</LinearLayout>

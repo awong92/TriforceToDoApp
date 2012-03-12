@@ -5,7 +5,7 @@
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/titleTaskList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -13,10 +13,10 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Spinner
-        android:id="@+id/typeOfTaskMain"
+        android:id="@+id/typeOfTask"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:prompt="@string/selectPromptNT" />
+        android:prompt="@string/task_types_prompt" />
 
     <ListView
         android:id="@+id/listView1"

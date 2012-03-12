@@ -27,22 +27,23 @@
     <string name="taskCancelNT">Cancel</string>
     <string name="selectPromptNT">Select One</string>
 
-    <string-array name="spinner_options">
+    <string name="task_types_prompt">Choose a Task Type</string>
+    <string-array name="types_array">
         <item name="personalSpinnerNT">Personal</item>
         <item name="schoolSpinnerNT">School</item>
         <item name="workSpinnerNT">Work</item>
     </string-array>
-        <string name="userTaskMainHeader">User\'s Tasks</string>
-        <string name="newTaskButton">New Task</string>
-        <string name="logoutMain">Logout</string>
-        <string name="cancelButtonMain">Cancel</string>
-        
-        <string name="taskNameVT">Task Name</string>
-        <string name="editTaskVT">Edit Task</string>
-        <string name="descriptionStrVT">Task Description: </string>
-        <string name="dateStrVT">Date: </string>
-        <string name="timeStrVT">Time: </string>
-        <string name="typeStrVT">Type of Task: </string>
-        <string name="locationStrVT">Location: </string>
+
+    <string name="userTaskMainHeader">User\'s Tasks</string>
+    <string name="newTaskButton">New Task</string>
+    <string name="logoutMain">Logout</string>
+    <string name="cancelButtonMain">Cancel</string>
+    <string name="taskNameVT">Task Name</string>
+    <string name="editTaskVT">Edit Task</string>
+    <string name="descriptionStrVT">Task Description: </string>
+    <string name="dateStrVT">Date: </string>
+    <string name="timeStrVT">Time: </string>
+    <string name="typeStrVT">Type of Task: </string>
+    <string name="locationStrVT">Location: </string>
 
 </resources>

@@ -11,20 +11,33 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 public class TaskListActivity extends Activity implements OnClickListener {
 
 	Button newTaskButton, logoutButton;
+	Spinner typeSpinner;
 	
 	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.user_tasklist);
 		
+		typeSpinner = (Spinner) findViewById(R.id.typeOfTask);
+		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+	            this, R.array.types_array, android.R.layout.simple_spinner_item);
+	    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+	    typeSpinner.setAdapter(adapter);
+	    
 		newTaskButton = (Button) findViewById(R.id.newTaskButton);
 		logoutButton = (Button) findViewById(R.id.logoutButton);
 		
+		typeSpinner.setOnItemSelectedListener(new MyOnItemSelectedListener());
 		newTaskButton.setOnClickListener(this);
 		logoutButton.setOnClickListener(this);
 	}
@@ -41,6 +54,19 @@ public class TaskListActivity extends Activity implements OnClickListener {
 			startActivity(loginPage);
 			break;
 		}
+	}
+	
+	public class MyOnItemSelectedListener implements OnItemSelectedListener {
+
+	    public void onItemSelected(AdapterView<?> parent,
+	        View view, int pos, long id) {
+	      Toast.makeText(parent.getContext(), "The type is " +
+	          parent.getItemAtPosition(pos).toString(), Toast.LENGTH_LONG).show();
+	    }
+
+	    public void onNothingSelected(AdapterView parent) {
+	      // Do nothing.
+	    }
 	}
 
 }

@@ -24,7 +24,6 @@ import android.widget.AdapterView.OnItemSelectedListener;
 
 public class NewTaskActivity extends Activity implements OnClickListener {
 
-	TextView mDateDisplay, mTimeDisplay;
 	EditText nameField, descField, locationField;
 	Button mPickDate, mPickTime, saveButton, cancelButton;
 	int mYear, mMonth, mDay, mHour, mMinute;
@@ -41,9 +40,7 @@ public class NewTaskActivity extends Activity implements OnClickListener {
 		// capture our View elements
 		nameField = (EditText) findViewById(R.id.editTaskName);
 		descField = (EditText) findViewById(R.id.editTaskDescript);
-		mDateDisplay = (TextView) findViewById(R.id.dateDisplayNT);
 		mPickDate = (Button) findViewById(R.id.pickDateNT);
-		mTimeDisplay = (TextView) findViewById(R.id.timeDisplay);
 		mPickTime = (Button) findViewById(R.id.pickTime);
 		locationField = (EditText) findViewById(R.id.editLocation);
 		saveButton = (Button) findViewById(R.id.saveButtonNT);
@@ -89,10 +86,7 @@ public class NewTaskActivity extends Activity implements OnClickListener {
 	}
 
 	private void updateDateDisplay() {
-		mDateDisplay.setText(new StringBuilder()
-				// Month is 0 based so add 1
-				.append(mMonth + 1).append("-").append(mDay).append("-")
-				.append(mYear).append(" "));
+		mPickDate.setText((mMonth + 1) + "-" + mDay + "-" + mYear);
 	}
 
 	// the callback received when the user "sets" the date in the dialog
@@ -121,8 +115,16 @@ public class NewTaskActivity extends Activity implements OnClickListener {
 
 	// updates the time we display in the TextView
 	private void updateTimeDisplay() {
-		mTimeDisplay.setText(new StringBuilder().append(pad(mHour)).append(":")
-				.append(pad(mMinute)));
+		int hour = (int) mHour;
+		if (hour > 12) {
+			hour -= 12;
+			mPickTime.setText(hour + ":" + mMinute + " PM");
+		} else if (hour == 12)
+			mPickTime.setText(hour + ":" + mMinute + " PM");
+		else if (hour == 0)
+			mPickTime.setText((hour + 12) + ":" + mMinute + " AM");
+		else
+			mPickTime.setText(hour + ":" + mMinute + " AM");
 	}
 
 	private static String pad(int t) {
@@ -153,7 +155,8 @@ public class NewTaskActivity extends Activity implements OnClickListener {
 			int priority = 0;
 			SQLiteDB task = new SQLiteDB(this);
 			task.open();
-			task.createTaskEntry(TriforceMain.currentUser, taskName, taskDesc, taskType, priority, taskDate, taskTime, taskLocation);
+			task.createTaskEntry(TriforceMain.currentUser, taskName, taskDesc,
+					taskType, priority, taskDate, taskTime, taskLocation);
 			task.close();
 			break;
 		case R.id.cancelButtonNT:

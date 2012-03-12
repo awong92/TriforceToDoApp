@@ -15,12 +15,14 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 public class TaskListActivity extends Activity implements OnClickListener {
 
-	Button newTaskButton, logoutButton;
+	ImageButton newTaskButton;
+	Button logoutButton;
 	String filterBy = "All";
 	Spinner typeSpinner;
 	
@@ -35,7 +37,7 @@ public class TaskListActivity extends Activity implements OnClickListener {
 	    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 	    typeSpinner.setAdapter(adapter);
 	    
-		newTaskButton = (Button) findViewById(R.id.newTaskButton);
+		newTaskButton = (ImageButton) findViewById(R.id.newTaskButton);
 		logoutButton = (Button) findViewById(R.id.logoutButton);
 		
 		typeSpinner.setOnItemSelectedListener(new MyOnItemSelectedListener());

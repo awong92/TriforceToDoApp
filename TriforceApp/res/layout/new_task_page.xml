@@ -68,17 +68,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" >
 
+            <TextView
+                android:id="@+id/dateDisplayNT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Due Date: " />
+            
             <Button
                 android:id="@+id/pickDateNT"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Due Date" />
-
-            <TextView
-                android:id="@+id/dateDisplayNT"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="" />
         </TableRow>
 
         <TableRow
@@ -86,17 +86,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" >
 
+            <TextView
+                android:id="@+id/timeDisplay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Time Due: " />
+            
             <Button
                 android:id="@+id/pickTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Time Due" />
-
-            <TextView
-                android:id="@+id/timeDisplay"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="" />
         </TableRow>
     </TableLayout>
 

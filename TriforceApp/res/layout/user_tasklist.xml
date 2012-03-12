@@ -24,13 +24,13 @@
     	android:orientation="vertical">
 		
 		<CheckedTextView
-	    	android:id="@+id/username"
-	    	android:layout_width="match_parent"	
-    		android:layout_height="wrap_content"
-    		android:gravity="center_vertical"
-    		android:ellipsize="marquee"
-    		android:singleLine="true"
-  		/>
+		    android:id="@+id/username"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:ellipsize="marquee"
+		    android:gravity="center_vertical"
+		    android:singleLine="true"
+		    android:textAppearance="@string/app_name" />
     
 		<TextView
 		    	android:id="@+id/enter"

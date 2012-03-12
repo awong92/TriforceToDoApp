@@ -18,6 +18,7 @@ import android.content.Intent;
 
 public class TriforceMain extends Activity implements OnClickListener {
 
+	static String currentUser = null;
 	Button loginButton, regButton, viewButton;
 	EditText loginName, loginPassword;
 
@@ -26,7 +27,7 @@ public class TriforceMain extends Activity implements OnClickListener {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-		
+
 		loginButton = (Button) findViewById(R.id.loginButton);
 		regButton = (Button) findViewById(R.id.GotoRegisterButton);
 		viewButton = (Button) findViewById(R.id.viewdbButton);
@@ -47,17 +48,19 @@ public class TriforceMain extends Activity implements OnClickListener {
 			String loginPasswordStr = loginPassword.getText().toString();
 			SQLiteDB info = new SQLiteDB(this);
 			info.open();
-			boolean validLogin = info.isValidUser(loginNameStr, loginPasswordStr);
+			boolean validLogin = info.isValidUser(loginNameStr,
+					loginPasswordStr);
 			info.close();
 			if (validLogin) {
-				
+				currentUser = loginNameStr;
 				Dialog dPass = new Dialog(this);
 				dPass.setTitle("Login Successful");
 				TextView tv = new TextView(this);
 				tv.setText("User is available");
 				dPass.setContentView(tv);
 				dPass.show();
-				Intent viewTaskList = new Intent("edu.gatech.cs2340.triforce.TASKLISTACTIVITY");
+				Intent viewTaskList = new Intent(
+						"edu.gatech.cs2340.triforce.TASKLISTACTIVITY");
 				startActivity(viewTaskList);
 			} else {
 				Dialog dPass = new Dialog(this);

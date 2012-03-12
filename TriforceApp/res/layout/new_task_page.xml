@@ -27,7 +27,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/editTaskName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
@@ -45,90 +45,60 @@
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/editTaskDescript"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
         android:layout_marginTop="5dp"
         android:inputType="textCapSentences" />
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout3"
+    <Spinner
+        android:id="@+id/newTypeOfTask"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:prompt="@string/task_types_prompt" />
+
+    <TableLayout
+        android:id="@+id/tableDateTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
-        <Spinner
-            android:id="@+id/taskTypeSpinnerNT"
-            android:layout_width="234dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:prompt="@string/selectPromptNT" />
-
-        <TextView
-            android:id="@+id/tasktypePromptNT"
+        <TableRow
+            android:id="@+id/dateRow"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:text="@string/taskTypeNT"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-    </RelativeLayout>
+            android:layout_height="wrap_content" >
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+            <Button
+                android:id="@+id/pickDateNT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Due Date" />
 
-        <TextView
-            android:id="@+id/timePromptNT"
+            <TextView
+                android:id="@+id/dateDisplayNT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/timeRow"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:text="@string/taskTimeNT"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:layout_height="wrap_content" >
 
-        <TextView
-            android:id="@+id/datePromptNT"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="128dp"
-            android:layout_toRightOf="@+id/timePromptNT"
-            android:text="@string/taskDateNT"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-    </RelativeLayout>
+            <Button
+                android:id="@+id/pickTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Time Due" />
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <EditText
-            android:id="@+id/timeStringNT"
-            android:layout_width="152dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_toLeftOf="@+id/editText5"
-            android:inputType="time" />
-
-        <EditText
-            android:id="@+id/dateStringNT"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_toRightOf="@+id/timeStringNT"
-            android:inputType="date|time" />
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/timeDisplay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="" />
+        </TableRow>
+    </TableLayout>
 
     <TextView
         android:id="@+id/locationPromptNT"
@@ -138,7 +108,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <EditText
-        android:id="@+id/locationStringNT"
+        android:id="@+id/editLocation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"

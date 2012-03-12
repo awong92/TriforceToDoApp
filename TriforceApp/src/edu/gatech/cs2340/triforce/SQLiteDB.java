@@ -23,6 +23,7 @@ public class SQLiteDB {
 	// Attributes of Task
 	public static final String KEY_TASK_ID = "task_id";
 	public static final String KEY_TASKNAME = "task_name";
+	public static final String KEY_DESCRIPTION = "task_descript";
 	public static final String KEY_TASKTYPE = "task_type";
 	public static final String KEY_PRIORITY = "task_priority";
 	public static final String KEY_TASKDATE = "task_date";
@@ -69,10 +70,11 @@ public class SQLiteDB {
 					+ " INTEGER PRIMARY KEY AUTOINCREMENT, "
 					+ KEY_USERNAME
 					+ " TEXT NOT NULL FOREIGN KEY REFERENCES DATABASE_USERTABLE (KEY_USERNAME), "
-					+ KEY_TASKNAME + " TEXT NOT NULL, " + KEY_TASKTYPE
-					+ " TEXT NOT NULL, " + KEY_PRIORITY + " INTEGER NOT NULL, "
-					+ KEY_TASKDATE + " TEXT NOT NULL, " + KEY_TASKTIME
-					+ " TEXT NOT NULL, " + KEY_LOCATION + " TEXT NOT NULL)");
+					+ KEY_TASKNAME + " TEXT NOT NULL, " + KEY_DESCRIPTION
+					+ " TEXT, " + KEY_TASKTYPE + " TEXT NOT NULL, "
+					+ KEY_PRIORITY + " INTEGER NOT NULL, " + KEY_TASKDATE
+					+ " TEXT NOT NULL, " + KEY_TASKTIME + " TEXT NOT NULL, "
+					+ KEY_LOCATION + " TEXT NOT NULL)");
 
 		}
 
@@ -206,11 +208,13 @@ public class SQLiteDB {
 		return result;
 	}
 
-	public long createTaskEntry(String username, String taskName, String type,
-			int priority, String date, String time, String location) {
+	public long createTaskEntry(String username, String taskName,
+			String descript, String type, int priority, String date,
+			String time, String location) {
 		ContentValues cv = new ContentValues();
 		cv.put(KEY_USERNAME, username);
 		cv.put(KEY_TASKNAME, taskName);
+		cv.put(KEY_DESCRIPTION, descript);
 		cv.put(KEY_TASKTYPE, type);
 		cv.put(KEY_PRIORITY, priority);
 		cv.put(KEY_TASKDATE, date);
@@ -219,14 +223,13 @@ public class SQLiteDB {
 		return ourDatabase.insert(DATABASE_TASKTABLE, null, cv);
 	}
 
-	public void updateTask(int id, String taskName, String type, int priority,
-			String date, String time, String location) {
-		ourDatabase
-				.execSQL("UPDATE " + DATABASE_TASKTABLE + " SET KEY_TASKNAME="
-						+ taskName + " SET KEY_TASKTYPE=" + type
-						+ " SET KEY_PRIORITY=" + priority
-						+ " SET KEY_TASKDATE=" + date + " SET KEY_TASKTIME="
-						+ time + " SET KEY_LOCATION=" + location);
+	public void updateTask(int id, String taskName, String descript,
+			String type, int priority, String date, String time, String location) {
+		ourDatabase.execSQL("UPDATE " + DATABASE_TASKTABLE
+				+ " SET KEY_TASKNAME=" + taskName + " SET KEY_DESCRIPTIOIN="
+				+ descript + " SET KEY_TASKTYPE=" + type + " SET KEY_PRIORITY="
+				+ priority + " SET KEY_TASKDATE=" + date + " SET KEY_TASKTIME="
+				+ time + " SET KEY_LOCATION=" + location);
 	}
 
 	public void deleteTask(int id) {

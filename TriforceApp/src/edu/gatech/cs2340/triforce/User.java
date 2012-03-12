@@ -6,7 +6,7 @@ package edu.gatech.cs2340.triforce;
  * @version 1.0
  */
 public class User {
-	private String username, password, name, email;
+	private String username, password, name, email, userCurr;
 	/**
 	 * Constructor for User
 	 * 
@@ -83,6 +83,14 @@ public class User {
 	/**
 	 * Equals method
 	 */
+	public void setCurrent(String user){
+		userCurr = user; 
+	}
+	
+	public String currentUser(){
+		return userCurr;
+	}
+	
 	public boolean equals(User use) {
 		if (use.getUsername().equals(username))
 			return true;

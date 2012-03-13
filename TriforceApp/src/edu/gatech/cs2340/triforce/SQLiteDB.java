@@ -5,6 +5,9 @@ package edu.gatech.cs2340.triforce;
  * @author Nathan Eppinger, Mallory Wynn, Alex Wong
  * @version 1.0
  */
+import java.util.ArrayList;
+import java.util.List;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -22,6 +25,7 @@ public class SQLiteDB {
 
 	// Attributes of Task
 	public static final String KEY_TASK_ID = "task_id";
+	public static final String KEY_CURRUSER = "task_curruser";
 	public static final String KEY_TASKNAME = "task_name";
 	public static final String KEY_DESCRIPTION = "task_descript";
 	public static final String KEY_TASKTYPE = "task_type";
@@ -58,23 +62,20 @@ public class SQLiteDB {
 		 * @param db Database of where to store data
 		 */
 		public void onCreate(SQLiteDatabase db) {
-			// TODO Auto-generated method stub
 			db.execSQL("CREATE TABLE " + DATABASE_USERTABLE + " ("
 					+ KEY_USERNAME + " TEXT NOT NULL PRIMARY KEY, "
 					+ KEY_PASSWORD + " TEXT NOT NULL, " + KEY_NAME
-					+ " TEXT NOT NULL, " + KEY_EMAIL + " TEXT NOT NULL)");
-			db.execSQL("CREATE TABLE "
-					+ DATABASE_TASKTABLE
-					+ " ("
-					+ KEY_TASK_ID
-					+ " INTEGER PRIMARY KEY AUTOINCREMENT, "
-					+ KEY_USERNAME
-					+ " TEXT NOT NULL FOREIGN KEY REFERENCES DATABASE_USERTABLE (KEY_USERNAME), "
-					+ KEY_TASKNAME + " TEXT NOT NULL, " + KEY_DESCRIPTION
-					+ " TEXT, " + KEY_TASKTYPE + " TEXT NOT NULL, "
-					+ KEY_PRIORITY + " INTEGER NOT NULL, " + KEY_TASKDATE
-					+ " TEXT NOT NULL, " + KEY_TASKTIME + " TEXT NOT NULL, "
-					+ KEY_LOCATION + " TEXT NOT NULL)");
+					+ " TEXT NOT NULL, " + KEY_EMAIL + " TEXT NOT NULL);");
+			db.execSQL("CREATE TABLE " + DATABASE_TASKTABLE + " ("
+					+ KEY_TASK_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+					+ KEY_CURRUSER + " TEXT NOT NULL, " + KEY_TASKNAME
+					+ " TEXT NOT NULL, " + KEY_DESCRIPTION + " TEXT, "
+					+ KEY_TASKTYPE + " TEXT NOT NULL, " + KEY_PRIORITY
+					+ " INTEGER NOT NULL, " + KEY_TASKDATE + " TEXT NOT NULL, "
+					+ KEY_TASKTIME + " TEXT NOT NULL, " + KEY_LOCATION
+					+ " TEXT NOT NULL, " + "FOREIGN KEY (" + KEY_CURRUSER
+					+ ") REFERENCES " + DATABASE_USERTABLE + " ("
+					+ KEY_USERNAME + "));");
 
 		}
 
@@ -212,7 +213,7 @@ public class SQLiteDB {
 			String descript, String type, int priority, String date,
 			String time, String location) {
 		ContentValues cv = new ContentValues();
-		cv.put(KEY_USERNAME, username);
+		cv.put(KEY_CURRUSER, username);
 		cv.put(KEY_TASKNAME, taskName);
 		cv.put(KEY_DESCRIPTION, descript);
 		cv.put(KEY_TASKTYPE, type);
@@ -235,5 +236,30 @@ public class SQLiteDB {
 	public void deleteTask(int id) {
 		ourDatabase.execSQL("DELETE FROM " + DATABASE_TASKTABLE + " WHERE "
 				+ KEY_TASK_ID + "=" + id);
+	}
+
+	public List<Task> getUserTasks(String user, String filter) {
+		List<Task> list = new ArrayList<Task>();
+		String[] columns = new String[] { KEY_CURRUSER, KEY_TASKNAME,
+				KEY_TASKTYPE };
+		Cursor c = ourDatabase.query(DATABASE_TASKTABLE, columns, null, null,
+				null, null, null);
+
+		int iUsername = c.getColumnIndex(KEY_CURRUSER);
+		int iTaskName = c.getColumnIndex(KEY_TASKNAME);
+		int iTaskType = c.getColumnIndex(KEY_TASKTYPE);
+
+		for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
+			if (c.getString(iUsername).equals(user)) {
+				if (!(filter.equals("All"))) {
+					if (c.getString(iTaskType).equals(filter)) {
+						list.add(new Task(c.getString(iUsername)));
+					}
+				} else
+					list.add(new Task(c.getString(iTaskName)));
+			}
+		}
+
+		return list;
 	}
 }

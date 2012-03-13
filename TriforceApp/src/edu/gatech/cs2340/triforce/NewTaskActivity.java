@@ -158,6 +158,7 @@ public class NewTaskActivity extends Activity implements OnClickListener {
 			task.createTaskEntry(TriforceMain.currentUser, taskName, taskDesc,
 					taskType, priority, taskDate, taskTime, taskLocation);
 			task.close();
+			finish();
 			break;
 		case R.id.cancelButtonNT:
 			finish();

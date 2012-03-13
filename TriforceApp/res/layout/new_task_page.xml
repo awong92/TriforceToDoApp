@@ -31,10 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp"
-        android:inputType="textCapWords" >
-
-        <requestFocus />
+        android:layout_marginTop="5dp" >
     </EditText>
 
     <TextView
@@ -49,8 +46,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp"
-        android:inputType="textCapSentences" />
+        android:layout_marginTop="5dp" />
 
     <Spinner
         android:id="@+id/newTypeOfTask"
@@ -73,7 +69,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Due Date: " />
-            
+
             <Button
                 android:id="@+id/pickDateNT"
                 android:layout_width="wrap_content"
@@ -91,7 +87,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Time Due: " />
-            
+
             <Button
                 android:id="@+id/pickTime"
                 android:layout_width="wrap_content"

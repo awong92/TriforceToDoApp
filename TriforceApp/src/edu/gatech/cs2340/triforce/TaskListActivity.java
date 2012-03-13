@@ -23,6 +23,7 @@ import android.widget.Spinner;
 
 public class TaskListActivity extends ListActivity implements OnClickListener {
 
+	ArrayAdapter<Task> listAdapter;
 	ImageButton newTaskButton;
 	Button logoutButton;
 	String filterBy = "All";
@@ -47,8 +48,8 @@ public class TaskListActivity extends ListActivity implements OnClickListener {
 		newTaskButton.setOnClickListener(this);
 		logoutButton.setOnClickListener(this);
 
-		ArrayAdapter<Task> adapter = new ListArrayAdapter(this, getModel());
-		setListAdapter(adapter);
+		listAdapter = new ListArrayAdapter(this, getModel());
+		setListAdapter(listAdapter);
 	}
 
 	@Override
@@ -79,21 +80,11 @@ public class TaskListActivity extends ListActivity implements OnClickListener {
 	}
 
 	private List<Task> getModel() {
-		List<Task> list = new ArrayList<Task>();
-		list.add(get("Linux"));
-		list.add(get("Windows7"));
-		list.add(get("Suse"));
-		list.add(get("Eclipse"));
-		list.add(get("Ubuntu"));
-		list.add(get("Solaris"));
-		list.add(get("Android"));
-		list.add(get("iPhone"));
-		// Initially select one of the items
-		list.get(1).setSelected(true);
+		SQLiteDB tasks = new SQLiteDB(this);
+		String currentUser = TriforceMain.currentUser;
+		tasks.open();
+		List<Task> list = tasks.getUserTasks(currentUser, filterBy);
+		tasks.close();
 		return list;
-	}
-
-	private Task get(String s) {
-		return new Task(s);
 	}
 }

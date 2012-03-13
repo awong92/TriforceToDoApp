@@ -6,7 +6,13 @@
     android:layout_height="wrap_content"
     android:orientation="vertical" >
 
-    <!-- Lists how the info is displayed -->
+    <!-- Exit button -->
+
+    <Button
+        android:id="@+id/exitViewDB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Exit User DB" />
 
     <TableLayout
         android:id="@+id/tableLayout1"
@@ -15,6 +21,8 @@
 
         <TableRow>
 
+            <!-- Lists how the info is displayed -->
+            
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"

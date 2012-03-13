@@ -4,22 +4,25 @@ import edu.gatech.cs2340.r.R;
 import java.util.List;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 /**
- * Team Triforce (36)
- * Adapter for the listing of tasks
+ * Team Triforce (36) Adapter for the listing of tasks
  * 
  * @author Nathan Eppinger, Mallory Wynn, Alex Wong
  * @version 1.0
  */
-public class ListArrayAdapter extends ArrayAdapter<Task> {
+public class ListArrayAdapter extends ArrayAdapter<Task> implements
+		OnClickListener {
 
 	private final List<Task> list;
 	private final Activity context;
@@ -43,6 +46,7 @@ public class ListArrayAdapter extends ArrayAdapter<Task> {
 	static class ViewHolder {
 		protected TextView text;
 		protected CheckBox checkbox;
+		protected ImageButton editButton;
 	}
 
 	/**
@@ -61,6 +65,8 @@ public class ListArrayAdapter extends ArrayAdapter<Task> {
 			final ViewHolder viewHolder = new ViewHolder();
 			viewHolder.text = (TextView) view.findViewById(R.id.label);
 			viewHolder.checkbox = (CheckBox) view.findViewById(R.id.check);
+			viewHolder.editButton = (ImageButton) view
+					.findViewById(R.id.edit_row_task);
 			viewHolder.checkbox
 					.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
@@ -72,6 +78,7 @@ public class ListArrayAdapter extends ArrayAdapter<Task> {
 
 						}
 					});
+			viewHolder.editButton.setOnClickListener(this);
 			view.setTag(viewHolder);
 			viewHolder.checkbox.setTag(list.get(position));
 		} else {
@@ -82,5 +89,15 @@ public class ListArrayAdapter extends ArrayAdapter<Task> {
 		holder.text.setText(list.get(position).getName());
 		holder.checkbox.setChecked(list.get(position).isSelected());
 		return view;
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.edit_row_task:
+			Intent editTask = new Intent(
+					"edu.gatech.cs2340.triforce.EDITTASKACTIVITY");
+			break;
+		}
 	}
 }

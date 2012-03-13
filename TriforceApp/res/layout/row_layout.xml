@@ -5,24 +5,38 @@
 
     <!-- Displays the Name of Task -->
 
-    <TextView
-        android:id="@+id/label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:text="@+id/label"
-        android:textSize="20dp" >
-    </TextView>
-
     <!-- Displays the checkbox for the Task -->
 
     <CheckBox
         android:id="@+id/check"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
         android:layout_marginLeft="4dp"
         android:layout_marginRight="10dp" >
     </CheckBox>
+
+    <ImageButton
+        android:id="@+id/edit_row_task"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:src="@android:drawable/ic_menu_edit" />
+
+    <!-- android:layout_alignBottom="@+id/check" -->
+    
+    <TextView
+        android:id="@+id/label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/edit_row_task"
+        android:text="@+id/label"
+        android:maxWidth="200dp"
+        android:maxLength="40"
+        android:textSize="20dp" />
 
 </RelativeLayout>

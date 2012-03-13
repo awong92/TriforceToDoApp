@@ -4,20 +4,17 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <LinearLayout
-        android:id="@+id/headerNT"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
+    <!-- Title "NEW TASK" -->
 
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="@string/headerNT"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-    </LinearLayout>
+    <TextView
+        android:id="@+id/headerNT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/headerNT"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <!-- Tag asking for Task Name and its edit form -->
 
     <TextView
         android:id="@+id/taskNamePromptNT"
@@ -34,6 +31,8 @@
         android:layout_marginTop="5dp" >
     </EditText>
 
+    <!-- Tag for Task Description and its edit form -->
+
     <TextView
         android:id="@+id/descriptionPromptNT"
         android:layout_width="wrap_content"
@@ -47,6 +46,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
         android:layout_marginTop="5dp" />
+
+    <!-- Prompt for selecting the type of the task -->
 
     <Spinner
         android:id="@+id/newTypeOfTask"
@@ -63,6 +64,8 @@
             android:id="@+id/dateRow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" >
+
+            <!-- Tag for Due Date of task and its button prompt -->
 
             <TextView
                 android:id="@+id/dateDisplayNT"
@@ -82,6 +85,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" >
 
+            <!-- Tag for Time Due of task and its button prompt -->
+
             <TextView
                 android:id="@+id/timeDisplay"
                 android:layout_width="wrap_content"
@@ -95,6 +100,8 @@
                 android:text="Time Due" />
         </TableRow>
     </TableLayout>
+
+    <!-- Tag for Location of task and its edit form -->
 
     <TextView
         android:id="@+id/locationPromptNT"
@@ -136,13 +143,6 @@
             android:layout_marginBottom="30dp"
             android:layout_marginTop="30dp"
             android:text="@string/cancel" />
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="68dp" />
     </RelativeLayout>
 
 </LinearLayout>

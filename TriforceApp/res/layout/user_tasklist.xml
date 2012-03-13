@@ -6,6 +6,8 @@
     android:layout_height="wrap_content"
     android:orientation="vertical" >
 
+    <!-- Title "TASK LIST" -->
+    
     <TextView
         android:id="@+id/titleTaskList"
         android:layout_width="wrap_content"
@@ -24,6 +26,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" >
 
+            <!-- Filter the tasks to be seen -->
+            
             <Spinner
                 android:id="@+id/typeOfTask"
                 android:layout_width="match_parent"
@@ -31,6 +35,8 @@
                 android:layout_weight="1"
                 android:prompt="@string/filter_by_prompt" />
 
+            <!-- Button for logout -->
+            
             <Button
                 android:id="@+id/logoutButton"
                 android:layout_width="match_parent"
@@ -44,6 +50,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" >
 
+            <!-- Buttons for New, Edit, and Delete task -->
+            
             <ImageButton
                 android:id="@+id/newTaskButton"
                 android:layout_width="0dp"
@@ -67,6 +75,8 @@
         </TableRow>
     </TableLayout>
 
+    <!-- View that displays the tasks -->
+    
     <ListView android:id="@android:id/list"
                android:layout_width="match_parent"
                android:layout_height="match_parent"

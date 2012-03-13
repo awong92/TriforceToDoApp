@@ -1,10 +1,5 @@
 package edu.gatech.cs2340.triforce;
 
-/**
- * Team Triforce (36)
- * @author Nathan Eppinger, Mallory Wynn, Alex Wong
- * @version 1.0
- */
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +10,13 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+/**
+ * Team Triforce (36)
+ * Database storing users and their tasks
+ * 
+ * @author Nathan Eppinger, Mallory Wynn, Alex Wong
+ * @version 1.0
+ */
 public class SQLiteDB {
 
 	// Attributes of User
@@ -209,6 +211,19 @@ public class SQLiteDB {
 		return result;
 	}
 
+	/**
+	 * Creates a new task for a user
+	 * 
+	 * @param username User wanting to add a task
+	 * @param taskName Name of the new task
+	 * @param descript Description of the new task
+	 * @param type Type of the new task
+	 * @param priority Priority of the new task
+	 * @param date Due Date of the new task
+	 * @param time Time Due of the new task
+	 * @param location Location of the new task
+	 * @return Insert entry into DATABASE_TASKTABLE
+	 */
 	public long createTaskEntry(String username, String taskName,
 			String descript, String type, int priority, String date,
 			String time, String location) {
@@ -224,6 +239,18 @@ public class SQLiteDB {
 		return ourDatabase.insert(DATABASE_TASKTABLE, null, cv);
 	}
 
+	/**
+	 * Updating the task by editting its entries
+	 * 
+	 * @param id Id of the task being editted
+	 * @param taskName New name of the task being editted
+	 * @param descript New description of the task being editted
+	 * @param type New type of the task being editted
+	 * @param priority New priority of the task being editted
+	 * @param date New due date of the task being editted
+	 * @param time New time due of the task being editted
+	 * @param location New location of the task being editted
+	 */
 	public void updateTask(int id, String taskName, String descript,
 			String type, int priority, String date, String time, String location) {
 		ourDatabase.execSQL("UPDATE " + DATABASE_TASKTABLE
@@ -233,11 +260,23 @@ public class SQLiteDB {
 				+ time + " SET KEY_LOCATION=" + location);
 	}
 
+	/**
+	 * Deleting an existing task
+	 *
+	 * @param id Id of the task being deleted
+	 */
 	public void deleteTask(int id) {
 		ourDatabase.execSQL("DELETE FROM " + DATABASE_TASKTABLE + " WHERE "
 				+ KEY_TASK_ID + "=" + id);
 	}
 
+	/**
+	 * Retrieves all the tasks belonging to the user based on the filter
+	 * 
+	 * @param user User wanting to see its tasks
+	 * @param filter Tasks to be seen
+	 * @return ArrayList of tasks
+	 */
 	public List<Task> getUserTasks(String user, String filter) {
 		List<Task> list = new ArrayList<Task>();
 		String[] columns = new String[] { KEY_CURRUSER, KEY_TASKNAME,

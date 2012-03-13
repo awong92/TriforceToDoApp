@@ -22,7 +22,9 @@ public class TriforceMain extends Activity implements OnClickListener {
 	Button loginButton, regButton, viewButton;
 	EditText loginName, loginPassword;
 
-	// Called when the activity is first created
+	/**
+	 * Called when the activity is first created
+	 */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -39,7 +41,9 @@ public class TriforceMain extends Activity implements OnClickListener {
 		viewButton.setOnClickListener(this);
 	}
 
-	// Handles cases when a certain button is clicked
+	/**
+	 * Handles accordingly when the Login, Register, or ViewDB button is clicked
+	 */
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
@@ -51,12 +55,12 @@ public class TriforceMain extends Activity implements OnClickListener {
 			boolean validLogin = info.isValidUser(loginNameStr,
 					loginPasswordStr);
 			info.close();
-			if (validLogin) {
+			if (validLogin) { // If login is valid, currentUser is set
 				currentUser = loginNameStr;
 				Intent viewTaskList = new Intent(
 						"edu.gatech.cs2340.triforce.TASKLISTACTIVITY");
 				startActivity(viewTaskList);
-			} else {
+			} else { // If login is invalid, show prompt
 				Dialog dPass = new Dialog(this);
 				dPass.setTitle("Login Failed");
 				TextView tv = new TextView(this);

@@ -1,10 +1,5 @@
 package edu.gatech.cs2340.triforce;
 
-/**
- * Team Triforce (36)
- * @author Nathan Eppinger, Mallory Wynn, Alex Wong
- * @version 1.0
- */
 import edu.gatech.cs2340.r.R;
 import android.app.Activity;
 import android.app.Dialog;
@@ -15,12 +10,21 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+/**
+ * Team Triforce (36)
+ * Back-end for register.xml. Registers new users or cancels
+ * 
+ * @author Nathan Eppinger, Mallory Wynn, Alex Wong
+ * @version 1.0
+ */
 public class RegisterActivity extends Activity implements OnClickListener {
 
 	Button registerButton, cancelButton;
 	EditText usernameField, passwordField, nameField, emailField;
 
-	// Called when the activity is first created
+	/**
+	 * Called when the activity is first created
+	 */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -36,7 +40,9 @@ public class RegisterActivity extends Activity implements OnClickListener {
 		cancelButton.setOnClickListener(this);
 	}
 
-	// Called when the activity is first created
+	/**
+	 * Called when the activity is first created
+	 */
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {

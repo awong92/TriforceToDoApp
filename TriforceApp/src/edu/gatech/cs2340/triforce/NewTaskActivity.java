@@ -22,6 +22,13 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
 
+/**
+ * Team Triforce (36)
+ * Back-end for new_task_page.xml. Allows users to add a new task to the database
+ * 
+ * @author Nathan Eppinger, Mallory Wynn, Alex Wong
+ * @version 1.0
+ */
 public class NewTaskActivity extends Activity implements OnClickListener {
 
 	EditText nameField, descField, locationField;
@@ -33,6 +40,9 @@ public class NewTaskActivity extends Activity implements OnClickListener {
 	static final int DATE_DIALOG_ID = 0;
 	static final int TIME_DIALOG_ID = 1;
 
+	/**
+	 * Initializes variables and functionality
+	 */
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.new_task_page);
@@ -85,11 +95,16 @@ public class NewTaskActivity extends Activity implements OnClickListener {
 		typeSpinner.setOnItemSelectedListener(new MyOnItemSelectedListener());
 	}
 
+	/**
+	 * Update the button display for date
+	 */
 	private void updateDateDisplay() {
 		mPickDate.setText((mMonth + 1) + "-" + mDay + "-" + mYear);
 	}
 
-	// the callback received when the user "sets" the date in the dialog
+	/**
+	 * The callback received when the user "sets" the date in the dialog
+	 */
 	private DatePickerDialog.OnDateSetListener mDateSetListener = new DatePickerDialog.OnDateSetListener() {
 
 		public void onDateSet(DatePicker view, int year, int monthOfYear,
@@ -101,6 +116,9 @@ public class NewTaskActivity extends Activity implements OnClickListener {
 		}
 	};
 
+	/**
+	 * Pops-up the prompt for changing the date or time
+	 */
 	protected Dialog onCreateDialog(int id) {
 		switch (id) {
 		case DATE_DIALOG_ID:
@@ -113,7 +131,9 @@ public class NewTaskActivity extends Activity implements OnClickListener {
 		return null;
 	}
 
-	// updates the time we display in the TextView
+	/**
+	 * Updates the time we display in the TextView
+	 */
 	private void updateTimeDisplay() {
 		int hour = (int) mHour;
 		if (hour > 12) {
@@ -127,6 +147,12 @@ public class NewTaskActivity extends Activity implements OnClickListener {
 			mPickTime.setText(hour + ":" + mMinute + " AM");
 	}
 
+	/**
+	 * Padding of the string
+	 * 
+	 * @param t
+	 * @return The string value of t
+	 */
 	private static String pad(int t) {
 		if (t >= 10)
 			return String.valueOf(t);
@@ -134,7 +160,9 @@ public class NewTaskActivity extends Activity implements OnClickListener {
 			return "0" + String.valueOf(t);
 	}
 
-	// the callback received when the user "sets" the time in the dialog
+	/**
+	 * The callback received when the user "sets" the time in the dialog
+	 */
 	private TimePickerDialog.OnTimeSetListener mTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
 		public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
 			mHour = hourOfDay;
@@ -143,6 +171,9 @@ public class NewTaskActivity extends Activity implements OnClickListener {
 		}
 	};
 
+	/**
+	 * Functionality for clicking either the save or cancel buttons
+	 */
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
@@ -166,6 +197,9 @@ public class NewTaskActivity extends Activity implements OnClickListener {
 		}
 	}
 
+	/**
+	 * Class for when clicking the Task Types spinner
+	 */
 	public class MyOnItemSelectedListener implements OnItemSelectedListener {
 
 		public void onItemSelected(AdapterView<?> parent, View view, int pos,

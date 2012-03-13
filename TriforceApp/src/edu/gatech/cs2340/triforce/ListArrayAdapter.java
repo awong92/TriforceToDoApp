@@ -12,22 +12,46 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
+/**
+ * Team Triforce (36)
+ * Adapter for the listing of tasks
+ * 
+ * @author Nathan Eppinger, Mallory Wynn, Alex Wong
+ * @version 1.0
+ */
 public class ListArrayAdapter extends ArrayAdapter<Task> {
 
 	private final List<Task> list;
 	private final Activity context;
 
+	/**
+	 * Adapter for the list of tasks with its checkbox
+	 * 
+	 * @param context
+	 * @param list
+	 *            List of tasks
+	 */
 	public ListArrayAdapter(Activity context, List<Task> list) {
 		super(context, R.layout.row_layout, list);
 		this.context = context;
 		this.list = list;
 	}
 
+	/**
+	 * Class for holding the view
+	 */
 	static class ViewHolder {
 		protected TextView text;
 		protected CheckBox checkbox;
 	}
 
+	/**
+	 * Getter for the view
+	 * 
+	 * @param position
+	 * @param convertView
+	 * @param parent
+	 */
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		View view = null;
@@ -43,8 +67,7 @@ public class ListArrayAdapter extends ArrayAdapter<Task> {
 						@Override
 						public void onCheckedChanged(CompoundButton buttonView,
 								boolean isChecked) {
-							Task element = (Task) viewHolder.checkbox
-									.getTag();
+							Task element = (Task) viewHolder.checkbox.getTag();
 							element.setSelected(buttonView.isChecked());
 
 						}

@@ -20,8 +20,8 @@ import android.widget.TimePicker;
 import android.widget.AdapterView.OnItemSelectedListener;
 
 /**
- * Team Triforce (36)
- * Back-end for new_task_page.xml. Allows users to add a new task to the database
+ * Team Triforce (36) Back-end for new_task_page.xml. Allows users to add a new
+ * task to the database
  * 
  * @author Nathan Eppinger, Mallory Wynn, Alex Wong
  * @version 1.0
@@ -143,21 +143,6 @@ public class NewTaskActivity extends Activity implements OnClickListener {
 		else
 			mPickTime.setText(hour + ":" + mMinute + " AM");
 	}
-
-	/**
-	 * Padding of the string
-	 * 
-	 * @param t
-	 * @return The string value of t
-	 */
-	/*
-	private static String pad(int t) {
-		if (t >= 10)
-			return String.valueOf(t);
-		else
-			return "0" + String.valueOf(t);
-	}
-	*/
 
 	/**
 	 * The callback received when the user "sets" the time in the dialog

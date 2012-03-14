@@ -26,28 +26,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" >
 
-            <!-- Buttons for New, Edit, and Delete task -->
+            <!-- Buttons for New and Delete task and logout -->
 
             <ImageButton
                 android:id="@+id/newTaskButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="10"
                 android:src="@android:drawable/ic_menu_add" />
-
-            <ImageButton
-                android:id="@+id/checkButton"
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:src="@drawable/check_complete" />
 
             <ImageButton
                 android:id="@+id/delTaskButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="10"
                 android:src="@android:drawable/ic_menu_delete" />
+
+            <Button
+                android:id="@+id/logoutButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/logoutMain" />
         </TableRow>
 
         <TableRow
@@ -61,17 +61,8 @@
                 android:id="@+id/typeOfTask"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="10"
-                android:prompt="@string/filter_by_prompt" />
-
-            <!-- Button for logout -->
-
-            <Button
-                android:id="@+id/logoutButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/logoutMain" />
+                android:prompt="@string/filter_by_prompt" />
         </TableRow>
     </TableLayout>
 
@@ -83,6 +74,8 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:background="#000000"
-        android:drawSelectorOnTop="false" />
+        android:drawSelectorOnTop="false"
+        android:clickable="true" >
+    </ListView>
 
 </LinearLayout>

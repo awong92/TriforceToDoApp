@@ -11,8 +11,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 /**
- * Team Triforce (36)
- * Database storing users and their tasks
+ * Team Triforce (36) Database storing users and their tasks
  * 
  * @author Nathan Eppinger, Mallory Wynn, Alex Wong
  * @version 1.0
@@ -31,10 +30,10 @@ public class SQLiteDB {
 	public static final String KEY_TASKNAME = "task_name";
 	public static final String KEY_DESCRIPTION = "task_descript";
 	public static final String KEY_TASKTYPE = "task_type";
-	public static final String KEY_PRIORITY = "task_priority";
 	public static final String KEY_TASKDATE = "task_date";
 	public static final String KEY_TASKTIME = "task_time";
 	public static final String KEY_LOCATION = "task_location";
+	public static final String KEY_TASKDONE = "task_complete";
 
 	// DB and Table Names
 	private static final String DATABASE_NAME = "UserManagerdb";
@@ -72,10 +71,10 @@ public class SQLiteDB {
 					+ KEY_TASK_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
 					+ KEY_CURRUSER + " TEXT NOT NULL, " + KEY_TASKNAME
 					+ " TEXT NOT NULL, " + KEY_DESCRIPTION + " TEXT, "
-					+ KEY_TASKTYPE + " TEXT NOT NULL, " + KEY_PRIORITY
-					+ " INTEGER NOT NULL, " + KEY_TASKDATE + " TEXT NOT NULL, "
-					+ KEY_TASKTIME + " TEXT NOT NULL, " + KEY_LOCATION
-					+ " TEXT NOT NULL, " + "FOREIGN KEY (" + KEY_CURRUSER
+					+ KEY_TASKTYPE + " TEXT NOT NULL, " + KEY_TASKDATE
+					+ " TEXT NOT NULL, " + KEY_TASKTIME + " TEXT NOT NULL, "
+					+ KEY_LOCATION + " TEXT NOT NULL, " + KEY_TASKDONE
+					+ " INTEGER NOT NULL, " + "FOREIGN KEY (" + KEY_CURRUSER
 					+ ") REFERENCES " + DATABASE_USERTABLE + " ("
 					+ KEY_USERNAME + "));");
 
@@ -214,56 +213,71 @@ public class SQLiteDB {
 	/**
 	 * Creates a new task for a user
 	 * 
-	 * @param username User wanting to add a task
-	 * @param taskName Name of the new task
-	 * @param descript Description of the new task
-	 * @param type Type of the new task
-	 * @param priority Priority of the new task
-	 * @param date Due Date of the new task
-	 * @param time Time Due of the new task
-	 * @param location Location of the new task
+	 * @param username
+	 *            User wanting to add a task
+	 * @param taskName
+	 *            Name of the new task
+	 * @param descript
+	 *            Description of the new task
+	 * @param type
+	 *            Type of the new task
+	 * @param priority
+	 *            Priority of the new task
+	 * @param date
+	 *            Due Date of the new task
+	 * @param time
+	 *            Time Due of the new task
+	 * @param location
+	 *            Location of the new task
 	 * @return Insert entry into DATABASE_TASKTABLE
 	 */
 	public long createTaskEntry(String username, String taskName,
-			String descript, String type, int priority, String date,
-			String time, String location) {
+			String descript, String type, String date, String time,
+			String location) {
 		ContentValues cv = new ContentValues();
 		cv.put(KEY_CURRUSER, username);
 		cv.put(KEY_TASKNAME, taskName);
 		cv.put(KEY_DESCRIPTION, descript);
 		cv.put(KEY_TASKTYPE, type);
-		cv.put(KEY_PRIORITY, priority);
 		cv.put(KEY_TASKDATE, date);
 		cv.put(KEY_TASKTIME, time);
 		cv.put(KEY_LOCATION, location);
+		cv.put(KEY_TASKDONE, 0);
 		return ourDatabase.insert(DATABASE_TASKTABLE, null, cv);
 	}
 
 	/**
 	 * Updating the task by editting its entries
 	 * 
-	 * @param id Id of the task being editted
-	 * @param taskName New name of the task being editted
-	 * @param descript New description of the task being editted
-	 * @param type New type of the task being editted
-	 * @param priority New priority of the task being editted
-	 * @param date New due date of the task being editted
-	 * @param time New time due of the task being editted
-	 * @param location New location of the task being editted
+	 * @param id
+	 *            Id of the task being editted
+	 * @param taskName
+	 *            New name of the task being editted
+	 * @param descript
+	 *            New description of the task being editted
+	 * @param type
+	 *            New type of the task being editted
+	 * @param date
+	 *            New due date of the task being editted
+	 * @param time
+	 *            New time due of the task being editted
+	 * @param location
+	 *            New location of the task being editted
 	 */
 	public void updateTask(int id, String taskName, String descript,
 			String type, int priority, String date, String time, String location) {
 		ourDatabase.execSQL("UPDATE " + DATABASE_TASKTABLE
 				+ " SET KEY_TASKNAME=" + taskName + " SET KEY_DESCRIPTIOIN="
-				+ descript + " SET KEY_TASKTYPE=" + type + " SET KEY_PRIORITY="
-				+ priority + " SET KEY_TASKDATE=" + date + " SET KEY_TASKTIME="
-				+ time + " SET KEY_LOCATION=" + location);
+				+ descript + " SET KEY_TASKTYPE=" + type + " SET KEY_TASKDATE="
+				+ date + " SET KEY_TASKTIME=" + time + " SET KEY_LOCATION="
+				+ location);
 	}
 
 	/**
 	 * Deleting an existing task
-	 *
-	 * @param id Id of the task being deleted
+	 * 
+	 * @param id
+	 *            Id of the task being deleted
 	 */
 	public void deleteTask(int id) {
 		ourDatabase.execSQL("DELETE FROM " + DATABASE_TASKTABLE + " WHERE "
@@ -271,31 +285,76 @@ public class SQLiteDB {
 	}
 
 	/**
+	 * Getter of whether a task with a certain id is complete
+	 * 
+	 * @param id
+	 *            Task to check
+	 * @return 0 for incomplete, 1 otherwise
+	 */
+	public int getComplete(int id) {
+		int complete = 0;
+		String[] columns = new String[] { KEY_TASK_ID, KEY_TASKDONE };
+		Cursor c = ourDatabase.query(DATABASE_TASKTABLE, columns, null, null,
+				null, null, null);
+
+		int iTaskId = c.getColumnIndex(KEY_TASK_ID);
+		int iTaskDone = c.getColumnIndex(KEY_TASKDONE);
+
+		for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
+			if (c.getString(iTaskId).equals(id)) {
+				complete = c.getInt(iTaskDone);
+			}
+		}
+		return complete;
+	}
+
+	/**
+	 * Sets a task with a certain Id to be complete or not
+	 * 
+	 * @param complete
+	 *            0 for incomplete and 1 for complete
+	 */
+	public void setComplete(int id, int complete) {
+		ourDatabase.execSQL("UPDATE " + DATABASE_TASKTABLE
+				+ " SET " + KEY_TASKDONE + "=" + complete + " WHERE " + KEY_TASK_ID
+				+ "=" + id);
+	}
+
+	/**
 	 * Retrieves all the tasks belonging to the user based on the filter
 	 * 
-	 * @param user User wanting to see its tasks
-	 * @param filter Tasks to be seen
+	 * @param user
+	 *            User wanting to see its tasks
+	 * @param filter
+	 *            Tasks to be seen
 	 * @return ArrayList of tasks
 	 */
-	public List<Task> getUserTasks(String user, String filter) {
+	public List<Task> getUserTasks(String user, String filter, Context context) {
 		List<Task> list = new ArrayList<Task>();
-		String[] columns = new String[] { KEY_CURRUSER, KEY_TASKNAME,
-				KEY_TASKTYPE };
+		String[] columns = new String[] { KEY_CURRUSER, KEY_TASK_ID,
+				KEY_TASKNAME, KEY_TASKTYPE, KEY_TASKDATE, KEY_TASKDONE };
 		Cursor c = ourDatabase.query(DATABASE_TASKTABLE, columns, null, null,
 				null, null, null);
 
 		int iUsername = c.getColumnIndex(KEY_CURRUSER);
+		int iTaskId = c.getColumnIndex(KEY_TASK_ID);
 		int iTaskName = c.getColumnIndex(KEY_TASKNAME);
 		int iTaskType = c.getColumnIndex(KEY_TASKTYPE);
+		int iTaskDate = c.getColumnIndex(KEY_TASKDATE);
+		int iTaskDone = c.getColumnIndex(KEY_TASKDONE);
 
 		for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
 			if (c.getString(iUsername).equals(user)) {
 				if (!(filter.equals("All"))) {
 					if (c.getString(iTaskType).equals(filter)) {
-						list.add(new Task(c.getString(iUsername)));
+						list.add(new Task(c.getInt(iTaskId), c
+								.getString(iTaskName), c.getString(iTaskDate),
+								c.getInt(iTaskDone), context));
 					}
 				} else
-					list.add(new Task(c.getString(iTaskName)));
+					list.add(new Task(c.getInt(iTaskId),
+							c.getString(iTaskName), c.getString(iTaskDate), c
+									.getInt(iTaskDone), context));
 			}
 		}
 

@@ -1,6 +1,5 @@
 package edu.gatech.cs2340.triforce;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import edu.gatech.cs2340.r.R;
@@ -17,8 +16,8 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 
 /**
- * Team Triforce (36)
- * Back-end for user_tasklist.xml. Displays new tasks and allows users to add, edit, or delete them
+ * Team Triforce (36) Back-end for user_tasklist.xml. Displays new tasks and
+ * allows users to add, edit, or delete them
  * 
  * @author Nathan Eppinger, Mallory Wynn, Alex Wong
  * @version 1.0
@@ -26,10 +25,11 @@ import android.widget.Spinner;
 public class TaskListActivity extends ListActivity implements OnClickListener {
 
 	ArrayAdapter<Task> listAdapter;
-	ImageButton newTaskButton;
+	ImageButton newTaskButton, editTaskButton;
 	Button logoutButton;
 	String filterBy = "All";
 	Spinner typeSpinner;
+	List<Task> list;
 
 	/**
 	 * Called when the activity is first created
@@ -47,19 +47,19 @@ public class TaskListActivity extends ListActivity implements OnClickListener {
 		typeSpinner.setAdapter(spinnerAdapter);
 
 		newTaskButton = (ImageButton) findViewById(R.id.newTaskButton);
+		editTaskButton = (ImageButton) findViewById(R.id.edit_row_task);
 		logoutButton = (Button) findViewById(R.id.logoutButton);
 
-		typeSpinner.setOnItemSelectedListener(new MyOnItemSelectedListener());
+		typeSpinner.setOnItemSelectedListener(new TypeSelectedListener());
 		newTaskButton.setOnClickListener(this);
+		editTaskButton = (ImageButton) findViewById(R.id.edit_row_task);
 		logoutButton.setOnClickListener(this);
 
-		listAdapter = new ListArrayAdapter(this, getModel());
+		getModel();
+		listAdapter = new ListArrayAdapter(this, list);
 		setListAdapter(listAdapter);
 	}
-	
-	/**
-	 * Called when the activity is returned to
-	 */
+
 	public void onRestart() {
 		super.onRestart();
 		setContentView(R.layout.user_tasklist);
@@ -75,11 +75,12 @@ public class TaskListActivity extends ListActivity implements OnClickListener {
 		newTaskButton = (ImageButton) findViewById(R.id.newTaskButton);
 		logoutButton = (Button) findViewById(R.id.logoutButton);
 
-		typeSpinner.setOnItemSelectedListener(new MyOnItemSelectedListener());
+		typeSpinner.setOnItemSelectedListener(new TypeSelectedListener());
 		newTaskButton.setOnClickListener(this);
 		logoutButton.setOnClickListener(this);
-		
-		listAdapter = new ListArrayAdapter(this, getModel());
+
+		getModel();
+		listAdapter = new ListArrayAdapter(this, list);
 		setListAdapter(listAdapter);
 	}
 
@@ -94,6 +95,10 @@ public class TaskListActivity extends ListActivity implements OnClickListener {
 					"edu.gatech.cs2340.triforce.NEWTASKACTIVITY");
 			startActivity(createNewTask);
 			break;
+		case R.id.edit_row_task:
+			Intent editTask = new Intent("edu.gatech.cs2340.triforce.EDITTASKACTIVITY");
+			startActivity(editTask);
+			break;
 		case R.id.logoutButton:
 			TriforceMain.currentUser = null;
 			finish();
@@ -104,11 +109,14 @@ public class TaskListActivity extends ListActivity implements OnClickListener {
 	/**
 	 * Listener for selecting Task Type
 	 */
-	public class MyOnItemSelectedListener implements OnItemSelectedListener {
+	public class TypeSelectedListener implements OnItemSelectedListener {
 
 		public void onItemSelected(AdapterView<?> parent, View view, int pos,
 				long id) {
 			filterBy = parent.getItemAtPosition(pos).toString();
+			getModel();
+			listAdapter = new ListArrayAdapter(TaskListActivity.this, list);
+			setListAdapter(listAdapter);
 		}
 
 		public void onNothingSelected(AdapterView parent) {
@@ -121,12 +129,11 @@ public class TaskListActivity extends ListActivity implements OnClickListener {
 	 * 
 	 * @return List of tasks
 	 */
-	private List<Task> getModel() {
+	private void getModel() {
 		SQLiteDB tasks = new SQLiteDB(this);
 		String currentUser = TriforceMain.currentUser;
 		tasks.open();
-		List<Task> list = tasks.getUserTasks(currentUser, filterBy);
+		list = tasks.getUserTasks(currentUser, filterBy, this);
 		tasks.close();
-		return list;
 	}
 }

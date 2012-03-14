@@ -3,7 +3,6 @@ package edu.gatech.cs2340.triforce;
 import java.util.Calendar;
 
 import edu.gatech.cs2340.r.R;
-import edu.gatech.cs2340.triforce.TaskListActivity.MyOnItemSelectedListener;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -17,9 +16,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
 
 /**
@@ -153,12 +150,14 @@ public class NewTaskActivity extends Activity implements OnClickListener {
 	 * @param t
 	 * @return The string value of t
 	 */
+	/*
 	private static String pad(int t) {
 		if (t >= 10)
 			return String.valueOf(t);
 		else
 			return "0" + String.valueOf(t);
 	}
+	*/
 
 	/**
 	 * The callback received when the user "sets" the time in the dialog
@@ -183,11 +182,10 @@ public class NewTaskActivity extends Activity implements OnClickListener {
 			String taskDate = mMonth + "-" + mDay + "-" + mYear;
 			String taskTime = mHour + ":" + mMinute;
 			String taskLocation = locationField.getText().toString();
-			int priority = 0;
 			SQLiteDB task = new SQLiteDB(this);
 			task.open();
 			task.createTaskEntry(TriforceMain.currentUser, taskName, taskDesc,
-					taskType, priority, taskDate, taskTime, taskLocation);
+					taskType, taskDate, taskTime, taskLocation);
 			task.close();
 			finish();
 			break;

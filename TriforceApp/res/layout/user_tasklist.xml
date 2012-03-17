@@ -2,6 +2,7 @@
 <!-- Team Triforce (36) : list of tasks page -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/user_task_list"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical" >
@@ -58,29 +59,7 @@
         </TableRow>
 
         <TableRow
-            android:id="@+id/tableRowFilterTask"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-
-            <!-- Filter the tasks to be seen -->
-
-            <TextView
-                android:id="@+id/filterTypeTag"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Filter Type: "
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-
-            <Spinner
-                android:id="@+id/typeOfTask"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:prompt="@string/filter_by_prompt" />
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRowFilterDate"
+            android:id="@+id/tableRowFilterTasks"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 

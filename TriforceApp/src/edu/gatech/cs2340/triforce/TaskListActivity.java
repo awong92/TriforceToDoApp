@@ -5,19 +5,20 @@ import java.util.List;
 import edu.gatech.cs2340.r.R;
 import android.app.AlertDialog;
 import android.app.ListActivity;
-import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 /**
  * Team Triforce (36) Back-end for user_tasklist.xml. Displays new tasks and
@@ -32,15 +33,7 @@ public class TaskListActivity extends ListActivity implements OnClickListener {
 	ImageButton newTaskButton, editTaskButton;
 	Button logoutButton, filterTasksButton;
 	String filterBy = "All";
-	Spinner typeSpinner;
 	List<Task> list;
-
-	AlertDialog.Builder builder;
-	AlertDialog alertDialog;
-
-	Context mContext;
-	LayoutInflater inflater;
-	View layout;
 
 	/**
 	 * Called when the activity is first created
@@ -49,33 +42,14 @@ public class TaskListActivity extends ListActivity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.user_tasklist);
 
-		mContext = getApplicationContext();
-		inflater = (LayoutInflater) mContext
-				.getSystemService(LAYOUT_INFLATER_SERVICE);
-		layout = inflater.inflate(R.layout.filter_dialog,
-				(ViewGroup) findViewById(R.id.layout_filter_dialog));
-
-		typeSpinner = (Spinner) findViewById(R.id.typeOfTask);
-		ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter
-				.createFromResource(this, R.array.filter_array,
-						android.R.layout.simple_spinner_item);
-		spinnerAdapter
-				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		typeSpinner.setAdapter(spinnerAdapter);
-
 		newTaskButton = (ImageButton) findViewById(R.id.newTaskButton);
 		logoutButton = (Button) findViewById(R.id.logoutButton);
 		filterTasksButton = (Button) findViewById(R.id.filterTasksButton);
 
-		typeSpinner.setOnItemSelectedListener(new TypeSelectedListener());
 		newTaskButton.setOnClickListener(this);
 		logoutButton.setOnClickListener(this);
 		filterTasksButton.setOnClickListener(this);
 
-		builder = new AlertDialog.Builder(mContext); 
-		builder.setView(layout);
-		alertDialog = builder.create();
-		
 		getModel();
 		listAdapter = new ListArrayAdapter(this, list);
 		setListAdapter(listAdapter);
@@ -85,20 +59,13 @@ public class TaskListActivity extends ListActivity implements OnClickListener {
 		super.onRestart();
 		setContentView(R.layout.user_tasklist);
 
-		typeSpinner = (Spinner) findViewById(R.id.typeOfTask);
-		ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter
-				.createFromResource(this, R.array.filter_array,
-						android.R.layout.simple_spinner_item);
-		spinnerAdapter
-				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		typeSpinner.setAdapter(spinnerAdapter);
-
 		newTaskButton = (ImageButton) findViewById(R.id.newTaskButton);
 		logoutButton = (Button) findViewById(R.id.logoutButton);
+		filterTasksButton = (Button) findViewById(R.id.filterTasksButton);
 
-		typeSpinner.setOnItemSelectedListener(new TypeSelectedListener());
 		newTaskButton.setOnClickListener(this);
 		logoutButton.setOnClickListener(this);
+		filterTasksButton.setOnClickListener(this);
 
 		getModel();
 		listAdapter = new ListArrayAdapter(this, list);
@@ -121,27 +88,59 @@ public class TaskListActivity extends ListActivity implements OnClickListener {
 			finish();
 			break;
 		case R.id.filterTasksButton:
-			alertDialog.show();
+			OpenScreenDialog();
 			break;
 		}
 	}
 
-	/**
-	 * Listener for selecting Task Type
-	 */
-	public class TypeSelectedListener implements OnItemSelectedListener {
+	private void OpenScreenDialog() {
 
-		public void onItemSelected(AdapterView<?> parent, View view, int pos,
-				long id) {
-			filterBy = parent.getItemAtPosition(pos).toString();
-			getModel();
-			listAdapter = new ListArrayAdapter(TaskListActivity.this, list);
-			setListAdapter(listAdapter);
-		}
+		AlertDialog.Builder screenDialog = new AlertDialog.Builder(
+				TaskListActivity.this);
+		screenDialog.setTitle("FILTER BY...");
 
-		public void onNothingSelected(AdapterView parent) {
-			// Do nothing.
-		}
+		TextView TextOut = new TextView(TaskListActivity.this);
+		TextOut.setText("Type: ");
+		LayoutParams textOutLayoutParams = new LayoutParams(
+				LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+		TextOut.setLayoutParams(textOutLayoutParams);
+
+		ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter
+				.createFromResource(this, R.array.filter_array,
+						android.R.layout.simple_spinner_item);
+		spinnerAdapter
+				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		Spinner typeSpinner = new Spinner(TaskListActivity.this);
+		typeSpinner.setAdapter(spinnerAdapter);
+		typeSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+			public void onItemSelected(AdapterView<?> parent, View view,
+					int pos, long id) {
+				filterBy = parent.getItemAtPosition(pos).toString();
+			}
+
+			public void onNothingSelected(AdapterView parent) {
+				// Do nothing.
+			}
+		});
+
+		LinearLayout dialogLayout = new LinearLayout(TaskListActivity.this);
+		dialogLayout.setOrientation(LinearLayout.VERTICAL);
+		dialogLayout.addView(TextOut);
+		dialogLayout.addView(typeSpinner);
+		screenDialog.setView(dialogLayout);
+
+		screenDialog.setPositiveButton("OK",
+				new DialogInterface.OnClickListener() {
+					// do something when the button is clicked
+					public void onClick(DialogInterface arg0, int arg1) {
+						getModel();
+						listAdapter = new ListArrayAdapter(
+								TaskListActivity.this, list);
+						setListAdapter(listAdapter);
+					}
+				});
+		screenDialog.show();
 	}
 
 	/**

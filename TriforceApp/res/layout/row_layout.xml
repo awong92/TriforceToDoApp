@@ -13,17 +13,6 @@
         android:layout_centerVertical="true" >
     </CheckBox>
 
-    <!-- Displays the Edit Button -->
-
-    <ImageButton
-        android:id="@+id/edit_row_task"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="4dp"
-        android:src="@android:drawable/ic_menu_edit" />
-
     <!-- Displays the Name of Task -->
 
     <TextView
@@ -34,7 +23,7 @@
         android:layout_marginLeft="5dp"
         android:layout_toRightOf="@+id/check"
         android:maxLength="40"
-        android:maxWidth="200dp"
+        android:maxLines="2"
         android:text="@+id/label"
         android:textSize="20dp" />
 

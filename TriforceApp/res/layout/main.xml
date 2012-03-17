@@ -29,7 +29,7 @@
     <!-- Username tag above the text field where the user inputs username -->
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/mainUsernameTag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/username"
@@ -45,7 +45,7 @@
     <!-- Password tag above the text field where the user inputs password -->
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/mainPasswordTag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/password"
@@ -70,7 +70,6 @@
     <!-- Register Button and Button to view Database -->
 
     <TableRow
-        android:id="@+id/tableRow1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"

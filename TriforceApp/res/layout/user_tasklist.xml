@@ -22,7 +22,7 @@
         android:layout_height="wrap_content" >
 
         <TableRow
-            android:id="@+id/tableRow2"
+            android:id="@+id/tableRowButtons"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" >
 
@@ -31,31 +31,45 @@
             <ImageButton
                 android:id="@+id/newTaskButton"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="10"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
                 android:src="@android:drawable/ic_menu_add" />
+
+            <ImageButton
+                android:id="@+id/editTaskButton"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:src="@android:drawable/ic_menu_edit" />
 
             <ImageButton
                 android:id="@+id/delTaskButton"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="10"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
                 android:src="@android:drawable/ic_menu_delete" />
 
             <Button
                 android:id="@+id/logoutButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
                 android:layout_weight="1"
                 android:text="@string/logoutMain" />
         </TableRow>
 
         <TableRow
-            android:id="@+id/tableRow1"
+            android:id="@+id/tableRowFilterTask"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" >
 
             <!-- Filter the tasks to be seen -->
+
+            <TextView
+                android:id="@+id/filterTypeTag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Filter Type: "
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <Spinner
                 android:id="@+id/typeOfTask"
@@ -63,6 +77,20 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:prompt="@string/filter_by_prompt" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRowFilterDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <Button
+                android:id="@+id/filterTasksButton"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:text="Filter Tasks" />
+            
         </TableRow>
     </TableLayout>
 
@@ -74,8 +102,8 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:background="#000000"
-        android:drawSelectorOnTop="false"
-        android:clickable="true" >
+        android:clickable="true"
+        android:drawSelectorOnTop="false" >
     </ListView>
 
 </LinearLayout>

@@ -133,15 +133,20 @@ public class NewTaskActivity extends Activity implements OnClickListener {
 	 */
 	private void updateTimeDisplay() {
 		int hour = (int) mHour;
+		String minute = "";
+		if (mMinute < 10)
+			minute = "0" + mMinute;
+		else
+			minute = "" + mMinute;
 		if (hour > 12) {
 			hour -= 12;
-			mPickTime.setText(hour + ":" + mMinute + " PM");
+			mPickTime.setText(hour + ":" + minute + " PM");
 		} else if (hour == 12)
-			mPickTime.setText(hour + ":" + mMinute + " PM");
+			mPickTime.setText(hour + ":" + minute + " PM");
 		else if (hour == 0)
-			mPickTime.setText((hour + 12) + ":" + mMinute + " AM");
+			mPickTime.setText((hour + 12) + ":" + minute + " AM");
 		else
-			mPickTime.setText(hour + ":" + mMinute + " AM");
+			mPickTime.setText(hour + ":" + minute + " AM");
 	}
 
 	/**
@@ -164,8 +169,18 @@ public class NewTaskActivity extends Activity implements OnClickListener {
 		case R.id.saveButtonNT:
 			String taskName = nameField.getText().toString();
 			String taskDesc = descField.getText().toString();
-			String taskDate = mMonth + "-" + mDay + "-" + mYear;
-			String taskTime = mHour + ":" + mMinute;
+			String dayStr = "";
+			if (mDay < 10)
+				dayStr = "0" + mDay;
+			else
+				dayStr = "" + mDay;
+			String taskDate = (mMonth + 1) + "-" + dayStr + "-" + mYear;
+			String minute = "";
+			if (mMinute < 10)
+				minute = "0" + mMinute;
+			else
+				minute = "" + mMinute;
+			String taskTime = mHour + ":" + minute;
 			String taskLocation = locationField.getText().toString();
 			SQLiteDB task = new SQLiteDB(this);
 			task.open();

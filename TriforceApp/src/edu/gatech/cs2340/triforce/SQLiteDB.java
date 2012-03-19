@@ -1,6 +1,9 @@
 package edu.gatech.cs2340.triforce;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import android.content.ContentValues;
@@ -315,9 +318,9 @@ public class SQLiteDB {
 	 *            0 for incomplete and 1 for complete
 	 */
 	public void setComplete(int id, int complete) {
-		ourDatabase.execSQL("UPDATE " + DATABASE_TASKTABLE
-				+ " SET " + KEY_TASKDONE + "=" + complete + " WHERE " + KEY_TASK_ID
-				+ "=" + id);
+		ourDatabase.execSQL("UPDATE " + DATABASE_TASKTABLE + " SET "
+				+ KEY_TASKDONE + "=" + complete + " WHERE " + KEY_TASK_ID + "="
+				+ id);
 	}
 
 	/**
@@ -328,13 +331,16 @@ public class SQLiteDB {
 	 * @param filter
 	 *            Tasks to be seen
 	 * @return ArrayList of tasks
+	 * @throws ParseException
 	 */
-	public List<Task> getUserTasks(String user, String filter, Context context) {
+	public List<Task> getUserTasks(String user, String filterType,
+			String filterDate, int filterDone, Context context)
+			throws ParseException {
 		List<Task> list = new ArrayList<Task>();
 		String[] columns = new String[] { KEY_CURRUSER, KEY_TASK_ID,
 				KEY_TASKNAME, KEY_TASKTYPE, KEY_TASKDATE, KEY_TASKDONE };
 		Cursor c = ourDatabase.query(DATABASE_TASKTABLE, columns, null, null,
-				null, null, null);
+				null, null, KEY_TASKDATE + " ASC");
 
 		int iUsername = c.getColumnIndex(KEY_CURRUSER);
 		int iTaskId = c.getColumnIndex(KEY_TASK_ID);
@@ -343,18 +349,51 @@ public class SQLiteDB {
 		int iTaskDate = c.getColumnIndex(KEY_TASKDATE);
 		int iTaskDone = c.getColumnIndex(KEY_TASKDONE);
 
+		SimpleDateFormat curFormater = new SimpleDateFormat("MM-dd-yyyy");
+
 		for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
+			// Pull tasks for specific username
 			if (c.getString(iUsername).equals(user)) {
-				if (!(filter.equals("All"))) {
-					if (c.getString(iTaskType).equals(filter)) {
+				// Check if filter is specific
+				if (!(filterType.equals("All"))) {
+					// Pull tasks specific to filter
+					if (c.getString(iTaskType).equals(filterType)) {
+						// Check if filterDate is needed
+						if (filterDate.equals("no date filter")) {
+							list.add(new Task(c.getInt(iTaskId), c
+									.getString(iTaskName), c
+									.getString(iTaskDate), c.getInt(iTaskDone),
+									context));
+						} else { // Pull tasks specific to date
+							Date filterDateObj = curFormater.parse(filterDate);
+							Date taskDateObj = curFormater.parse(c
+									.getString(iTaskDate));
+							if (filterDateObj.before(taskDateObj)
+									|| filterDateObj.equals(taskDateObj))
+								list.add(new Task(c.getInt(iTaskId), c
+										.getString(iTaskName), c
+										.getString(iTaskDate), c
+										.getInt(iTaskDone), context));
+						}
+					}
+				} else { // For when filter is set to "All"
+					// Check if filterDate is needed
+					if (filterDate.equals("no date filter")) {
 						list.add(new Task(c.getInt(iTaskId), c
 								.getString(iTaskName), c.getString(iTaskDate),
 								c.getInt(iTaskDone), context));
+					} else { // Pull tasks specific to date
+						Date filterDateObj = curFormater.parse(filterDate);
+						Date taskDateObj = curFormater.parse(c
+								.getString(iTaskDate));
+						if (filterDateObj.before(taskDateObj)
+								|| filterDateObj.equals(taskDateObj))
+							list.add(new Task(c.getInt(iTaskId), c
+									.getString(iTaskName), c
+									.getString(iTaskDate), c.getInt(iTaskDone),
+									context));
 					}
-				} else
-					list.add(new Task(c.getInt(iTaskId),
-							c.getString(iTaskName), c.getString(iTaskDate), c
-									.getInt(iTaskDone), context));
+				}
 			}
 		}
 

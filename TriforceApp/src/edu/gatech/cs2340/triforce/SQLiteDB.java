@@ -76,7 +76,7 @@ public class SQLiteDB {
 					+ " TEXT NOT NULL, " + KEY_DESCRIPTION + " TEXT, "
 					+ KEY_TASKTYPE + " TEXT NOT NULL, " + KEY_TASKDATE
 					+ " TEXT NOT NULL, " + KEY_TASKTIME + " TEXT NOT NULL, "
-					+ KEY_LOCATION + " TEXT NOT NULL, " + KEY_TASKDONE
+					+ KEY_LOCATION + " TEXT, " + KEY_TASKDONE
 					+ " INTEGER NOT NULL, " + "FOREIGN KEY (" + KEY_CURRUSER
 					+ ") REFERENCES " + DATABASE_USERTABLE + " ("
 					+ KEY_USERNAME + "));");
@@ -88,7 +88,6 @@ public class SQLiteDB {
 		 */
 		@Override
 		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-			// TODO Auto-generated method stub
 			db.execSQL("DROP TABLE IF EXISTS " + DATABASE_USERTABLE);
 			db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TASKTABLE);
 			onCreate(db);
@@ -334,7 +333,7 @@ public class SQLiteDB {
 	 * @throws ParseException
 	 */
 	public List<Task> getUserTasks(String user, String filterType,
-			String filterDate, int filterDone, Context context)
+			String filterDate, String filterDone, Context context)
 			throws ParseException {
 		List<Task> list = new ArrayList<Task>();
 		String[] columns = new String[] { KEY_CURRUSER, KEY_TASK_ID,
@@ -360,38 +359,104 @@ public class SQLiteDB {
 					if (c.getString(iTaskType).equals(filterType)) {
 						// Check if filterDate is needed
 						if (filterDate.equals("no date filter")) {
-							list.add(new Task(c.getInt(iTaskId), c
-									.getString(iTaskName), c
-									.getString(iTaskDate), c.getInt(iTaskDone),
-									context));
+							// Check if filterDone is needed
+							if (filterDone.equals("Both"))
+								list.add(new Task(c.getInt(iTaskId), c
+										.getString(iTaskName), c
+										.getString(iTaskDate), c
+										.getInt(iTaskDone), context));
+							// Check if filterDone is for unchecked
+							else if (filterDone.equals("Unchecked Items")
+									&& c.getInt(iTaskDone) == 0)
+								list.add(new Task(c.getInt(iTaskId), c
+										.getString(iTaskName), c
+										.getString(iTaskDate), c
+										.getInt(iTaskDone), context));
+							// Check if filterDone is for checked
+							else if (filterDone.equals("Checked Items")
+									&& c.getInt(iTaskDone) == 1)
+								list.add(new Task(c.getInt(iTaskId), c
+										.getString(iTaskName), c
+										.getString(iTaskDate), c
+										.getInt(iTaskDone), context));
 						} else { // Pull tasks specific to date
 							Date filterDateObj = curFormater.parse(filterDate);
 							Date taskDateObj = curFormater.parse(c
 									.getString(iTaskDate));
-							if (filterDateObj.before(taskDateObj)
-									|| filterDateObj.equals(taskDateObj))
+							if (filterDateObj.before(taskDateObj)) {
+								// Check if filterDone is needed
+								if (filterDone.equals("Both"))
+									list.add(new Task(c.getInt(iTaskId), c
+											.getString(iTaskName), c
+											.getString(iTaskDate), c
+											.getInt(iTaskDone), context));
+								// Check if filterDone is for unchecked
+								else if (filterDone.equals("Unchecked Items")
+										&& c.getInt(iTaskDone) == 0)
+									list.add(new Task(c.getInt(iTaskId), c
+											.getString(iTaskName), c
+											.getString(iTaskDate), c
+											.getInt(iTaskDone), context));
+								// Check if filterDone is for checked
+								else if (filterDone.equals("Checked Items")
+										&& c.getInt(iTaskDone) == 1)
+									list.add(new Task(c.getInt(iTaskId), c
+											.getString(iTaskName), c
+											.getString(iTaskDate), c
+											.getInt(iTaskDone), context));
+							}
+						}
+					}
+
+				} else { // For when filter is set to "All"
+					// Check if filterDate is needed
+					if (filterDate.equals("no date filter")) {
+						// Check if filterDone is needed
+						if (filterDone.equals("Both"))
+							list.add(new Task(c.getInt(iTaskId), c
+									.getString(iTaskName), c
+									.getString(iTaskDate), c.getInt(iTaskDone),
+									context));
+						// Check if filterDone is for unchecked
+						else if (filterDone.equals("Unchecked Items")
+								&& c.getInt(iTaskDone) == 0)
+							list.add(new Task(c.getInt(iTaskId), c
+									.getString(iTaskName), c
+									.getString(iTaskDate), c.getInt(iTaskDone),
+									context));
+						// Check if filterDone is for checked
+						else if (filterDone.equals("Checked Items")
+								&& c.getInt(iTaskDone) == 1)
+							list.add(new Task(c.getInt(iTaskId), c
+									.getString(iTaskName), c
+									.getString(iTaskDate), c.getInt(iTaskDone),
+									context));
+					} else { // Pull tasks specific to date
+						Date filterDateObj = curFormater.parse(filterDate);
+						Date taskDateObj = curFormater.parse(c
+								.getString(iTaskDate));
+						if (filterDateObj.before(taskDateObj)) {
+							// Check if filterDone is needed
+							if (filterDone.equals("Both"))
+								list.add(new Task(c.getInt(iTaskId), c
+										.getString(iTaskName), c
+										.getString(iTaskDate), c
+										.getInt(iTaskDone), context));
+							// Check if filterDone is for unchecked
+							else if (filterDone.equals("Unchecked Items")
+									&& c.getInt(iTaskDone) == 0)
+								list.add(new Task(c.getInt(iTaskId), c
+										.getString(iTaskName), c
+										.getString(iTaskDate), c
+										.getInt(iTaskDone), context));
+							// Check if filterDone is for checked
+							else if (filterDone.equals("Checked Items")
+									&& c.getInt(iTaskDone) == 1)
 								list.add(new Task(c.getInt(iTaskId), c
 										.getString(iTaskName), c
 										.getString(iTaskDate), c
 										.getInt(iTaskDone), context));
 						}
-					}
-				} else { // For when filter is set to "All"
-					// Check if filterDate is needed
-					if (filterDate.equals("no date filter")) {
-						list.add(new Task(c.getInt(iTaskId), c
-								.getString(iTaskName), c.getString(iTaskDate),
-								c.getInt(iTaskDone), context));
-					} else { // Pull tasks specific to date
-						Date filterDateObj = curFormater.parse(filterDate);
-						Date taskDateObj = curFormater.parse(c
-								.getString(iTaskDate));
-						if (filterDateObj.before(taskDateObj)
-								|| filterDateObj.equals(taskDateObj))
-							list.add(new Task(c.getInt(iTaskId), c
-									.getString(iTaskName), c
-									.getString(iTaskDate), c.getInt(iTaskDone),
-									context));
 					}
 				}
 			}

@@ -147,6 +147,7 @@ public class TaskListActivity extends ListActivity implements OnClickListener {
 		spinnerAdapter
 				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		Spinner typeSpinner = new Spinner(TaskListActivity.this);
+		typeSpinner.setPromptId(R.string.filter_by_prompt);
 		typeSpinner.setAdapter(spinnerAdapter);
 		typeSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
 			// TYPE SPINNER LISTENER
@@ -195,6 +196,7 @@ public class TaskListActivity extends ListActivity implements OnClickListener {
 		checkedSpinnerAdapter
 				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		Spinner checkedSpinner = new Spinner(TaskListActivity.this);
+		checkedSpinner.setPromptId(R.string.filter_checks_prompt);
 		checkedSpinner.setAdapter(checkedSpinnerAdapter);
 		checkedSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
 			// CHECKED SPINNER LISTENER

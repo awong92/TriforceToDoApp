@@ -32,12 +32,19 @@
         <item name="workSpinnerNT">Work</item>
     </string-array>
     
-    <string name="filter_by_prompt">Filter</string>
+    <string name="filter_by_prompt">Filter by Type</string>
     <string-array name="filter_array">
         <item name="allSpinnerNT">All</item>
         <item name="personalSpinnerNT">Personal</item>
         <item name="schoolSpinnerNT">School</item>
         <item name="workSpinnerNT">Work</item>
+    </string-array>
+    
+    <string name="filter_checks_prompt">Filter by Checks</string>
+    <string-array name="filter_checks_array">
+        <item name="bothChecksSpinner">Both</item>
+        <item name="noChecksOnlySpinner">Unchecked Items</item>
+        <item name="checksOnlySpinner">Checked Items</item>
     </string-array>
 
     <string name="userTaskListHeader">TASK LIST</string>

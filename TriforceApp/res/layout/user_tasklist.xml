@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" >
 
-            <!-- Buttons for New and Delete task and logout -->
+            <!-- Buttons for New, Edit, and Delete task and logout -->
 
             <ImageButton
                 android:id="@+id/newTaskButton"
@@ -63,6 +63,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
+            <!-- Spinner for filtering tasks and button to show locations -->
+
             <Button
                 android:id="@+id/filterTasksButton"
                 android:layout_width="0dp"
@@ -76,7 +78,6 @@
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
                 android:src="@android:drawable/ic_menu_compass" />
-            
         </TableRow>
     </TableLayout>
 

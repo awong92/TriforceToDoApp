@@ -48,6 +48,9 @@ public class SQLiteDB {
 	private final Context ourContext;
 	private SQLiteDatabase ourDatabase;
 
+	/**
+	 * Database Helper class
+	 */
 	private static class DbHelper extends SQLiteOpenHelper {
 
 		/**
@@ -327,8 +330,14 @@ public class SQLiteDB {
 	 * 
 	 * @param user
 	 *            User wanting to see its tasks
-	 * @param filter
-	 *            Tasks to be seen
+	 * @param filterType
+	 *            Task Types to be seen
+	 * @param filterDate
+	 *            Task Dates to be seen
+	 * @param filterDone
+	 *            Task Checked to be seen
+	 * @param context
+	 *            For creating tasks into arraylist
 	 * @return ArrayList of tasks
 	 * @throws ParseException
 	 */

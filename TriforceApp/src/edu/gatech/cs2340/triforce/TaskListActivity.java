@@ -78,6 +78,9 @@ public class TaskListActivity extends ListActivity implements OnClickListener {
 		setListAdapter(listAdapter);
 	}
 
+	/**
+	 * Method for redisplaying the Task List page when returned to
+	 */
 	public void onRestart() {
 		super.onRestart();
 		setContentView(R.layout.user_tasklist);
@@ -120,6 +123,9 @@ public class TaskListActivity extends ListActivity implements OnClickListener {
 		}
 	}
 
+	/**
+	 * Displays the dialog for filtering tasks
+	 */
 	private void OpenScreenDialog() {
 
 		// TITLE
@@ -214,6 +220,7 @@ public class TaskListActivity extends ListActivity implements OnClickListener {
 		dialogLayout.addView(checkedSpinner);
 		screenDialog.setView(dialogLayout);
 
+		// OK button changes filtering of tasks
 		screenDialog.setPositiveButton("OK",
 				new DialogInterface.OnClickListener() {
 					// do something when the button is clicked
@@ -228,7 +235,7 @@ public class TaskListActivity extends ListActivity implements OnClickListener {
 						setListAdapter(listAdapter);
 					}
 				});
-
+		// Cancel button restores filters as previous
 		screenDialog.setNegativeButton("Cancel",
 				new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface arg0, int arg1) {
@@ -273,6 +280,9 @@ public class TaskListActivity extends ListActivity implements OnClickListener {
 		}
 	};
 
+	/**
+	 * Update the Date button text in dialog
+	 */
 	private void updateDateDisplay() {
 		mPickDate.setText((mMonth + 1) + "-" + mDay + "-" + mYear);
 	}

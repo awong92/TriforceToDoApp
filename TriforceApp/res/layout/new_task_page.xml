@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="@string/headerNT"
+        android:text="@string/titleNT"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <!-- Tag asking for Task Name and its edit form -->
@@ -28,7 +28,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp" >
+        android:layout_marginTop="5dp"
+        android:inputType="text" >
     </EditText>
 
     <!-- Tag for Task Description and its edit form -->
@@ -45,7 +46,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp" />
+        android:layout_marginTop="5dp"
+        android:inputType="text" />
 
     <!-- Prompt for selecting the type of the task -->
 
@@ -84,7 +86,7 @@
                 android:id="@+id/pickDateNT"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Due Date" />
+                android:text="" />
         </TableRow>
 
         <TableRow
@@ -102,9 +104,8 @@
                 android:id="@+id/pickTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Time Due" />
+                android:text="" />
         </TableRow>
-
     </TableLayout>
 
     <!-- Tag for Location of task and its edit form -->

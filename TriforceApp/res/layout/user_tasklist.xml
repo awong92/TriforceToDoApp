@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="@string/userTaskListHeader"
+        android:text="@string/titleTaskList"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TableLayout
@@ -34,6 +34,7 @@
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
+                android:contentDescription="@string/newTask"
                 android:src="@android:drawable/ic_menu_add" />
 
             <ImageButton
@@ -41,6 +42,7 @@
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
+                android:contentDescription="@string/editTask"
                 android:src="@android:drawable/ic_menu_edit" />
 
             <ImageButton
@@ -48,6 +50,7 @@
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
+                android:contentDescription="@string/deleteTask"
                 android:src="@android:drawable/ic_menu_delete" />
 
             <Button
@@ -70,13 +73,14 @@
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="3"
-                android:text="Filter Tasks" />
+                android:text="@string/filterTasks" />
 
             <ImageButton
                 android:id="@+id/showLocationsButton"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
+                android:contentDescription="@string/showLocations"
                 android:src="@android:drawable/ic_menu_compass" />
         </TableRow>
     </TableLayout>
@@ -86,7 +90,7 @@
     <ListView
         android:id="@android:id/list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_weight="1"
         android:background="#000000"
         android:clickable="true"

@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="@string/headerET"
+        android:text="@string/titleET"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <!-- Tag asking for Task Name and its edit form -->
@@ -28,7 +28,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp" >
+        android:layout_marginTop="5dp"
+        android:inputType="text" >
     </EditText>
 
     <!-- Tag for Task Description and its edit form -->
@@ -45,7 +46,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp" />
+        android:layout_marginTop="5dp"
+        android:inputType="text" />
 
     <!-- Prompt for selecting the type of the task -->
 
@@ -71,13 +73,12 @@
                 android:id="@+id/dateDisplayET"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Due Date: " />
+                android:text="@string/taskDate" />
 
             <Button
                 android:id="@+id/pickDateET"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Due Date" />
+                android:layout_height="wrap_content"/>
         </TableRow>
 
         <TableRow
@@ -91,13 +92,12 @@
                 android:id="@+id/timeDisplayET"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Time Due: " />
+                android:text="@string/taskTime" />
 
             <Button
                 android:id="@+id/pickTimeET"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Time Due" />
+                android:layout_height="wrap_content" />
         </TableRow>
     </TableLayout>
 

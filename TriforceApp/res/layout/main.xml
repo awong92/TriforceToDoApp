@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="@string/login"
+        android:text="@string/titleLogin"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <!-- logo -->
@@ -24,6 +24,7 @@
         android:layout_height="0dp"
         android:layout_gravity="center"
         android:layout_weight="0.49"
+        android:contentDescription="@string/tforce_logo"
         android:src="@drawable/tforce_app_logo" />
 
     <!-- Username tag above the text field where the user inputs username -->
@@ -79,7 +80,7 @@
             android:id="@+id/viewdbButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="View DB" />
+            android:text="@string/viewDB" />
 
         <Button
             android:id="@+id/GotoRegisterButton"

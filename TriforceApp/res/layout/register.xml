@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="@string/registration"
+        android:text="@string/titleRegistration"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <!-- Username tag above the text field where the user inputs a new username -->

@@ -205,7 +205,7 @@ public class NewTaskActivity extends Activity implements OnClickListener {
 			taskType = parent.getItemAtPosition(pos).toString();
 		}
 
-		public void onNothingSelected(AdapterView parent) {
+		public void onNothingSelected(AdapterView<?> parent) {
 			// Do nothing.
 		}
 	}

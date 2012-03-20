@@ -9,7 +9,6 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.ListActivity;
-import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -157,7 +156,7 @@ public class TaskListActivity extends ListActivity implements OnClickListener {
 				filterBy = parent.getItemAtPosition(pos).toString();
 			}
 
-			public void onNothingSelected(AdapterView parent) {
+			public void onNothingSelected(AdapterView<?> parent) {
 				// Do nothing.
 			}
 		});
@@ -206,7 +205,7 @@ public class TaskListActivity extends ListActivity implements OnClickListener {
 				filterChecked = parent.getItemAtPosition(pos).toString();
 			}
 
-			public void onNothingSelected(AdapterView parent) {
+			public void onNothingSelected(AdapterView<?> parent) {
 				// Do nothing.
 			}
 		});

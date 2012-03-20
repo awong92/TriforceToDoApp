@@ -28,7 +28,8 @@
     <EditText
         android:id="@+id/newUsername"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:inputType="text" />
 
     <!-- Password tag above the text field where the user inputs a new password -->
 

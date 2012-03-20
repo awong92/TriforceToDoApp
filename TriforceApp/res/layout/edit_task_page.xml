@@ -20,7 +20,7 @@
         android:id="@+id/taskNamePromptET"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/taskNameNT"
+        android:text="@string/taskName"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <EditText
@@ -37,7 +37,7 @@
         android:id="@+id/descriptionPromptET"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/taskDescriptionNT"
+        android:text="@string/taskDescription"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <EditText
@@ -107,7 +107,7 @@
         android:id="@+id/locationPromptET"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/taskLocationNT"
+        android:text="@string/taskLocation"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <EditText
@@ -131,7 +131,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginBottom="30dp"
             android:layout_marginTop="30dp"
-            android:text="@string/taskSaveButton" />
+            android:text="@string/save" />
 
         <Button
             android:id="@+id/cancelButtonET"

@@ -20,7 +20,7 @@
         android:id="@+id/taskNamePromptNT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/taskNameNT"
+        android:text="@string/taskName"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <EditText
@@ -37,7 +37,7 @@
         android:id="@+id/descriptionPromptNT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/taskDescriptionNT"
+        android:text="@string/taskDescription"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <EditText
@@ -48,6 +48,13 @@
         android:layout_marginTop="5dp" />
 
     <!-- Prompt for selecting the type of the task -->
+
+    <TextView
+        android:id="@+id/taskTypeTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/taskType"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <Spinner
         android:id="@+id/newTypeOfTask"
@@ -71,7 +78,7 @@
                 android:id="@+id/dateDisplayNT"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Due Date: " />
+                android:text="@string/taskDate" />
 
             <Button
                 android:id="@+id/pickDateNT"
@@ -85,13 +92,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" >
 
-            <!-- Tag for Time Due of task and its button prompt -->
-
             <TextView
                 android:id="@+id/timeDisplay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Time Due: " />
+                android:text="@string/taskTime" />
 
             <Button
                 android:id="@+id/pickTime"
@@ -99,6 +104,7 @@
                 android:layout_height="wrap_content"
                 android:text="Time Due" />
         </TableRow>
+
     </TableLayout>
 
     <!-- Tag for Location of task and its edit form -->
@@ -107,7 +113,7 @@
         android:id="@+id/locationPromptNT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/taskLocationNT"
+        android:text="@string/taskLocation"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <EditText
@@ -118,31 +124,28 @@
         android:layout_marginTop="5dp"
         android:inputType="textPostalAddress" />
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout4"
+    <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="left" >
+        android:layout_height="wrap_content" >
 
-        <Button
-            android:id="@+id/saveButtonNT"
-            android:layout_width="157dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginBottom="30dp"
-            android:layout_marginTop="30dp"
-            android:text="@string/taskSaveButton" />
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
 
-        <Button
-            android:id="@+id/cancelButtonNT"
-            android:layout_width="156dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginBottom="30dp"
-            android:layout_marginTop="30dp"
-            android:text="@string/cancel" />
-    </RelativeLayout>
+            <Button
+                android:id="@+id/saveButtonNT"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/save" />
+
+            <Button
+                android:id="@+id/cancelButtonNT"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/cancel" />
+        </TableRow>
+    </TableLayout>
 
 </LinearLayout>

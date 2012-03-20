@@ -39,9 +39,9 @@ public class TaskListActivity extends ListActivity implements OnClickListener {
 	ImageButton newTaskButton, editTaskButton;
 	Button logoutButton, filterTasksButton;
 	String filterBy = "All";
+	String oldFilterBy = filterBy;
 	List<Task> list;
 
-	String oldFilterBy = filterBy;
 	final int DATE_ID = 0;
 	Button mPickDate;
 	int mMonth = 0;
@@ -50,6 +50,9 @@ public class TaskListActivity extends ListActivity implements OnClickListener {
 	int oldMonth = mMonth;
 	int oldDay = mDay;
 	int oldYear = mYear;
+
+	String filterChecked = "Both";
+	String oldChecked = filterChecked;
 
 	/**
 	 * Called when the activity is first created
@@ -140,7 +143,7 @@ public class TaskListActivity extends ListActivity implements OnClickListener {
 		Spinner typeSpinner = new Spinner(TaskListActivity.this);
 		typeSpinner.setAdapter(spinnerAdapter);
 		typeSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
-			// SPINNER LISTENER
+			// TYPE SPINNER LISTENER
 			public void onItemSelected(AdapterView<?> parent, View view,
 					int pos, long id) {
 				oldFilterBy = filterBy;
@@ -172,6 +175,34 @@ public class TaskListActivity extends ListActivity implements OnClickListener {
 			}
 		});
 
+		// "Checked: "
+		TextView textChecked = new TextView(TaskListActivity.this);
+		textChecked.setText("Checked: ");
+		LayoutParams textCheckedLayoutParams = new LayoutParams(
+				LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+		textChecked.setLayoutParams(textCheckedLayoutParams);
+
+		// FILTER BY CHECKED SPINNER
+		ArrayAdapter<CharSequence> checkedSpinnerAdapter = ArrayAdapter
+				.createFromResource(this, R.array.filter_checks_array,
+						android.R.layout.simple_spinner_item);
+		checkedSpinnerAdapter
+				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		Spinner checkedSpinner = new Spinner(TaskListActivity.this);
+		checkedSpinner.setAdapter(checkedSpinnerAdapter);
+		checkedSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+			// CHECKED SPINNER LISTENER
+			public void onItemSelected(AdapterView<?> parent, View view,
+					int pos, long id) {
+				oldChecked = filterChecked;
+				filterChecked = parent.getItemAtPosition(pos).toString();
+			}
+
+			public void onNothingSelected(AdapterView parent) {
+				// Do nothing.
+			}
+		});
+
 		// SETTING UP THE DIALOG
 		LinearLayout dialogLayout = new LinearLayout(TaskListActivity.this);
 		dialogLayout.setOrientation(LinearLayout.VERTICAL);
@@ -179,6 +210,8 @@ public class TaskListActivity extends ListActivity implements OnClickListener {
 		dialogLayout.addView(typeSpinner);
 		dialogLayout.addView(textDate);
 		dialogLayout.addView(mPickDate);
+		dialogLayout.addView(textChecked);
+		dialogLayout.addView(checkedSpinner);
 		screenDialog.setView(dialogLayout);
 
 		screenDialog.setPositiveButton("OK",
@@ -203,6 +236,7 @@ public class TaskListActivity extends ListActivity implements OnClickListener {
 						mYear = oldYear;
 						mMonth = oldMonth;
 						mDay = oldDay;
+						filterChecked = oldChecked;
 					}
 				});
 		screenDialog.show();
@@ -258,7 +292,7 @@ public class TaskListActivity extends ListActivity implements OnClickListener {
 		else
 			dateStr = (mMonth + 1) + "-" + mDay + "-" + mYear;
 		tasks.open();
-		list = tasks.getUserTasks(currentUser, filterBy, dateStr, 0, this);
+		list = tasks.getUserTasks(currentUser, filterBy, dateStr, filterChecked, this);
 		tasks.close();
 	}
 }

@@ -35,7 +35,7 @@ import android.widget.TextView;
 public class TaskListActivity extends ListActivity implements OnClickListener {
 
 	ArrayAdapter<Task> listAdapter;
-	ImageButton newTaskButton, editTaskButton;
+	ImageButton newTaskButton, editTaskButton, locationsButton;
 	Button logoutButton, filterTasksButton;
 	String filterBy = "All";
 	String oldFilterBy = filterBy;
@@ -63,10 +63,12 @@ public class TaskListActivity extends ListActivity implements OnClickListener {
 		newTaskButton = (ImageButton) findViewById(R.id.newTaskButton);
 		logoutButton = (Button) findViewById(R.id.logoutButton);
 		filterTasksButton = (Button) findViewById(R.id.filterTasksButton);
+		locationsButton = (ImageButton) findViewById(R.id.showLocationsButton);
 
 		newTaskButton.setOnClickListener(this);
 		logoutButton.setOnClickListener(this);
 		filterTasksButton.setOnClickListener(this);
+		locationsButton.setOnClickListener(this);
 
 		try {
 			getModel();
@@ -118,6 +120,10 @@ public class TaskListActivity extends ListActivity implements OnClickListener {
 			break;
 		case R.id.filterTasksButton:
 			OpenScreenDialog();
+			break;
+		case R.id.showLocationsButton:
+			Intent showLocations = new Intent("edu.gatech.cs2340.triforce.GMAP");
+			startActivity(showLocations);
 			break;
 		}
 	}

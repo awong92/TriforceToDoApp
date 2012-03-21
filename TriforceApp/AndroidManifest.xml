@@ -5,12 +5,17 @@
     android:versionName="1.0" >
 
     <uses-sdk android:minSdkVersion="15" />
-	<!-- for google maps to update -->
-	<uses-permission android:name="android.permission.INTERNET" />
-	<application
+    <!-- for google maps to update -->
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <application
         android:icon="@drawable/tforce_app_logo"
-        android:label="@string/app_name">
+        android:label="@string/app_name" >
         <uses-library android:name="com.google.android.maps" />
+
         <activity
             android:name="edu.gatech.cs2340.triforce.TriforceMain"
             android:label="@string/app_name"
@@ -72,8 +77,15 @@
             </intent-filter>
         </activity>
         <!-- Google Maps -->
-        <activity android:name="gmap" android:label="@string/app_name"
-     		android:theme="@android:style/Theme.NoTitleBar">
+        <activity
+            android:name="edu.gatech.cs2340.triforce.gmap"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.NoTitleBar" >
+            <intent-filter>
+                <action android:name="edu.gatech.cs2340.triforce.GMAP" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
     </application>
 

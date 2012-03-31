@@ -346,15 +346,19 @@ public class SQLiteDB {
 			throws ParseException {
 		List<Task> list = new ArrayList<Task>();
 		String[] columns = new String[] { KEY_CURRUSER, KEY_TASK_ID,
-				KEY_TASKNAME, KEY_TASKTYPE, KEY_TASKDATE, KEY_TASKDONE };
+				KEY_TASKNAME, KEY_DESCRIPTION, KEY_TASKTYPE, KEY_TASKDATE,
+				KEY_TASKTIME, KEY_LOCATION, KEY_TASKDONE };
 		Cursor c = ourDatabase.query(DATABASE_TASKTABLE, columns, null, null,
 				null, null, KEY_TASKDATE + " ASC");
 
 		int iUsername = c.getColumnIndex(KEY_CURRUSER);
 		int iTaskId = c.getColumnIndex(KEY_TASK_ID);
 		int iTaskName = c.getColumnIndex(KEY_TASKNAME);
+		int iTaskDesc = c.getColumnIndex(KEY_DESCRIPTION);
 		int iTaskType = c.getColumnIndex(KEY_TASKTYPE);
 		int iTaskDate = c.getColumnIndex(KEY_TASKDATE);
+		int iTaskTime = c.getColumnIndex(KEY_TASKTIME);
+		int iTaskLocation = c.getColumnIndex(KEY_LOCATION);
 		int iTaskDone = c.getColumnIndex(KEY_TASKDONE);
 
 		SimpleDateFormat curFormater = new SimpleDateFormat("MM-dd-yyyy");
@@ -372,21 +376,33 @@ public class SQLiteDB {
 							if (filterDone.equals("Both"))
 								list.add(new Task(c.getInt(iTaskId), c
 										.getString(iTaskName), c
+										.getString(iTaskDesc), c
+										.getString(iTaskType), c
 										.getString(iTaskDate), c
+										.getString(iTaskTime), c
+										.getString(iTaskLocation), c
 										.getInt(iTaskDone), context));
 							// Check if filterDone is for unchecked
 							else if (filterDone.equals("Unchecked Items")
 									&& c.getInt(iTaskDone) == 0)
 								list.add(new Task(c.getInt(iTaskId), c
 										.getString(iTaskName), c
+										.getString(iTaskDesc), c
+										.getString(iTaskType), c
 										.getString(iTaskDate), c
+										.getString(iTaskTime), c
+										.getString(iTaskLocation), c
 										.getInt(iTaskDone), context));
 							// Check if filterDone is for checked
 							else if (filterDone.equals("Checked Items")
 									&& c.getInt(iTaskDone) == 1)
 								list.add(new Task(c.getInt(iTaskId), c
 										.getString(iTaskName), c
+										.getString(iTaskDesc), c
+										.getString(iTaskType), c
 										.getString(iTaskDate), c
+										.getString(iTaskTime), c
+										.getString(iTaskLocation), c
 										.getInt(iTaskDone), context));
 						} else { // Pull tasks specific to date
 							Date filterDateObj = curFormater.parse(filterDate);
@@ -397,21 +413,33 @@ public class SQLiteDB {
 								if (filterDone.equals("Both"))
 									list.add(new Task(c.getInt(iTaskId), c
 											.getString(iTaskName), c
+											.getString(iTaskDesc), c
+											.getString(iTaskType), c
 											.getString(iTaskDate), c
+											.getString(iTaskTime), c
+											.getString(iTaskLocation), c
 											.getInt(iTaskDone), context));
 								// Check if filterDone is for unchecked
 								else if (filterDone.equals("Unchecked Items")
 										&& c.getInt(iTaskDone) == 0)
 									list.add(new Task(c.getInt(iTaskId), c
 											.getString(iTaskName), c
+											.getString(iTaskDesc), c
+											.getString(iTaskType), c
 											.getString(iTaskDate), c
+											.getString(iTaskTime), c
+											.getString(iTaskLocation), c
 											.getInt(iTaskDone), context));
 								// Check if filterDone is for checked
 								else if (filterDone.equals("Checked Items")
 										&& c.getInt(iTaskDone) == 1)
 									list.add(new Task(c.getInt(iTaskId), c
 											.getString(iTaskName), c
+											.getString(iTaskDesc), c
+											.getString(iTaskType), c
 											.getString(iTaskDate), c
+											.getString(iTaskTime), c
+											.getString(iTaskLocation), c
 											.getInt(iTaskDone), context));
 							}
 						}
@@ -424,22 +452,34 @@ public class SQLiteDB {
 						if (filterDone.equals("Both"))
 							list.add(new Task(c.getInt(iTaskId), c
 									.getString(iTaskName), c
-									.getString(iTaskDate), c.getInt(iTaskDone),
-									context));
+									.getString(iTaskDesc), c
+									.getString(iTaskType), c
+									.getString(iTaskDate), c
+									.getString(iTaskTime), c
+									.getString(iTaskLocation), c
+									.getInt(iTaskDone), context));
 						// Check if filterDone is for unchecked
 						else if (filterDone.equals("Unchecked Items")
 								&& c.getInt(iTaskDone) == 0)
 							list.add(new Task(c.getInt(iTaskId), c
 									.getString(iTaskName), c
-									.getString(iTaskDate), c.getInt(iTaskDone),
-									context));
+									.getString(iTaskDesc), c
+									.getString(iTaskType), c
+									.getString(iTaskDate), c
+									.getString(iTaskTime), c
+									.getString(iTaskLocation), c
+									.getInt(iTaskDone), context));
 						// Check if filterDone is for checked
 						else if (filterDone.equals("Checked Items")
 								&& c.getInt(iTaskDone) == 1)
 							list.add(new Task(c.getInt(iTaskId), c
 									.getString(iTaskName), c
-									.getString(iTaskDate), c.getInt(iTaskDone),
-									context));
+									.getString(iTaskDesc), c
+									.getString(iTaskType), c
+									.getString(iTaskDate), c
+									.getString(iTaskTime), c
+									.getString(iTaskLocation), c
+									.getInt(iTaskDone), context));
 					} else { // Pull tasks specific to date
 						Date filterDateObj = curFormater.parse(filterDate);
 						Date taskDateObj = curFormater.parse(c
@@ -449,21 +489,33 @@ public class SQLiteDB {
 							if (filterDone.equals("Both"))
 								list.add(new Task(c.getInt(iTaskId), c
 										.getString(iTaskName), c
+										.getString(iTaskDesc), c
+										.getString(iTaskType), c
 										.getString(iTaskDate), c
+										.getString(iTaskTime), c
+										.getString(iTaskLocation), c
 										.getInt(iTaskDone), context));
 							// Check if filterDone is for unchecked
 							else if (filterDone.equals("Unchecked Items")
 									&& c.getInt(iTaskDone) == 0)
 								list.add(new Task(c.getInt(iTaskId), c
 										.getString(iTaskName), c
+										.getString(iTaskDesc), c
+										.getString(iTaskType), c
 										.getString(iTaskDate), c
+										.getString(iTaskTime), c
+										.getString(iTaskLocation), c
 										.getInt(iTaskDone), context));
 							// Check if filterDone is for checked
 							else if (filterDone.equals("Checked Items")
 									&& c.getInt(iTaskDone) == 1)
 								list.add(new Task(c.getInt(iTaskId), c
 										.getString(iTaskName), c
+										.getString(iTaskDesc), c
+										.getString(iTaskType), c
 										.getString(iTaskDate), c
+										.getString(iTaskTime), c
+										.getString(iTaskLocation), c
 										.getInt(iTaskDone), context));
 						}
 					}

@@ -11,7 +11,7 @@ import android.content.Context;
 public class Task {
 
 	private int taskId, complete;
-	private String name, dueDate;
+	private String name, description, type, dueDate, dueTime, location;
 	private boolean selected;
 	private Context context;
 
@@ -21,10 +21,15 @@ public class Task {
 	 * @param name
 	 *            Name of the task
 	 */
-	public Task(int tId, String name, String dDate, int complete, Context c) {
-		taskId = tId;
+	public Task(int taskId, String name, String description, String type,
+			String dueDate, String dueTime, String location, int complete, Context c) {
+		this.taskId = taskId;
+		this.setDescription(description);
+		this.setType(type);
 		this.name = name;
-		dueDate = dDate;
+		this.dueDate = dueDate;
+		this.setDueTime(dueTime);
+		this.setLocation(location);
 		selected = (complete == 1 ? true : false);
 		this.complete = complete;
 		context = c;
@@ -118,6 +123,62 @@ public class Task {
 	 */
 	public void setComplete(int complete) {
 		this.complete = complete;
-		
+
+	}
+
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * @param description the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	/**
+	 * @return the type
+	 */
+	public String getType() {
+		return type;
+	}
+
+	/**
+	 * @param type the type to set
+	 */
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	/**
+	 * @return the dueTime
+	 */
+	public String getDueTime() {
+		return dueTime;
+	}
+
+	/**
+	 * @param dueTime the dueTime to set
+	 */
+	public void setDueTime(String dueTime) {
+		this.dueTime = dueTime;
+	}
+
+	/**
+	 * @return the location
+	 */
+	public String getLocation() {
+		return location;
+	}
+
+	/**
+	 * @param location the location to set
+	 */
+	public void setLocation(String location) {
+		this.location = location;
 	}
 }

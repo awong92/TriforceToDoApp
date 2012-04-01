@@ -9,9 +9,9 @@
         android:id="@+id/mapview"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:enabled="true"
+        android:state_enabled="true"
         android:clickable="true"
-        android:apiKey="0aw0R-Thm3TdUjUW6To9hS7f0PaVgUh1Qo5SiDg"
+        android:apiKey="0aw0R-Thm3TfPhgEsNygc4QrgsBep7AN9RUDYgQ"
 	/>
 	
 	<LinearLayout

@@ -4,9 +4,12 @@ import edu.gatech.cs2340.r.R;
 import java.util.List;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
@@ -23,6 +26,8 @@ public class ListArrayAdapter extends ArrayAdapter<Task> {
 
 	private final List<Task> list;
 	private final Activity context;
+	private View view;
+	static int currTaskId = -1;
 
 	/**
 	 * Adapter for the list of tasks with its checkbox
@@ -53,14 +58,28 @@ public class ListArrayAdapter extends ArrayAdapter<Task> {
 	 * @param parent
 	 */
 	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
-		View view = null;
+	public View getView(final int position, View convertView, ViewGroup parent) {
+		view = null;
 		if (convertView == null) {
 			LayoutInflater inflator = context.getLayoutInflater();
 			view = inflator.inflate(R.layout.row_layout, null);
+			view.setClickable(true);
+			view.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					currTaskId = list.get(position).getTaskId();
+					v.setBackgroundColor(Color.rgb(255, 140, 0));
+					Intent viewTask = new Intent(
+							"edu.gatech.cs2340.triforce.VIEWTASKACTIVITY");
+					context.startActivity(viewTask);
+				}
+
+			});
 			final ViewHolder viewHolder = new ViewHolder();
 			viewHolder.text = (TextView) view.findViewById(R.id.label);
 			viewHolder.checkbox = (CheckBox) view.findViewById(R.id.check);
+			viewHolder.checkbox.setFocusable(false);
 			viewHolder.checkbox
 					.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 

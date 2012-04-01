@@ -22,11 +22,12 @@ public class Task {
 	 *            Name of the task
 	 */
 	public Task(int taskId, String name, String description, String type,
-			String dueDate, String dueTime, String location, int complete, Context c) {
+			String dueDate, String dueTime, String location, int complete,
+			Context c) {
 		this.taskId = taskId;
+		this.name = name;
 		this.setDescription(description);
 		this.setType(type);
-		this.name = name;
 		this.dueDate = dueDate;
 		this.setDueTime(dueTime);
 		this.setLocation(location);
@@ -134,7 +135,8 @@ public class Task {
 	}
 
 	/**
-	 * @param description the description to set
+	 * @param description
+	 *            the description to set
 	 */
 	public void setDescription(String description) {
 		this.description = description;
@@ -148,7 +150,8 @@ public class Task {
 	}
 
 	/**
-	 * @param type the type to set
+	 * @param type
+	 *            the type to set
 	 */
 	public void setType(String type) {
 		this.type = type;
@@ -162,7 +165,8 @@ public class Task {
 	}
 
 	/**
-	 * @param dueTime the dueTime to set
+	 * @param dueTime
+	 *            the dueTime to set
 	 */
 	public void setDueTime(String dueTime) {
 		this.dueTime = dueTime;
@@ -176,7 +180,8 @@ public class Task {
 	}
 
 	/**
-	 * @param location the location to set
+	 * @param location
+	 *            the location to set
 	 */
 	public void setLocation(String location) {
 		this.location = location;

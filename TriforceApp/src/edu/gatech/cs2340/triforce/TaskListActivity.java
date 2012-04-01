@@ -116,6 +116,7 @@ public class TaskListActivity extends ListActivity implements OnClickListener {
 			break;
 		case R.id.logoutButton:
 			TriforceMain.currentUser = null;
+			ListArrayAdapter.currTaskId = -1;
 			finish();
 			break;
 		case R.id.filterTasksButton:

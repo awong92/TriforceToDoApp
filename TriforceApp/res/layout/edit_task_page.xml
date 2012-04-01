@@ -78,7 +78,7 @@
             <Button
                 android:id="@+id/pickDateET"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
         </TableRow>
 
         <TableRow
@@ -118,30 +118,28 @@
         android:layout_marginTop="5dp"
         android:inputType="textPostalAddress" />
 
-    <RelativeLayout
+    <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="left" >
+        android:layout_height="wrap_content" >
 
-        <Button
-            android:id="@+id/saveButtonET"
-            android:layout_width="157dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginBottom="30dp"
-            android:layout_marginTop="30dp"
-            android:text="@string/save" />
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
 
-        <Button
-            android:id="@+id/cancelButtonET"
-            android:layout_width="156dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginBottom="30dp"
-            android:layout_marginTop="30dp"
-            android:text="@string/cancel" />
-    </RelativeLayout>
+            <Button
+                android:id="@+id/saveButtonET"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/save" />
+
+            <Button
+                android:id="@+id/cancelButtonET"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/cancel" />
+        </TableRow>
+    </TableLayout>
 
 </LinearLayout>

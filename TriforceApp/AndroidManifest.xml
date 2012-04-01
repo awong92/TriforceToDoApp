@@ -67,6 +67,16 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="edu.gatech.cs2340.triforce.ViewTaskActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.NoTitleBar" >
+            <intent-filter>
+                <action android:name="edu.gatech.cs2340.triforce.VIEWTASKACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name="edu.gatech.cs2340.triforce.EditTaskActivity"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.NoTitleBar" >

@@ -325,6 +325,36 @@ public class SQLiteDB {
 				+ id);
 	}
 
+	public Task getTask(int taskId, Context context) {
+		String[] columns = new String[] { KEY_TASK_ID, KEY_TASKNAME,
+				KEY_DESCRIPTION, KEY_TASKTYPE, KEY_TASKDATE, KEY_TASKTIME,
+				KEY_LOCATION, KEY_TASKDONE };
+		Cursor c = ourDatabase.query(DATABASE_TASKTABLE, columns, null, null,
+				null, null, KEY_TASKDATE + " ASC");
+
+		int iTaskId = c.getColumnIndex(KEY_TASK_ID);
+		int iTaskName = c.getColumnIndex(KEY_TASKNAME);
+		int iTaskDesc = c.getColumnIndex(KEY_DESCRIPTION);
+		int iTaskType = c.getColumnIndex(KEY_TASKTYPE);
+		int iTaskDate = c.getColumnIndex(KEY_TASKDATE);
+		int iTaskTime = c.getColumnIndex(KEY_TASKTIME);
+		int iTaskLocation = c.getColumnIndex(KEY_LOCATION);
+		int iTaskDone = c.getColumnIndex(KEY_TASKDONE);
+
+		for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
+			if (c.getInt(iTaskId) == taskId) {
+				return new Task(c.getInt(iTaskId), c.getString(iTaskName),
+						c.getString(iTaskDesc), c.getString(iTaskType),
+						c.getString(iTaskDate), c.getString(iTaskTime),
+						c.getString(iTaskLocation), c.getInt(iTaskDone),
+						context);
+			}
+
+		}
+
+		return null;
+	}
+
 	/**
 	 * Retrieves all the tasks belonging to the user based on the filter
 	 * 

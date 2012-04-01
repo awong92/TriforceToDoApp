@@ -13,20 +13,13 @@ public class gmap extends MapActivity {
 
 	MapView mapView;
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.gmap);
 
 		mapView = (MapView) findViewById(R.id.mapview);
-		LinearLayout zoomLayout = (LinearLayout) findViewById(R.id.zoom);
-		View zoomView = mapView.getZoomControls();
-
-		zoomLayout.addView(zoomView, new LinearLayout.LayoutParams(
-				LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-		mapView.displayZoomControls(true);
-		mapView.setStreetView(true);
+		mapView.setBuiltInZoomControls(true);
 	}
 
 	@Override

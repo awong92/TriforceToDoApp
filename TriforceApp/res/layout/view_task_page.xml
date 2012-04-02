@@ -57,7 +57,7 @@
                 android:id="@+id/viewNameTag"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Task Name: "
+                android:text=" Task Name: "
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <TextView
@@ -76,7 +76,7 @@
                 android:id="@+id/viewDescTag"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Description: "
+                android:text=" Description: "
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <TextView
@@ -95,7 +95,7 @@
                 android:id="@+id/viewTypeTag"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Type: "
+                android:text=" Type: "
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <TextView
@@ -114,7 +114,7 @@
                 android:id="@+id/viewDateTag"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Date due: "
+                android:text=" Date due: "
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <TextView
@@ -133,7 +133,7 @@
                 android:id="@+id/viewTimeTag"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Time due: "
+                android:text=" Time due: "
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <TextView
@@ -152,7 +152,7 @@
                 android:id="@+id/viewLocationTag"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Location: "
+                android:text=" Location: "
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <TextView

@@ -34,16 +34,16 @@ public class gmap extends MapActivity {
         
         mc = mapView.getController();
         //atlanta lat and lng found on google lol 
-        String coordinates[] = {"20.65","240.42"};
+        String coordinates[] = {"33.778","275.602"};
         double lat = Double.parseDouble(coordinates[0]);
         double lng = Double.parseDouble(coordinates[1]);
         
         p = new GeoPoint(
-        		(int)(lat *1E6), 
+        		(int)(lat*1E6), 
         		(int)(lng*1E6));
         
         mc.animateTo(p);
-        mc.setZoom(3);
+        mc.setZoom(16);
         mapView.invalidate();
 	
 	}

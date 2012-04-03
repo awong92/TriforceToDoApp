@@ -9,6 +9,7 @@
     <string name="editTask">Edit Task</string>
     <string name="deleteTask">Delete Task</string>
     <string name="showLocations">Show Locations</string>
+    <string name="exitET">Leave Edit Task</string>
 
     <!-- TITLE STRINGS -->
     <string name="titleLogin">LOGIN</string>
@@ -16,6 +17,7 @@
     <string name="titleTaskList">TASK LIST</string>
     <string name="titleNT">NEW TASK</string>
     <string name="titleET">EDIT TASK</string>
+    <string name="titleVT">TASK VIEW</string>
 
     <!-- BUTTON TEXT -->
     <string name="enter">Enter</string>
@@ -29,16 +31,16 @@
     <string name="filterTasks">Filter Tasks</string>
 
     <!-- FIELD TAGS -->
-    <string name="username">Username</string>
-    <string name="password">Password</string>
-    <string name="name">Name</string>
-    <string name="email">Email</string>
-    <string name="taskName">Task Name</string>
-    <string name="taskDescription">Description</string>
-    <string name="taskType">Task Type</string>
-    <string name="taskDate">Due Date: </string>
-    <string name="taskTime">Time Due: </string>
-    <string name="taskLocation">Location</string>
+    <string name="username"> Username: </string>
+    <string name="password"> Password: </string>
+    <string name="name"> Name: </string>
+    <string name="email"> Email: </string>
+    <string name="taskName"> Task Name: </string>
+    <string name="taskDescription"> Description: </string>
+    <string name="taskType"> Task Type: </string>
+    <string name="taskDate"> Date Due: </string>
+    <string name="taskTime"> Time Due: </string>
+    <string name="taskLocation"> Location: </string>
 
     <!-- SPINNERS -->
     <string name="task_types_prompt">Choose a Task Type</string>

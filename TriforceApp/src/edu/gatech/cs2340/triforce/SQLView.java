@@ -9,8 +9,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 /**
- * Team Triforce (36)
- * Back-end for view_db.xml. Views all the users in the database
+ * Team Triforce (36) Back-end for view_db.xml. Views all the users in the
+ * database
  * 
  * @author Nathan Eppinger, Mallory Wynn, Alex Wong
  * @version 1.0
@@ -18,7 +18,7 @@ import android.widget.TextView;
 public class SQLView extends Activity implements OnClickListener {
 
 	Button exit;
-	
+
 	/**
 	 * Called when the activity is first created
 	 */
@@ -28,7 +28,7 @@ public class SQLView extends Activity implements OnClickListener {
 		setContentView(R.layout.view_db);
 		exit = (Button) findViewById(R.id.exitViewDB);
 		exit.setOnClickListener(this);
-		
+
 		TextView tv = (TextView) findViewById(R.id.tvSQLinfo);
 		SQLiteDB info = new SQLiteDB(this);
 		info.open();

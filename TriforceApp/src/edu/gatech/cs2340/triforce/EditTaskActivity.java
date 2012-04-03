@@ -1,9 +1,6 @@
 package edu.gatech.cs2340.triforce;
 
-import java.util.Calendar;
-
 import edu.gatech.cs2340.r.R;
-import edu.gatech.cs2340.triforce.NewTaskActivity.MyOnItemSelectedListener;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -20,6 +17,13 @@ import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.AdapterView.OnItemSelectedListener;
 
+/**
+ * Team Triforce (36) Back-end for edit_task_page.xml. Allows users to edit a
+ * task
+ * 
+ * @author Nathan Eppinger, Mallory Wynn, Alex Wong
+ * @version 1.0
+ */
 public class EditTaskActivity extends Activity implements OnClickListener {
 
 	Task task;
@@ -33,10 +37,14 @@ public class EditTaskActivity extends Activity implements OnClickListener {
 	static final int DATE_DIALOG_ID = 0;
 	static final int TIME_DIALOG_ID = 1;
 
+	/**
+	 * Initializes variables and functionality
+	 */
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.edit_task_page);
 
+		// retrieve task to be edited from db
 		SQLiteDB db = new SQLiteDB(this);
 		db.open();
 		task = db.getTask(ListArrayAdapter.currTaskId, this);
@@ -52,6 +60,7 @@ public class EditTaskActivity extends Activity implements OnClickListener {
 		saveButton = (Button) findViewById(R.id.saveButtonET);
 		cancelButton = (Button) findViewById(R.id.cancelButtonET);
 
+		// set elements to Task attributes
 		nameField.setText(task.getName());
 		descField.setText(task.getDescription());
 		taskType = task.getType();
@@ -73,22 +82,22 @@ public class EditTaskActivity extends Activity implements OnClickListener {
 
 		firstHyphen = task.getDueDate().indexOf("-");
 		monthStr = task.getDueDate().substring(0, firstHyphen);
-		secondHyphen = task.getDueDate().indexOf("-", firstHyphen+1);
-		dayStr = task.getDueDate().substring(firstHyphen+1, secondHyphen);
-		yearStr = task.getDueDate().substring(secondHyphen+1);
+		secondHyphen = task.getDueDate().indexOf("-", firstHyphen + 1);
+		dayStr = task.getDueDate().substring(firstHyphen + 1, secondHyphen);
+		yearStr = task.getDueDate().substring(secondHyphen + 1);
 		mMonth = Integer.parseInt(monthStr) - 1;
 		mDay = Integer.parseInt(dayStr);
 		mYear = Integer.parseInt(yearStr);
-		
+
 		indexOfColon = task.getDueTime().indexOf(":");
 		hourStr = task.getDueTime().substring(0, indexOfColon);
 		mHour = Integer.parseInt(hourStr);
 		minuteStr = task.getDueTime().substring(indexOfColon + 1);
 		mMinute = Integer.parseInt(minuteStr);
-		
+
 		updateDateDisplay();
 		updateTimeDisplay();
-		
+
 		// add a click listener to the date and time buttons
 		mPickDate.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
@@ -106,6 +115,9 @@ public class EditTaskActivity extends Activity implements OnClickListener {
 		cancelButton.setOnClickListener(this);
 	}
 
+	/**
+	 * Handles when the Save or Cancel button is clicked
+	 */
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
@@ -143,11 +155,17 @@ public class EditTaskActivity extends Activity implements OnClickListener {
 	 */
 	public class MyOnItemSelectedListener implements OnItemSelectedListener {
 
+		/**
+		 * Method for changing Task Type to selected spinner at row pos
+		 */
 		public void onItemSelected(AdapterView<?> parent, View view, int pos,
 				long id) {
 			taskType = parent.getItemAtPosition(pos).toString();
 		}
 
+		/**
+		 * Empty method for when nothing in the spinner is selected
+		 */
 		public void onNothingSelected(AdapterView<?> parent) {
 			// Do nothing.
 		}
@@ -180,6 +198,17 @@ public class EditTaskActivity extends Activity implements OnClickListener {
 	 */
 	private DatePickerDialog.OnDateSetListener mDateSetListener = new DatePickerDialog.OnDateSetListener() {
 
+		/**
+		 * Sets the date to the new date values
+		 * 
+		 * @param view
+		 * @param year
+		 *            year to be set to
+		 * @param monthOfYear
+		 *            month to be set to
+		 * @param dayOfMonth
+		 *            day to be set to
+		 */
 		public void onDateSet(DatePicker view, int year, int monthOfYear,
 				int dayOfMonth) {
 			mYear = year;

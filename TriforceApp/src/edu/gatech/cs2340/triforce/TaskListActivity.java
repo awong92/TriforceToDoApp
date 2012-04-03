@@ -156,7 +156,7 @@ public class TaskListActivity extends ListActivity implements OnClickListener {
 		typeSpinner.setPromptId(R.string.filter_by_prompt);
 		typeSpinner.setAdapter(spinnerAdapter);
 		typeSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
-			// TYPE SPINNER LISTENER
+			// TYPE SPINNER LISTENER TO CHANGE FILTER
 			public void onItemSelected(AdapterView<?> parent, View view,
 					int pos, long id) {
 				oldFilterBy = filterBy;
@@ -183,6 +183,7 @@ public class TaskListActivity extends ListActivity implements OnClickListener {
 		mPickDate.setText("mm-dd-yyyy");
 
 		mPickDate.setOnClickListener(new OnClickListener() {
+			// SHOWS DATE DIALOG WHEN CLICKED
 			public void onClick(View v) {
 				showDialog(DATE_ID);
 			}

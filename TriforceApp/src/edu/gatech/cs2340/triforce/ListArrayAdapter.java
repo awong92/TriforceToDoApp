@@ -65,7 +65,9 @@ public class ListArrayAdapter extends ArrayAdapter<Task> {
 			view = inflator.inflate(R.layout.row_layout, null);
 			view.setClickable(true);
 			view.setOnClickListener(new OnClickListener() {
-
+				/**
+				 * OnClickListener for when a task is clicked to be displayed
+				 */
 				@Override
 				public void onClick(View v) {
 					currTaskId = list.get(position).getTaskId();
@@ -82,7 +84,10 @@ public class ListArrayAdapter extends ArrayAdapter<Task> {
 			viewHolder.checkbox.setFocusable(false);
 			viewHolder.checkbox
 					.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-
+						/**
+						 * OnCheckedChangeListener for when a check box is
+						 * clicked to mark complete or incomplete of a task
+						 */
 						@Override
 						public void onCheckedChanged(CompoundButton buttonView,
 								boolean isChecked) {

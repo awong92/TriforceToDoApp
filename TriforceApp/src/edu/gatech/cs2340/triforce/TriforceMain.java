@@ -30,12 +30,14 @@ public class TriforceMain extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 
+		// capture our View elements
 		loginButton = (Button) findViewById(R.id.loginButton);
 		regButton = (Button) findViewById(R.id.GotoRegisterButton);
 		viewButton = (Button) findViewById(R.id.viewdbButton);
 		loginName = (EditText) findViewById(R.id.usernameField);
 		loginPassword = (EditText) findViewById(R.id.passwordField);
 
+		// set OnClickListeners for buttons
 		loginButton.setOnClickListener(this);
 		regButton.setOnClickListener(this);
 		viewButton.setOnClickListener(this);

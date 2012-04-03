@@ -326,6 +326,13 @@ public class SQLiteDB {
 				+ id);
 	}
 
+	/**
+	 * Getter for a specific task
+	 * 
+	 * @param taskId id of the task needed
+	 * @param context context calling the method
+	 * @return Task task to be used
+	 */
 	public Task getTask(int taskId, Context context) {
 		String[] columns = new String[] { KEY_TASK_ID, KEY_TASKNAME,
 				KEY_DESCRIPTION, KEY_TASKTYPE, KEY_TASKDATE, KEY_TASKTIME,

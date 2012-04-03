@@ -65,6 +65,44 @@ public class Task {
 	}
 
 	/**
+	 * Getter for the task's description
+	 * 
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * Mutator to set a different description
+	 * 
+	 * @param description
+	 *            the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	/**
+	 * Getter for task's type
+	 * 
+	 * @return the type
+	 */
+	public String getType() {
+		return type;
+	}
+
+	/**
+	 * Mutator to set a new type
+	 * 
+	 * @param type
+	 *            the type to set
+	 */
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	/**
 	 * Getter for due date of task
 	 * 
 	 * @return Name of task
@@ -81,6 +119,44 @@ public class Task {
 	 */
 	public void setDueDate(String date) {
 		dueDate = date;
+	}
+
+	/**
+	 * Getter for task's time due
+	 * 
+	 * @return the dueTime
+	 */
+	public String getDueTime() {
+		return dueTime;
+	}
+
+	/**
+	 * Mutator to a set a different time
+	 * 
+	 * @param dueTime
+	 *            the dueTime to set
+	 */
+	public void setDueTime(String dueTime) {
+		this.dueTime = dueTime;
+	}
+
+	/**
+	 * Getter for task's location
+	 * 
+	 * @return the location
+	 */
+	public String getLocation() {
+		return location;
+	}
+
+	/**
+	 * Mutator to set a different location
+	 * 
+	 * @param location
+	 *            the location to set
+	 */
+	public void setLocation(String location) {
+		this.location = location;
 	}
 
 	/**
@@ -124,66 +200,5 @@ public class Task {
 	 */
 	public void setComplete(int complete) {
 		this.complete = complete;
-
-	}
-
-	/**
-	 * @return the description
-	 */
-	public String getDescription() {
-		return description;
-	}
-
-	/**
-	 * @param description
-	 *            the description to set
-	 */
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	/**
-	 * @return the type
-	 */
-	public String getType() {
-		return type;
-	}
-
-	/**
-	 * @param type
-	 *            the type to set
-	 */
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	/**
-	 * @return the dueTime
-	 */
-	public String getDueTime() {
-		return dueTime;
-	}
-
-	/**
-	 * @param dueTime
-	 *            the dueTime to set
-	 */
-	public void setDueTime(String dueTime) {
-		this.dueTime = dueTime;
-	}
-
-	/**
-	 * @return the location
-	 */
-	public String getLocation() {
-		return location;
-	}
-
-	/**
-	 * @param location
-	 *            the location to set
-	 */
-	public void setLocation(String location) {
-		this.location = location;
 	}
 }

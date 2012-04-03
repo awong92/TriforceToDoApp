@@ -33,14 +33,15 @@ public class ViewTaskActivity extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.view_task_page);
 
+		// retrieve task to be viewed from db
 		db.open();
 		task = db.getTask(ListArrayAdapter.currTaskId, this);
 		db.close();
 
+		// capture our View elements
 		editButton = (ImageButton) findViewById(R.id.editVT);
 		deleteButton = (ImageButton) findViewById(R.id.delVT);
 		backButton = (ImageButton) findViewById(R.id.backVT);
-
 		name = (TextView) findViewById(R.id.viewNameTxt);
 		desc = (TextView) findViewById(R.id.viewDescTxt);
 		type = (TextView) findViewById(R.id.viewTypeTxt);
@@ -48,6 +49,7 @@ public class ViewTaskActivity extends Activity implements OnClickListener {
 		time = (TextView) findViewById(R.id.viewTimeTxt);
 		location = (TextView) findViewById(R.id.viewLocationTxt);
 
+		// set elements to Task attributes
 		indexOfColon = task.getDueTime().indexOf(":");
 		hourStr = task.getDueTime().substring(0, indexOfColon);
 		hour = Integer.parseInt(hourStr);
@@ -78,19 +80,23 @@ public class ViewTaskActivity extends Activity implements OnClickListener {
 		deleteButton.setOnClickListener(this);
 		backButton.setOnClickListener(this);
 	}
-	
+
+	/**
+	 * Method for redisplaying the Task List page when returned to
+	 */
 	public void onRestart() {
 		super.onRestart();
 		setContentView(R.layout.view_task_page);
-		
+
+		// retrieve task again to be viewed from db
 		db.open();
 		task = db.getTask(ListArrayAdapter.currTaskId, this);
 		db.close();
 
+		// recapture our View elements
 		editButton = (ImageButton) findViewById(R.id.editVT);
 		deleteButton = (ImageButton) findViewById(R.id.delVT);
 		backButton = (ImageButton) findViewById(R.id.backVT);
-
 		name = (TextView) findViewById(R.id.viewNameTxt);
 		desc = (TextView) findViewById(R.id.viewDescTxt);
 		type = (TextView) findViewById(R.id.viewTypeTxt);
@@ -98,6 +104,7 @@ public class ViewTaskActivity extends Activity implements OnClickListener {
 		time = (TextView) findViewById(R.id.viewTimeTxt);
 		location = (TextView) findViewById(R.id.viewLocationTxt);
 
+		// reset elements to Task attributes
 		indexOfColon = task.getDueTime().indexOf(":");
 		hourStr = task.getDueTime().substring(0, indexOfColon);
 		hour = Integer.parseInt(hourStr);
@@ -129,6 +136,9 @@ public class ViewTaskActivity extends Activity implements OnClickListener {
 		backButton.setOnClickListener(this);
 	}
 
+	/**
+	 * Handles when the Edit, Delete, or Back button is clicked
+	 */
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
@@ -143,6 +153,10 @@ public class ViewTaskActivity extends Activity implements OnClickListener {
 			builder.setCancelable(false);
 			builder.setPositiveButton("Yes",
 					new DialogInterface.OnClickListener() {
+						/**
+						 * OnClickListener for Dialog option "Yes" to delete
+						 * task
+						 */
 						public void onClick(DialogInterface dialog, int id) {
 							db.open();
 							db.deleteTask(ListArrayAdapter.currTaskId);
@@ -152,6 +166,10 @@ public class ViewTaskActivity extends Activity implements OnClickListener {
 					});
 			builder.setNegativeButton("No",
 					new DialogInterface.OnClickListener() {
+						/**
+						 * OnClickListener for Dialog option "No" to cancel
+						 * delete
+						 */
 						public void onClick(DialogInterface dialog, int id) {
 							dialog.cancel();
 						}

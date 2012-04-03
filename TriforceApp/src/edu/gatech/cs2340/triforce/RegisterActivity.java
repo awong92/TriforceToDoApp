@@ -11,8 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 /**
- * Team Triforce (36)
- * Back-end for register.xml. Registers new users or cancels
+ * Team Triforce (36) Back-end for register.xml. Registers new users or cancels
  * 
  * @author Nathan Eppinger, Mallory Wynn, Alex Wong
  * @version 1.0

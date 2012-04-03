@@ -270,12 +270,13 @@ public class SQLiteDB {
 	 *            New location of the task being editted
 	 */
 	public void updateTask(int id, String taskName, String descript,
-			String type, int priority, String date, String time, String location) {
-		ourDatabase.execSQL("UPDATE " + DATABASE_TASKTABLE
-				+ " SET KEY_TASKNAME=" + taskName + " SET KEY_DESCRIPTIOIN="
-				+ descript + " SET KEY_TASKTYPE=" + type + " SET KEY_TASKDATE="
-				+ date + " SET KEY_TASKTIME=" + time + " SET KEY_LOCATION="
-				+ location);
+			String type, String date, String time, String location) {
+		ourDatabase.execSQL("UPDATE " + DATABASE_TASKTABLE + " SET "
+				+ KEY_TASKNAME + "='" + taskName + "', " + KEY_DESCRIPTION
+				+ "='" + descript + "', " + KEY_TASKTYPE + "='" + type + "', "
+				+ KEY_TASKDATE + "='" + date + "', " + KEY_TASKTIME + "='"
+				+ time + "', " + KEY_LOCATION + "='" + location + "' WHERE "
+				+ KEY_TASK_ID + "=" + id);
 	}
 
 	/**

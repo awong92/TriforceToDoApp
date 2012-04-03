@@ -51,6 +51,13 @@
 
     <!-- Prompt for selecting the type of the task -->
 
+	<TextView
+        android:id="@+id/taskTypeTagET"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/taskType"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
     <Spinner
         android:id="@+id/newTypeOfTaskET"
         android:layout_width="match_parent"

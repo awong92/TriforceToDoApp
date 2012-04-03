@@ -100,11 +100,13 @@ public class EditTaskActivity extends Activity implements OnClickListener {
 
 		// add a click listener to the date and time buttons
 		mPickDate.setOnClickListener(new View.OnClickListener() {
+			@SuppressWarnings("deprecation")
 			public void onClick(View v) {
 				showDialog(DATE_DIALOG_ID);
 			}
 		});
 		mPickTime.setOnClickListener(new View.OnClickListener() {
+			@SuppressWarnings("deprecation")
 			public void onClick(View v) {
 				showDialog(TIME_DIALOG_ID);
 			}

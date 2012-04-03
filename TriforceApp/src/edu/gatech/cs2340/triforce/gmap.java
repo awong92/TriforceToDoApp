@@ -24,7 +24,8 @@ public class gmap extends MapActivity {
 
 		mapView = (MapView) findViewById(R.id.mapview);
         LinearLayout zoomLayout = (LinearLayout)findViewById(R.id.zoom);  
-        View zoomView = mapView.getZoomControls(); 
+        @SuppressWarnings("deprecation")
+		View zoomView = mapView.getZoomControls(); 
  
         zoomLayout.addView(zoomView, 
             new LinearLayout.LayoutParams(

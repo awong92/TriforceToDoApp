@@ -55,11 +55,13 @@ public class NewTaskActivity extends Activity implements OnClickListener {
 
 		// add a click listener to the buttons
 		mPickDate.setOnClickListener(new View.OnClickListener() {
+			@SuppressWarnings("deprecation")
 			public void onClick(View v) {
 				showDialog(DATE_DIALOG_ID);
 			}
 		});
 		mPickTime.setOnClickListener(new View.OnClickListener() {
+			@SuppressWarnings("deprecation")
 			public void onClick(View v) {
 				showDialog(TIME_DIALOG_ID);
 			}

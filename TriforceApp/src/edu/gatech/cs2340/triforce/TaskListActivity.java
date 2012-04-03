@@ -184,6 +184,7 @@ public class TaskListActivity extends ListActivity implements OnClickListener {
 
 		mPickDate.setOnClickListener(new OnClickListener() {
 			// SHOWS DATE DIALOG WHEN CLICKED
+			@SuppressWarnings("deprecation")
 			public void onClick(View v) {
 				showDialog(DATE_ID);
 			}

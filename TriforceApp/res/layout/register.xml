@@ -18,88 +18,156 @@
 
     <!-- Username tag above the text field where the user inputs a new username -->
 
-    <TextView
-        android:id="@+id/regTitleUsername"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/username"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <EditText
-        android:id="@+id/newUsername"
+    <Space
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="text" />
+        android:layout_height="20dp" />
 
+    <TableRow
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal" >
+
+        <TextView
+            android:id="@+id/regTitleUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/username"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <ImageView
+            android:id="@+id/usernameError"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@android:drawable/ic_delete" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal" >
+
+        <EditText
+            android:id="@+id/newUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+    </TableRow>
     <!-- Password tag above the text field where the user inputs a new password -->
 
-    <TextView
-        android:id="@+id/regTitlePassword"
-        android:layout_width="wrap_content"
+    <TableRow
+        android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:text="@string/password"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:layout_gravity="center_horizontal" >
 
-    <EditText
-        android:id="@+id/newPassword"
-        android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/regTitlePassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/password"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+        
+        <ImageView
+            android:id="@+id/passwordError"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@android:drawable/ic_delete" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:inputType="textPassword" />
+        android:layout_gravity="center_horizontal" >
 
+        <EditText
+            android:id="@+id/newPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+    </TableRow>
     <!-- Name tag above the text field where the user inputs a new name -->
 
-    <TextView
-        android:id="@+id/regTitlename"
-        android:layout_width="wrap_content"
+    <TableRow
+        android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:text="@string/name"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:layout_gravity="center_horizontal" >
 
-    <EditText
-        android:id="@+id/newName"
-        android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/regTitlename"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/name"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+        <ImageView
+            android:id="@+id/nameError"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@android:drawable/ic_delete" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName" />
+        android:layout_gravity="center_horizontal" >
 
+        <EditText
+            android:id="@+id/newName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName" />
+    </TableRow>
     <!-- Email tag above the text field where the user inputs a new email -->
 
-    <TextView
-        android:id="@+id/regTitleEmail"
-        android:layout_width="wrap_content"
+    <TableRow
+        android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:text="@string/email"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:layout_gravity="center_horizontal" >
 
-    <EditText
-        android:id="@+id/newEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress" />
-
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <TableRow
+        <TextView
+            android:id="@+id/regTitleEmail"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:text="@string/email"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+        <ImageView
+            android:id="@+id/emailError"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@android:drawable/ic_delete" />
+    </TableRow>
 
-            <!-- Register button to create new account -->
+    <TableRow
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal" >
 
-            <Button
-                android:id="@+id/registerUserButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/register" />
+        <EditText
+            android:id="@+id/newEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress" />
+    </TableRow>
 
-            <Button
-                android:id="@+id/cancelRegButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/cancel" />
-        </TableRow>
-    </TableLayout>
+    <TableRow
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal" >
+
+        <!-- Register button to create new account -->
+
+        <Button
+            android:id="@+id/registerUserButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/register" />
+
+        <Button
+            android:id="@+id/cancelRegButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/cancel" />
+    </TableRow>
 
 </LinearLayout>

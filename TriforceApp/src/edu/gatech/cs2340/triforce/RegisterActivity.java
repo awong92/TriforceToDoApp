@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
@@ -20,6 +21,7 @@ public class RegisterActivity extends Activity implements OnClickListener {
 
 	Button registerButton, cancelButton;
 	EditText usernameField, passwordField, nameField, emailField;
+	ImageView usernameError, passwordError, nameError, emailError;
 
 	/**
 	 * Called when the activity is first created
@@ -31,10 +33,18 @@ public class RegisterActivity extends Activity implements OnClickListener {
 		registerButton = (Button) findViewById(R.id.registerUserButton);
 		cancelButton = (Button) findViewById(R.id.cancelRegButton);
 		usernameField = (EditText) findViewById(R.id.newUsername);
+		usernameError = (ImageView) findViewById(R.id.usernameError);
 		passwordField = (EditText) findViewById(R.id.newPassword);
+		passwordError = (ImageView) findViewById(R.id.passwordError);
 		nameField = (EditText) findViewById(R.id.newName);
+		nameError = (ImageView) findViewById(R.id.nameError);
 		emailField = (EditText) findViewById(R.id.newEmail);
+		emailError = (ImageView) findViewById(R.id.emailError);
 
+		usernameError.setVisibility(View.INVISIBLE);
+		passwordError.setVisibility(View.INVISIBLE);
+		nameError.setVisibility(View.INVISIBLE);
+		emailError.setVisibility(View.INVISIBLE);
 		registerButton.setOnClickListener(this);
 		cancelButton.setOnClickListener(this);
 	}
@@ -47,17 +57,44 @@ public class RegisterActivity extends Activity implements OnClickListener {
 		switch (v.getId()) {
 		case R.id.registerUserButton:
 			boolean didItWork = true;
+			usernameError.setVisibility(View.INVISIBLE);
+			passwordError.setVisibility(View.INVISIBLE);
+			nameError.setVisibility(View.INVISIBLE);
+			emailError.setVisibility(View.INVISIBLE);
 			try {
 				String username = usernameField.getText().toString();
 				String password = passwordField.getText().toString();
 				String name = nameField.getText().toString();
 				String email = emailField.getText().toString();
 
-				SQLiteDB entry = new SQLiteDB(RegisterActivity.this);
-				entry.open();
-				if (entry.isUserAvailable(username))
-					entry.createUserEntry(username, password, name, email);
-				entry.close();
+				if (!(username.equals("")) && !(password.equals(""))
+						&& !(name.equals("")) && !(email.equals(""))) {
+					SQLiteDB entry = new SQLiteDB(RegisterActivity.this);
+					entry.open();
+					if (entry.isUserAvailable(username))
+						entry.createUserEntry(username, password, name, email);
+					else {
+						didItWork = false;
+						usernameError.setVisibility(View.VISIBLE);
+						Dialog usernameTaken = new Dialog(this);
+						usernameTaken.setTitle("The username is already taken");
+						usernameTaken.show();
+					}
+					entry.close();
+				} else {
+					didItWork = false;
+					if (username.equals(""))
+						usernameError.setVisibility(View.VISIBLE);
+					if (password.equals(""))
+						passwordError.setVisibility(View.VISIBLE);
+					if (name.equals(""))
+						nameError.setVisibility(View.VISIBLE);
+					if (email.equals(""))
+						emailError.setVisibility(View.VISIBLE);
+					Dialog missingFields = new Dialog(this);
+					missingFields.setTitle("Fill in all the fields");
+					missingFields.show();
+				}
 			} catch (Exception e) {
 				didItWork = false;
 				String error = e.toString();

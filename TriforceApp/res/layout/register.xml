@@ -9,7 +9,7 @@
     <!-- title of register screen -->
 
     <TextView
-        android:id="@+id/titeRegistration"
+        android:id="@+id/titleRegistration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"

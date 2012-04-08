@@ -1,78 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:layout_height="wrap_content" >
 
-    <!-- Title "NEW TASK" -->
-
-    <TextView
-        android:id="@+id/headerET"
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="@string/titleET"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:orientation="vertical" >
 
-    <!-- Tag asking for Task Name and its edit form -->
+        <!-- Title "NEW TASK" -->
 
-    <TextView
-        android:id="@+id/taskNamePromptET"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/taskName"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        <TextView
+            android:id="@+id/headerET"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/titleET"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="bold"
+            android:typeface="serif" />
 
-    <EditText
-        android:id="@+id/editTaskNameET"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp"
-        android:inputType="text" >
-    </EditText>
-
-    <!-- Tag for Task Description and its edit form -->
-
-    <TextView
-        android:id="@+id/descriptionPromptET"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/taskDescription"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <EditText
-        android:id="@+id/editTaskDescriptET"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp"
-        android:inputType="text" />
-
-    <!-- Prompt for selecting the type of the task -->
-
-	<TextView
-        android:id="@+id/taskTypeTagET"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/taskType"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <Spinner
-        android:id="@+id/newTypeOfTaskET"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:prompt="@string/task_types_prompt" />
-
-    <TableLayout
-        android:id="@+id/tableDateTimeET"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        <!-- Tag asking for Task Name and its edit form -->
 
         <TableRow
-            android:id="@+id/dateRowET"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" >
+
+            <TextView
+                android:id="@+id/taskNamePromptET"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/taskName"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" >
+
+            <EditText
+                android:id="@+id/editTaskNameET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:inputType="textMultiLine" >
+            </EditText>
+        </TableRow>
+        <!-- Tag for Task Description and its edit form -->
+
+        <TableRow
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" >
+
+            <TextView
+                android:id="@+id/descriptionPromptET"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/taskDescription"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" >
+
+            <EditText
+                android:id="@+id/editTaskDescriptET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:inputType="textMultiLine" />
+        </TableRow>
+
+        <!-- Prompt for selecting the type of the task -->
+
+        <TableRow
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" >
+
+            <TextView
+                android:id="@+id/taskTypeTagET"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/taskType"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/newTypeOfTaskET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:prompt="@string/task_types_prompt" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" >
 
             <!-- Tag for Due Date of task and its button prompt -->
 
@@ -80,7 +115,8 @@
                 android:id="@+id/dateDisplayET"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/taskDate" />
+                android:text="@string/taskDate"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/pickDateET"
@@ -89,9 +125,9 @@
         </TableRow>
 
         <TableRow
-            android:id="@+id/timeRowET"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" >
 
             <!-- Tag for Time Due of task and its button prompt -->
 
@@ -99,39 +135,49 @@
                 android:id="@+id/timeDisplayET"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/taskTime" />
+                android:text="@string/taskTime"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/pickTimeET"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </TableRow>
-    </TableLayout>
 
-    <!-- Tag for Location of task and its edit form -->
-
-    <TextView
-        android:id="@+id/locationPromptET"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/taskLocation"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <EditText
-        android:id="@+id/editLocationET"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp"
-        android:inputType="textPostalAddress" />
-
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        <!-- Tag for Location of task and its edit form -->
 
         <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" >
+
+            <TextView
+                android:id="@+id/locationPromptET"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/taskLocation"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" >
+
+            <EditText
+                android:id="@+id/editLocationET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:inputType="textPostalAddress" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" >
 
             <Button
                 android:id="@+id/saveButtonET"
@@ -147,6 +193,6 @@
                 android:layout_weight="1"
                 android:text="@string/cancel" />
         </TableRow>
-    </TableLayout>
+    </LinearLayout>
 
-</LinearLayout>
+</ScrollView>

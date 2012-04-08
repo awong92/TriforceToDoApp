@@ -12,6 +12,9 @@ import android.app.ListActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
@@ -32,7 +35,7 @@ import android.widget.TextView;
  * @author Nathan Eppinger, Mallory Wynn, Alex Wong
  * @version 1.0
  */
-public class TaskListActivity extends ListActivity implements OnClickListener {
+public class TaskListActivity extends ListActivity {
 
 	ArrayAdapter<Task> listAdapter;
 	ImageButton newTaskButton, editTaskButton, locationsButton;
@@ -60,6 +63,7 @@ public class TaskListActivity extends ListActivity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.user_tasklist);
 
+		/*
 		newTaskButton = (ImageButton) findViewById(R.id.newTaskButton);
 		logoutButton = (Button) findViewById(R.id.logoutButton);
 		filterTasksButton = (Button) findViewById(R.id.filterTasksButton);
@@ -69,6 +73,7 @@ public class TaskListActivity extends ListActivity implements OnClickListener {
 		logoutButton.setOnClickListener(this);
 		filterTasksButton.setOnClickListener(this);
 		locationsButton.setOnClickListener(this);
+		*/
 
 		try {
 			getModel();
@@ -86,6 +91,7 @@ public class TaskListActivity extends ListActivity implements OnClickListener {
 		super.onRestart();
 		setContentView(R.layout.user_tasklist);
 
+		/*
 		newTaskButton = (ImageButton) findViewById(R.id.newTaskButton);
 		logoutButton = (Button) findViewById(R.id.logoutButton);
 		filterTasksButton = (Button) findViewById(R.id.filterTasksButton);
@@ -93,6 +99,7 @@ public class TaskListActivity extends ListActivity implements OnClickListener {
 		newTaskButton.setOnClickListener(this);
 		logoutButton.setOnClickListener(this);
 		filterTasksButton.setOnClickListener(this);
+		*/
 
 		try {
 			getModel();
@@ -104,8 +111,46 @@ public class TaskListActivity extends ListActivity implements OnClickListener {
 	}
 
 	/**
-	 * Handles when the New Task or Logout button is clicked
+	 * Menu will pop up and inflate the task list menu
 	 */
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+	    MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.menu_tasklist, menu);
+	    return true;
+	}
+	
+	/**
+	 * Handles when the New Task, Locations, Filter or Logout button is clicked on the menu
+	 */
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    // Handle item selection
+	    switch (item.getItemId()) {
+	        case R.id.menuNewTask:
+	        	Intent createNewTask = new Intent(
+						"edu.gatech.cs2340.triforce.NEWTASKACTIVITY");
+				startActivity(createNewTask);
+	            return true;
+	        case R.id.menuShowLocations:
+	        	Intent showLocations = new Intent("edu.gatech.cs2340.triforce.GMAP");
+				startActivity(showLocations);
+	            return true;
+	        case R.id.menuLogout:
+	        	TriforceMain.currentUser = null;
+				ListArrayAdapter.currTaskId = -1;
+				finish();
+	        	return true;
+	        case R.id.menuFilter:
+	        	OpenScreenDialog();
+	        	return true;
+	        	
+	        default:
+	            return super.onOptionsItemSelected(item);
+	    }
+	}
+	
+	/*
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
@@ -128,6 +173,7 @@ public class TaskListActivity extends ListActivity implements OnClickListener {
 			break;
 		}
 	}
+	*/
 
 	/**
 	 * Displays the dialog for filtering tasks

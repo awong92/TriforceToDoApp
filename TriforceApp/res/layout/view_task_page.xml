@@ -10,53 +10,52 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/titleVT"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="bold"
+        android:typeface="serif" />
 
-    <TableLayout
-        android:id="@+id/buttonsTableVT"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+    <TableRow
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal" >
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+        <ImageButton
+            android:id="@+id/editVT"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:contentDescription="@string/editTask"
+            android:src="@android:drawable/ic_menu_edit" />
 
-            <ImageButton
-                android:id="@+id/editVT"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:contentDescription="@string/editTask"
-                android:src="@android:drawable/ic_menu_edit" />
+        <ImageButton
+            android:id="@+id/delVT"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:contentDescription="@string/deleteTask"
+            android:src="@android:drawable/ic_menu_delete" />
 
-            <ImageButton
-                android:id="@+id/delVT"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:contentDescription="@string/deleteTask"
-                android:src="@android:drawable/ic_menu_delete" />
-
-            <ImageButton
-                android:id="@+id/backVT"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:contentDescription="@string/exitET"
-                android:src="@android:drawable/ic_menu_revert" />
-        </TableRow>
-    </TableLayout>
+        <ImageButton
+            android:id="@+id/backVT"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:contentDescription="@string/exitET"
+            android:src="@android:drawable/ic_menu_revert" />
+    </TableRow>
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_width="280dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal" >
 
         <TextView
             android:id="@+id/viewNameTag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/taskName"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/viewNameTxt"
@@ -74,7 +73,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/viewNameTxt"
             android:text="@string/taskDescription"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/viewDescTxt"
@@ -93,7 +93,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/viewDescTxt"
             android:text="@string/taskType"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/viewTypeTxt"
@@ -112,7 +113,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/viewTypeTxt"
             android:text="@string/taskDate"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/viewDateTxt"
@@ -131,7 +133,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/viewDateTxt"
             android:text="@string/taskTime"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/viewTimeTxt"
@@ -150,7 +153,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/viewTimeTxt"
             android:text="@string/taskLocation"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/viewLocationTxt"

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:id="@+id/menuNewTask"
+          android:icon="@android:drawable/ic_menu_add"
+          android:title="@string/newTask"
+          android:showAsAction="ifRoom"/>
+	<item android:id="@+id/menuShowLocations"
+          android:icon="@drawable/globe"
+          android:title="@string/showLocations"
+          android:showAsAction="ifRoom"/>
+	<item android:id="@+id/menuFilter"
+          android:icon="@drawable/filter"
+          android:title="Filter Tasks"
+          android:showAsAction="ifRoom"/>
+	<item android:id="@+id/menuLogout"
+          android:icon="@drawable/logout"
+          android:title="Logout"
+          android:showAsAction="ifRoom"/>
+</menu>

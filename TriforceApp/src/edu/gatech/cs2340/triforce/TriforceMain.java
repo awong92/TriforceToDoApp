@@ -59,6 +59,7 @@ public class TriforceMain extends Activity implements OnClickListener {
 			info.close();
 			if (validLogin) { // If login is valid, currentUser is set
 				currentUser = loginNameStr;
+				loginPassword.setText("");
 				Intent viewTaskList = new Intent(
 						"edu.gatech.cs2340.triforce.TASKLISTACTIVITY");
 				startActivity(viewTaskList);
@@ -66,7 +67,7 @@ public class TriforceMain extends Activity implements OnClickListener {
 				Dialog dPass = new Dialog(this);
 				dPass.setTitle("Login Failed");
 				TextView tv = new TextView(this);
-				tv.setText("User is not available");
+				tv.setText("Username and/or Password is incorrect");
 				dPass.setContentView(tv);
 				dPass.show();
 			}

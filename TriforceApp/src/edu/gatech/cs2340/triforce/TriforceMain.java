@@ -19,7 +19,7 @@ import android.content.Intent;
 public class TriforceMain extends Activity implements OnClickListener {
 
 	static String currentUser = null;
-	Button loginButton, regButton, viewButton;
+	Button loginButton, regButton;
 	EditText loginName, loginPassword;
 
 	/**
@@ -33,14 +33,12 @@ public class TriforceMain extends Activity implements OnClickListener {
 		// capture our View elements
 		loginButton = (Button) findViewById(R.id.loginButton);
 		regButton = (Button) findViewById(R.id.GotoRegisterButton);
-		viewButton = (Button) findViewById(R.id.viewdbButton);
 		loginName = (EditText) findViewById(R.id.usernameField);
 		loginPassword = (EditText) findViewById(R.id.passwordField);
 
 		// set OnClickListeners for buttons
 		loginButton.setOnClickListener(this);
 		regButton.setOnClickListener(this);
-		viewButton.setOnClickListener(this);
 	}
 
 	/**
@@ -71,10 +69,6 @@ public class TriforceMain extends Activity implements OnClickListener {
 				dPass.setContentView(tv);
 				dPass.show();
 			}
-			break;
-		case R.id.viewdbButton:
-			Intent viewDB = new Intent("edu.gatech.cs2340.triforce.SQLVIEW");
-			startActivity(viewDB);
 			break;
 		case R.id.GotoRegisterButton:
 			Intent openRegPage = new Intent(

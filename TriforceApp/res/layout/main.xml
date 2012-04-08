@@ -111,18 +111,5 @@
             android:onClick="registerButton"
             android:text="@string/register" />
     </TableRow>
-    <!-- Register Button and Button to view Database -->
-
-    <TableRow
-        android:layout_width="280dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal" >
-
-        <Button
-            android:id="@+id/viewdbButton"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/viewDB" />
-    </TableRow>
 
 </LinearLayout>

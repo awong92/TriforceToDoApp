@@ -14,37 +14,17 @@
         android:textStyle="bold"
         android:typeface="serif" />
 
-    <TableRow
-        android:layout_width="280dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal" >
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/black_white_gradient" />
 
-        <ImageButton
-            android:id="@+id/editVT"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:contentDescription="@string/editTask"
-            android:src="@android:drawable/ic_menu_edit" />
+    <Space
+        android:id="@+id/spaceList"
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
 
-        <ImageButton
-            android:id="@+id/delVT"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:contentDescription="@string/deleteTask"
-            android:src="@android:drawable/ic_menu_delete" />
-
-        <ImageButton
-            android:id="@+id/backVT"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:contentDescription="@string/exitET"
-            android:src="@android:drawable/ic_menu_revert" />
-    </TableRow>
-
-    <RelativeLayout
+<RelativeLayout
         android:layout_width="280dp"
         android:layout_height="match_parent"
         android:layout_gravity="center_horizontal" >
@@ -62,7 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/viewNameTag"
-            android:layout_toRightOf="@+id/viewNameTag"
+            android:layout_toRightOf="@+id/viewDescTag"
             android:paddingLeft="3dp"
             android:text=""
             android:textAppearance="?android:attr/textAppearanceSmall" />
@@ -102,7 +82,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/viewTypeTag"
             android:layout_below="@+id/viewDescTxt"
-            android:layout_toRightOf="@+id/viewTypeTag"
+            android:layout_toRightOf="@+id/viewDescTag"
             android:paddingLeft="3dp"
             android:text=""
             android:textAppearance="?android:attr/textAppearanceSmall" />
@@ -122,7 +102,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/viewDateTag"
             android:layout_below="@+id/viewTypeTxt"
-            android:layout_toRightOf="@+id/viewDateTag"
+            android:layout_toRightOf="@+id/viewDescTag"
             android:paddingLeft="3dp"
             android:text=""
             android:textAppearance="?android:attr/textAppearanceSmall" />
@@ -142,7 +122,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/viewTimeTag"
             android:layout_below="@+id/viewDateTxt"
-            android:layout_toRightOf="@+id/viewTimeTag"
+            android:layout_toRightOf="@+id/viewDescTag"
             android:paddingLeft="3dp"
             android:text=""
             android:textAppearance="?android:attr/textAppearanceSmall" />
@@ -162,7 +142,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/viewLocationTag"
             android:layout_below="@+id/viewTimeTxt"
-            android:layout_toRightOf="@+id/viewLocationTag"
+            android:layout_toRightOf="@+id/viewDescTag"
             android:paddingLeft="3dp"
             android:text=""
             android:textAppearance="?android:attr/textAppearanceSmall" />

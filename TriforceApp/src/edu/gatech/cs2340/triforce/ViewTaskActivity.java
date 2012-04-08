@@ -6,9 +6,9 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageButton;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 /**
@@ -17,13 +17,12 @@ import android.widget.TextView;
  * @author Nathan Eppinger, Mallory Wynn, Alex Wong
  * @version 1.0
  */
-public class ViewTaskActivity extends Activity implements OnClickListener {
+public class ViewTaskActivity extends Activity {
 
 	Task task;
 	TextView name, desc, type, date, time, location;
 	String hourStr, minuteStr, timeStr;
 	int hour, minute, indexOfColon;
-	ImageButton editButton, backButton, deleteButton;
 	SQLiteDB db = new SQLiteDB(this);
 
 	/**
@@ -39,9 +38,6 @@ public class ViewTaskActivity extends Activity implements OnClickListener {
 		db.close();
 
 		// capture our View elements
-		editButton = (ImageButton) findViewById(R.id.editVT);
-		deleteButton = (ImageButton) findViewById(R.id.delVT);
-		backButton = (ImageButton) findViewById(R.id.backVT);
 		name = (TextView) findViewById(R.id.viewNameTxt);
 		desc = (TextView) findViewById(R.id.viewDescTxt);
 		type = (TextView) findViewById(R.id.viewTypeTxt);
@@ -75,10 +71,6 @@ public class ViewTaskActivity extends Activity implements OnClickListener {
 		date.setText(task.getDueDate());
 		time.setText(timeStr);
 		location.setText(task.getLocation());
-
-		editButton.setOnClickListener(this);
-		deleteButton.setOnClickListener(this);
-		backButton.setOnClickListener(this);
 	}
 
 	/**
@@ -94,9 +86,6 @@ public class ViewTaskActivity extends Activity implements OnClickListener {
 		db.close();
 
 		// recapture our View elements
-		editButton = (ImageButton) findViewById(R.id.editVT);
-		deleteButton = (ImageButton) findViewById(R.id.delVT);
-		backButton = (ImageButton) findViewById(R.id.backVT);
 		name = (TextView) findViewById(R.id.viewNameTxt);
 		desc = (TextView) findViewById(R.id.viewDescTxt);
 		type = (TextView) findViewById(R.id.viewTypeTxt);
@@ -130,24 +119,32 @@ public class ViewTaskActivity extends Activity implements OnClickListener {
 		date.setText(task.getDueDate());
 		time.setText(timeStr);
 		location.setText(task.getLocation());
-
-		editButton.setOnClickListener(this);
-		deleteButton.setOnClickListener(this);
-		backButton.setOnClickListener(this);
 	}
 
 	/**
-	 * Handles when the Edit, Delete, or Back button is clicked
+	 * Menu will pop up and inflate the task list menu
 	 */
 	@Override
-	public void onClick(View v) {
-		switch (v.getId()) {
-		case R.id.editVT:
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.menu_viewtask, menu);
+		return true;
+	}
+
+	/**
+	 * Handles when the New Task, Locations, Filter or Logout button is clicked
+	 * on the menu
+	 */
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle item selection
+		switch (item.getItemId()) {
+		case R.id.menuEditTask:
 			Intent editViewTask = new Intent(
 					"edu.gatech.cs2340.triforce.EDITTASKACTIVITY");
 			startActivity(editViewTask);
-			break;
-		case R.id.delVT:
+			return true;
+		case R.id.menuDeleteTask:
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
 			builder.setMessage("Are you sure you want to delete?");
 			builder.setCancelable(false);
@@ -175,11 +172,49 @@ public class ViewTaskActivity extends Activity implements OnClickListener {
 						}
 					});
 			builder.create().show();
+			return true;
+		case R.id.menuBackVT:
+			finish();
+			return true;
+
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	}
+
+	/*
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.editVT:
+			Intent editViewTask = new Intent(
+					"edu.gatech.cs2340.triforce.EDITTASKACTIVITY");
+			startActivity(editViewTask);
+			break;
+		case R.id.delVT:
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setMessage("Are you sure you want to delete?");
+			builder.setCancelable(false);
+			builder.setPositiveButton("Yes",
+					new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int id) {
+							db.open();
+							db.deleteTask(ListArrayAdapter.currTaskId);
+							db.close();
+							finish();
+						}
+					});
+			builder.setNegativeButton("No",
+					new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int id) {
+							dialog.cancel();
+						}
+					});
+			builder.create().show();
 			break;
 		case R.id.backVT:
 			finish();
 			break;
 		}
 	}
-
+*/
 }

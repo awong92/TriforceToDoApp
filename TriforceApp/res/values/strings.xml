@@ -9,7 +9,7 @@
     <string name="editTask">Edit Task</string>
     <string name="deleteTask">Delete Task</string>
     <string name="showLocations">Show Locations</string>
-    <string name="exitET">Leave Edit Task</string>
+    <string name="exitET">Back</string>
 
     <!-- TITLE STRINGS -->
     <string name="titleLogin">LOGIN</string>

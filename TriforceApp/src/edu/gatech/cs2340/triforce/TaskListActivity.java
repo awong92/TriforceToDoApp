@@ -38,8 +38,8 @@ import android.widget.TextView;
 public class TaskListActivity extends ListActivity {
 
 	ArrayAdapter<Task> listAdapter;
-	ImageButton newTaskButton, editTaskButton, locationsButton;
-	Button logoutButton, filterTasksButton;
+	TextView filterText;
+	String filterStr = "Showing ";
 	String filterBy = "All";
 	String oldFilterBy = filterBy;
 	List<Task> list;
@@ -64,16 +64,20 @@ public class TaskListActivity extends ListActivity {
 		setContentView(R.layout.user_tasklist);
 
 		/*
-		newTaskButton = (ImageButton) findViewById(R.id.newTaskButton);
-		logoutButton = (Button) findViewById(R.id.logoutButton);
-		filterTasksButton = (Button) findViewById(R.id.filterTasksButton);
-		locationsButton = (ImageButton) findViewById(R.id.showLocationsButton);
+		 * newTaskButton = (ImageButton) findViewById(R.id.newTaskButton);
+		 * logoutButton = (Button) findViewById(R.id.logoutButton);
+		 * filterTasksButton = (Button) findViewById(R.id.filterTasksButton);
+		 * locationsButton = (ImageButton)
+		 * findViewById(R.id.showLocationsButton);
+		 * 
+		 * newTaskButton.setOnClickListener(this);
+		 * logoutButton.setOnClickListener(this);
+		 * filterTasksButton.setOnClickListener(this);
+		 * locationsButton.setOnClickListener(this);
+		 */
 
-		newTaskButton.setOnClickListener(this);
-		logoutButton.setOnClickListener(this);
-		filterTasksButton.setOnClickListener(this);
-		locationsButton.setOnClickListener(this);
-		*/
+		filterText = (TextView) findViewById(R.id.filteringString);
+		filterText.setText(filterStr);
 
 		try {
 			getModel();
@@ -92,14 +96,17 @@ public class TaskListActivity extends ListActivity {
 		setContentView(R.layout.user_tasklist);
 
 		/*
-		newTaskButton = (ImageButton) findViewById(R.id.newTaskButton);
-		logoutButton = (Button) findViewById(R.id.logoutButton);
-		filterTasksButton = (Button) findViewById(R.id.filterTasksButton);
+		 * newTaskButton = (ImageButton) findViewById(R.id.newTaskButton);
+		 * logoutButton = (Button) findViewById(R.id.logoutButton);
+		 * filterTasksButton = (Button) findViewById(R.id.filterTasksButton);
+		 * 
+		 * newTaskButton.setOnClickListener(this);
+		 * logoutButton.setOnClickListener(this);
+		 * filterTasksButton.setOnClickListener(this);
+		 */
 
-		newTaskButton.setOnClickListener(this);
-		logoutButton.setOnClickListener(this);
-		filterTasksButton.setOnClickListener(this);
-		*/
+		filterText = (TextView) findViewById(R.id.filteringString);
+		filterText.setText(filterStr);
 
 		try {
 			getModel();
@@ -115,65 +122,65 @@ public class TaskListActivity extends ListActivity {
 	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-	    MenuInflater inflater = getMenuInflater();
-	    inflater.inflate(R.menu.menu_tasklist, menu);
-	    return true;
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.menu_tasklist, menu);
+		return true;
 	}
-	
+
 	/**
-	 * Handles when the New Task, Locations, Filter or Logout button is clicked on the menu
+	 * Handles when the New Task, Locations, Filter or Logout button is clicked
+	 * on the menu
 	 */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-	    // Handle item selection
-	    switch (item.getItemId()) {
-	        case R.id.menuNewTask:
-	        	Intent createNewTask = new Intent(
-						"edu.gatech.cs2340.triforce.NEWTASKACTIVITY");
-				startActivity(createNewTask);
-	            return true;
-	        case R.id.menuShowLocations:
-	        	Intent showLocations = new Intent("edu.gatech.cs2340.triforce.GMAP");
-				startActivity(showLocations);
-	            return true;
-	        case R.id.menuLogout:
-	        	TriforceMain.currentUser = null;
-				ListArrayAdapter.currTaskId = -1;
-				finish();
-	        	return true;
-	        case R.id.menuFilter:
-	        	OpenScreenDialog();
-	        	return true;
-	        	
-	        default:
-	            return super.onOptionsItemSelected(item);
-	    }
-	}
-	
-	/*
-	@Override
-	public void onClick(View v) {
-		switch (v.getId()) {
-		case R.id.newTaskButton:
+		// Handle item selection
+		switch (item.getItemId()) {
+		case R.id.menuNewTask:
 			Intent createNewTask = new Intent(
 					"edu.gatech.cs2340.triforce.NEWTASKACTIVITY");
 			startActivity(createNewTask);
-			break;
-		case R.id.logoutButton:
+			return true;
+		case R.id.menuShowLocations:
+			Intent showLocations = new Intent("edu.gatech.cs2340.triforce.GMAP");
+			startActivity(showLocations);
+			return true;
+		case R.id.menuLogout:
 			TriforceMain.currentUser = null;
 			ListArrayAdapter.currTaskId = -1;
 			finish();
-			break;
-		case R.id.filterTasksButton:
+			return true;
+		case R.id.menuFilter:
 			OpenScreenDialog();
-			break;
-		case R.id.showLocationsButton:
-			Intent showLocations = new Intent("edu.gatech.cs2340.triforce.GMAP");
-			startActivity(showLocations);
-			break;
+			return true;
+		case R.id.menuShowAll:
+			filterBy = "All";
+			mDay = 0;
+			filterChecked = "Both";
+			try {
+				getModel();
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			listAdapter = new ListArrayAdapter(TaskListActivity.this, list);
+			setListAdapter(listAdapter);
+			return true;
+
+		default:
+			return super.onOptionsItemSelected(item);
 		}
 	}
-	*/
+
+	/*
+	 * @Override public void onClick(View v) { switch (v.getId()) { case
+	 * R.id.newTaskButton: Intent createNewTask = new Intent(
+	 * "edu.gatech.cs2340.triforce.NEWTASKACTIVITY");
+	 * startActivity(createNewTask); break; case R.id.logoutButton:
+	 * TriforceMain.currentUser = null; ListArrayAdapter.currTaskId = -1;
+	 * finish(); break; case R.id.filterTasksButton: OpenScreenDialog(); break;
+	 * case R.id.showLocationsButton: Intent showLocations = new
+	 * Intent("edu.gatech.cs2340.triforce.GMAP"); startActivity(showLocations);
+	 * break; } }
+	 */
 
 	/**
 	 * Displays the dialog for filtering tasks
@@ -358,7 +365,78 @@ public class TaskListActivity extends ListActivity {
 		else
 			dateStr = (mMonth + 1) + "-" + mDay + "-" + mYear;
 		tasks.open();
-		list = tasks.getUserTasks(currentUser, filterBy, dateStr, filterChecked, this);
+		list = tasks.getUserTasks(currentUser, filterBy, dateStr,
+				filterChecked, this);
 		tasks.close();
+		updateFilterString();
+	}
+
+	private void updateFilterString() {
+		String dateStr;
+		if (mDay == 0)
+			dateStr = "no date filter";
+		else
+			dateStr = (mMonth + 1) + "-" + mDay + "-" + mYear;
+
+		filterStr = "Showing ";
+		if (filterChecked.equals("Unchecked Items")) {
+			filterStr += "incomplete ";
+			if (filterBy.equals("Personal")) {
+				filterStr += "Personal tasks";
+				if (!(dateStr.equals("no date filter")))
+					filterStr = filterStr + " after " + dateStr;
+			} else if (filterBy.equals("School")) {
+				filterStr += "School tasks";
+				if (!(dateStr.equals("no date filter")))
+					filterStr = filterStr + " after " + dateStr;
+			} else if (filterBy.equals("Work")) {
+				filterStr += "Work tasks";
+				if (!(dateStr.equals("no date filter")))
+					filterStr = filterStr + " after " + dateStr;
+			} else {
+				filterStr += "tasks";
+				if (!(dateStr.equals("no date filter")))
+					filterStr = filterStr + " after " + dateStr;
+			}
+		} else if (filterChecked.equals("Checked Items")) {
+			filterStr += "completed ";
+			if (filterBy.equals("Personal")) {
+				filterStr += "Personal tasks";
+				if (!(dateStr.equals("no date filter")))
+					filterStr = filterStr + " after " + dateStr;
+			} else if (filterBy.equals("School")) {
+				filterStr += "School tasks";
+				if (!(dateStr.equals("no date filter")))
+					filterStr = filterStr + " after " + dateStr;
+			} else if (filterBy.equals("Work")) {
+				filterStr += "Work tasks";
+				if (!(dateStr.equals("no date filter")))
+					filterStr = filterStr + " after " + dateStr;
+			} else {
+				filterStr += "tasks";
+				if (!(dateStr.equals("no date filter")))
+					filterStr = filterStr + " after " + dateStr;
+			}
+		} else {
+			if (filterBy.equals("Personal")) {
+				filterStr += "Personal tasks";
+				if (!(dateStr.equals("no date filter")))
+					filterStr = filterStr + " after " + dateStr;
+			} else if (filterBy.equals("School")) {
+				filterStr += "School tasks";
+				if (!(dateStr.equals("no date filter")))
+					filterStr = filterStr + " after " + dateStr;
+			} else if (filterBy.equals("Work")) {
+				filterStr += "Work tasks";
+				if (!(dateStr.equals("no date filter")))
+					filterStr = filterStr + " after " + dateStr;
+			} else {
+				filterStr += "All tasks";
+				if (!(dateStr.equals("no date filter")))
+					filterStr = filterStr + " after " + dateStr;
+			}
+		}
+
+		filterText.setText(filterStr);
 	}
 }

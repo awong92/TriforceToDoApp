@@ -18,6 +18,12 @@
         android:textStyle="bold"
         android:typeface="serif" />
 
+    <View
+        android:id="@+id/divider"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/black_white_gradient" />
+
     <!-- logo -->
 
     <ImageView

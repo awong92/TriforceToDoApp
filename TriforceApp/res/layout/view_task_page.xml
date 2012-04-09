@@ -25,7 +25,7 @@
     <View
         android:layout_width="fill_parent"
         android:layout_height="1dp"
-        android:background="@drawable/black_white_gradient" />
+        android:background="@drawable/black_yellow_gradient" />
 
     <Space
         android:id="@+id/spaceList"

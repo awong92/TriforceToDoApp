@@ -30,7 +30,7 @@
         android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@drawable/black_white_gradient" />
+        android:background="@drawable/black_yellow_gradient" />
 
     <!-- logo -->
 

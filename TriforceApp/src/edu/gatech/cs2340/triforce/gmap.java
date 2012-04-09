@@ -31,7 +31,7 @@ public class gmap<T> extends MapActivity {
 	GeoPoint p;
 	SQLiteDB db = new SQLiteDB(this);
 	Context c = this;
-	ArrayList<Task> tasks;
+	List<Task> tasks;
 	Geocoder geocoder;
 	double [] latt,lnng;
 	int x;
@@ -83,7 +83,7 @@ public class gmap<T> extends MapActivity {
         double lng = Double.parseDouble(coordinates[1]);
         db.open();
         try {
-			tasks = (ArrayList<Task>) db.getUserTasks(TriforceMain.currentUser, "All", "", "Both", c);
+			tasks =  db.getUserTasks(TriforceMain.currentUser, "All", "no date filter", "Both", c);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -91,6 +91,8 @@ public class gmap<T> extends MapActivity {
 		x = tasks.size();
 		for(int i = 0; i<x; i++){
 			Task t = tasks.get(i);
+			if(t == null){}
+			else{
 			try {
 				List<Address> addressList = geocoder.getFromLocationName(t.getLocation(), 5);
 				if(addressList != null && addressList.size()>0){
@@ -103,6 +105,7 @@ public class gmap<T> extends MapActivity {
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+			}
 			}
 		}
         p = new GeoPoint(

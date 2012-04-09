@@ -176,6 +176,11 @@ public class ViewTaskActivity extends Activity {
 		case R.id.menuBackVT:
 			finish();
 			return true;
+		case R.id.menuLogout:
+			TriforceMain.currentUser = null;
+			ListArrayAdapter.currTaskId = -1;
+			finish();
+			return true;
 
 		default:
 			return super.onOptionsItemSelected(item);
@@ -183,38 +188,18 @@ public class ViewTaskActivity extends Activity {
 	}
 
 	/*
-	public void onClick(View v) {
-		switch (v.getId()) {
-		case R.id.editVT:
-			Intent editViewTask = new Intent(
-					"edu.gatech.cs2340.triforce.EDITTASKACTIVITY");
-			startActivity(editViewTask);
-			break;
-		case R.id.delVT:
-			AlertDialog.Builder builder = new AlertDialog.Builder(this);
-			builder.setMessage("Are you sure you want to delete?");
-			builder.setCancelable(false);
-			builder.setPositiveButton("Yes",
-					new DialogInterface.OnClickListener() {
-						public void onClick(DialogInterface dialog, int id) {
-							db.open();
-							db.deleteTask(ListArrayAdapter.currTaskId);
-							db.close();
-							finish();
-						}
-					});
-			builder.setNegativeButton("No",
-					new DialogInterface.OnClickListener() {
-						public void onClick(DialogInterface dialog, int id) {
-							dialog.cancel();
-						}
-					});
-			builder.create().show();
-			break;
-		case R.id.backVT:
-			finish();
-			break;
-		}
-	}
-*/
+	 * public void onClick(View v) { switch (v.getId()) { case R.id.editVT:
+	 * Intent editViewTask = new Intent(
+	 * "edu.gatech.cs2340.triforce.EDITTASKACTIVITY");
+	 * startActivity(editViewTask); break; case R.id.delVT: AlertDialog.Builder
+	 * builder = new AlertDialog.Builder(this);
+	 * builder.setMessage("Are you sure you want to delete?");
+	 * builder.setCancelable(false); builder.setPositiveButton("Yes", new
+	 * DialogInterface.OnClickListener() { public void onClick(DialogInterface
+	 * dialog, int id) { db.open(); db.deleteTask(ListArrayAdapter.currTaskId);
+	 * db.close(); finish(); } }); builder.setNegativeButton("No", new
+	 * DialogInterface.OnClickListener() { public void onClick(DialogInterface
+	 * dialog, int id) { dialog.cancel(); } }); builder.create().show(); break;
+	 * case R.id.backVT: finish(); break; } }
+	 */
 }

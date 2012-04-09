@@ -2,16 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <item
-        android:id="@+id/menuEditTask"
-        android:icon="@android:drawable/ic_menu_edit"
-        android:showAsAction="ifRoom"
-        android:title="@string/editTask"/>
-    <item
-        android:id="@+id/menuDeleteTask"
-        android:icon="@android:drawable/ic_menu_delete"
-        android:showAsAction="ifRoom"
-        android:title="@string/deleteTask"/>
-    <item
         android:id="@+id/menuBackVT"
         android:icon="@android:drawable/ic_menu_revert"
         android:showAsAction="ifRoom"

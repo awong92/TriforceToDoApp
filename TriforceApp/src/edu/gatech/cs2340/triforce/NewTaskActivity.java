@@ -4,10 +4,16 @@ import java.util.Calendar;
 
 import edu.gatech.cs2340.r.R;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -92,6 +98,39 @@ public class NewTaskActivity extends Activity implements OnClickListener {
 		saveButton.setOnClickListener(this);
 		cancelButton.setOnClickListener(this);
 		typeSpinner.setOnItemSelectedListener(new MyOnItemSelectedListener());
+	}
+
+	/**
+	 * Menu will pop up and inflate the task list menu
+	 */
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.menu_back_and_logout, menu);
+		return true;
+	}
+
+	/**
+	 * Handles when the New Task, Locations, Filter or Logout button is clicked
+	 * on the menu
+	 */
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle item selection
+		switch (item.getItemId()) {
+
+		case R.id.menuBackVT:
+			finish();
+			return true;
+		case R.id.menuLogout:
+			TriforceMain.currentUser = null;
+			ListArrayAdapter.currTaskId = -1;
+			finish();
+			return true;
+
+		default:
+			return super.onOptionsItemSelected(item);
+		}
 	}
 
 	/**

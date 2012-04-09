@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import edu.gatech.cs2340.r.R;
 import android.content.Context;
@@ -77,10 +78,13 @@ public class gmap<T> extends MapActivity {
         mapView.displayZoomControls(true);
         
         mc = mapView.getController();
+        geocoder = new Geocoder(getBaseContext(), Locale.getDefault());
+        
         //atlanta lat and lng found on google lol 
         String coordinates[] = {"33.778","275.602"};
         double lat = Double.parseDouble(coordinates[0]);
         double lng = Double.parseDouble(coordinates[1]);
+        
         db.open();
         try {
 			tasks =  db.getUserTasks(TriforceMain.currentUser, "All", "no date filter", "Both", c);

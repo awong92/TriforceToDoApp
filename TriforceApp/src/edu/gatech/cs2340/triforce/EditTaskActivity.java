@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.Toast;
 
 /**
  * Team Triforce (36) Back-end for edit_task_page.xml. Allows users to edit a
@@ -144,6 +145,8 @@ public class EditTaskActivity extends Activity implements OnClickListener {
 			task.updateTask(ListArrayAdapter.currTaskId, taskName, taskDesc,
 					taskType, taskDate, taskTime, taskLocation);
 			task.close();
+			Toast.makeText(getBaseContext(), "Saving task...", Toast.LENGTH_SHORT)
+					.show();
 			finish();
 			break;
 		case R.id.cancelButtonET:

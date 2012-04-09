@@ -16,10 +16,5 @@
         android:icon="@android:drawable/ic_menu_revert"
         android:showAsAction="ifRoom"
         android:title="@string/exitET"/>
-    <item
-        android:id="@+id/menuLogout"
-        android:icon="@drawable/logout"
-        android:showAsAction="ifRoom"
-        android:title="Logout"/>
 
 </menu>

@@ -26,6 +26,7 @@ import android.widget.DatePicker;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Team Triforce (36) Back-end for user_tasklist.xml. Displays new tasks and
@@ -62,19 +63,6 @@ public class TaskListActivity extends ListActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.user_tasklist);
 
-		/*
-		 * newTaskButton = (ImageButton) findViewById(R.id.newTaskButton);
-		 * logoutButton = (Button) findViewById(R.id.logoutButton);
-		 * filterTasksButton = (Button) findViewById(R.id.filterTasksButton);
-		 * locationsButton = (ImageButton)
-		 * findViewById(R.id.showLocationsButton);
-		 * 
-		 * newTaskButton.setOnClickListener(this);
-		 * logoutButton.setOnClickListener(this);
-		 * filterTasksButton.setOnClickListener(this);
-		 * locationsButton.setOnClickListener(this);
-		 */
-
 		filterText = (TextView) findViewById(R.id.filteringString);
 		filterText.setText(filterStr);
 
@@ -92,18 +80,6 @@ public class TaskListActivity extends ListActivity {
 	 */
 	public void onRestart() {
 		super.onRestart();
-		setContentView(R.layout.user_tasklist);
-
-		/*
-		 * newTaskButton = (ImageButton) findViewById(R.id.newTaskButton);
-		 * logoutButton = (Button) findViewById(R.id.logoutButton);
-		 * filterTasksButton = (Button) findViewById(R.id.filterTasksButton);
-		 * 
-		 * newTaskButton.setOnClickListener(this);
-		 * logoutButton.setOnClickListener(this);
-		 * filterTasksButton.setOnClickListener(this);
-		 */
-
 		filterText = (TextView) findViewById(R.id.filteringString);
 		filterText.setText(filterStr);
 
@@ -146,6 +122,8 @@ public class TaskListActivity extends ListActivity {
 		case R.id.menuLogout:
 			TriforceMain.currentUser = null;
 			ListArrayAdapter.currTaskId = -1;
+			Toast.makeText(getBaseContext(), "Logging out...",
+					Toast.LENGTH_SHORT).show();
 			finish();
 			return true;
 		case R.id.menuFilter:
@@ -157,6 +135,8 @@ public class TaskListActivity extends ListActivity {
 			filterChecked = "Both";
 			try {
 				getModel();
+				Toast.makeText(getBaseContext(), "Displaying all tasks",
+						Toast.LENGTH_SHORT).show();
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
@@ -168,18 +148,6 @@ public class TaskListActivity extends ListActivity {
 			return super.onOptionsItemSelected(item);
 		}
 	}
-
-	/*
-	 * @Override public void onClick(View v) { switch (v.getId()) { case
-	 * R.id.newTaskButton: Intent createNewTask = new Intent(
-	 * "edu.gatech.cs2340.triforce.NEWTASKACTIVITY");
-	 * startActivity(createNewTask); break; case R.id.logoutButton:
-	 * TriforceMain.currentUser = null; ListArrayAdapter.currTaskId = -1;
-	 * finish(); break; case R.id.filterTasksButton: OpenScreenDialog(); break;
-	 * case R.id.showLocationsButton: Intent showLocations = new
-	 * Intent("edu.gatech.cs2340.triforce.GMAP"); startActivity(showLocations);
-	 * break; } }
-	 */
 
 	/**
 	 * Displays the dialog for filtering tasks
@@ -377,7 +345,7 @@ public class TaskListActivity extends ListActivity {
 		else
 			dateStr = (mMonth + 1) + "-" + mDay + "-" + mYear;
 
-		filterStr = "Showing ";
+		filterStr = "Displaying ";
 		if (filterChecked.equals("Unchecked Items")) {
 			filterStr += "incomplete ";
 			if (filterBy.equals("Personal")) {

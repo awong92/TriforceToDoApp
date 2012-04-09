@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Team Triforce (36) Back-end for register.xml. Registers new users or cancels
@@ -106,9 +107,7 @@ public class RegisterActivity extends Activity implements OnClickListener {
 				dFail.show();
 			} finally {
 				if (didItWork) {
-					Dialog dPass = new Dialog(this);
-					dPass.setTitle("Registration Completed");
-					dPass.show();
+					Toast.makeText(getBaseContext(), "Registration complete", Toast.LENGTH_SHORT).show();
 					finish();
 				}
 			}

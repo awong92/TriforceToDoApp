@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Team Triforce (36) Back-end for view_task_page.xml. Allows users view a task
@@ -158,6 +159,9 @@ public class ViewTaskActivity extends Activity {
 							db.open();
 							db.deleteTask(ListArrayAdapter.currTaskId);
 							db.close();
+							Toast.makeText(getBaseContext(),
+									"Deleting task...", Toast.LENGTH_SHORT)
+									.show();
 							finish();
 						}
 					});

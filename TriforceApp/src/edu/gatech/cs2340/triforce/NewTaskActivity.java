@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.Toast;
 
 /**
  * Team Triforce (36) Back-end for new_task_page.xml. Allows users to add a new
@@ -189,6 +190,7 @@ public class NewTaskActivity extends Activity implements OnClickListener {
 			task.createTaskEntry(TriforceMain.currentUser, taskName, taskDesc,
 					taskType, taskDate, taskTime, taskLocation);
 			task.close();
+			Toast.makeText(getBaseContext(), "Creating task...", Toast.LENGTH_SHORT).show();
 			finish();
 			break;
 		case R.id.cancelButtonNT:

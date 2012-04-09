@@ -14,6 +14,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.content.Intent;
 
 public class TriforceMain extends Activity implements OnClickListener {
@@ -60,6 +61,7 @@ public class TriforceMain extends Activity implements OnClickListener {
 				loginPassword.setText("");
 				Intent viewTaskList = new Intent(
 						"edu.gatech.cs2340.triforce.TASKLISTACTIVITY");
+				Toast.makeText(getBaseContext(), "Logging in...", Toast.LENGTH_SHORT).show();
 				startActivity(viewTaskList);
 			} else { // If login is invalid, show prompt
 				Dialog dPass = new Dialog(this);

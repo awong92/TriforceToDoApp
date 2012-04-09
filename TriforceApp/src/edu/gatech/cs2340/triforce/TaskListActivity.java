@@ -222,7 +222,7 @@ public class TaskListActivity extends ListActivity {
 
 		// "Date: "
 		TextView textDate = new TextView(TaskListActivity.this);
-		textDate.setText("Date: ");
+		textDate.setText("Date after: ");
 		LayoutParams textDateLayoutParams = new LayoutParams(
 				LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 		textDate.setLayoutParams(textDateLayoutParams);

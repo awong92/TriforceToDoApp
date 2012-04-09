@@ -34,7 +34,8 @@ public class gmap<T> extends MapActivity {
 	Context c = this;
 	List<Task> tasks;
 	Geocoder geocoder;
-	double [] latt,lnng;
+	double [] latt, lnng;
+	
 	int x;
 	
 	class MapOverlay extends com.google.android.maps.Overlay
@@ -78,7 +79,7 @@ public class gmap<T> extends MapActivity {
         mapView.displayZoomControls(true);
         
         mc = mapView.getController();
-        geocoder = new Geocoder(getBaseContext(), Locale.getDefault());
+        geocoder = new Geocoder(this, Locale.getDefault());
         
         //atlanta lat and lng found on google lol 
         String coordinates[] = {"33.778","275.602"};
@@ -93,10 +94,12 @@ public class gmap<T> extends MapActivity {
 			e.printStackTrace();
 		}
 		x = tasks.size();
+		latt = new double [tasks.size()];
+		lnng = new double [tasks.size()];
+		
 		for(int i = 0; i<x; i++){
 			Task t = tasks.get(i);
 			if(t == null){}
-			else{
 			try {
 				List<Address> addressList = geocoder.getFromLocationName(t.getLocation(), 5);
 				if(addressList != null && addressList.size()>0){
@@ -109,7 +112,6 @@ public class gmap<T> extends MapActivity {
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
 			}
 		}
         p = new GeoPoint(

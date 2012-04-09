@@ -176,11 +176,6 @@ public class ViewTaskActivity extends Activity {
 		case R.id.menuBackVT:
 			finish();
 			return true;
-		case R.id.menuLogout:
-			TriforceMain.currentUser = null;
-			ListArrayAdapter.currTaskId = -1;
-			finish();
-			return true;
 
 		default:
 			return super.onOptionsItemSelected(item);

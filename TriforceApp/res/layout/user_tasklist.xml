@@ -5,44 +5,55 @@
     android:id="@+id/user_task_list"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="#FFDD73"
     android:orientation="vertical" >
 
     <!-- Title "TASK LIST" -->
 
-    <TextView
-        android:id="@+id/titleTaskList"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/titleTaskList"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textStyle="bold"
-        android:typeface="serif" />
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#A67D00" >
+
+        <TextView
+            android:id="@+id/titleTaskList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="@string/titleTaskList"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="bold"
+            android:typeface="serif" />
+    </TableRow>
 
     <View
         android:layout_width="fill_parent"
         android:layout_height="1dp"
-        android:background="@drawable/black_white_gradient" />
+        android:background="@drawable/solid_dark_blue" />
 
     <TableRow
-        android:layout_width="280dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal" >
+        android:layout_gravity="center_horizontal"
+        android:background="#245A7A" >
 
         <TextView
             android:id="@+id/filteringString"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingBottom="2dp"
+            android:paddingLeft="20dp"
             android:paddingTop="2dp"
             android:text=""
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#FFFFFF" />
     </TableRow>
 
     <View
         android:layout_width="fill_parent"
         android:layout_height="1dp"
-        android:background="@drawable/solid_white" />
+        android:background="@drawable/black_white_gradient" />
 
     <!-- View that displays the tasks -->
 
@@ -52,9 +63,9 @@
         android:layout_height="0dp"
         android:layout_gravity="center_horizontal"
         android:layout_weight="1"
-        android:background="#000000"
+        android:background="#FFDD73"
         android:clickable="true"
-        android:divider="#AAAAAA"
+        android:divider="#555555"
         android:dividerHeight="1dp"
         android:drawSelectorOnTop="false" >
     </ListView>

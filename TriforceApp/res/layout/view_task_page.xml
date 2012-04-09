@@ -2,17 +2,25 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFDD73"
     android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/headerVT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/titleVT"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textStyle="bold"
-        android:typeface="serif" />
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#A67D00" >
+
+        <TextView
+            android:id="@+id/headerVT"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="@string/titleVT"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="bold"
+            android:typeface="serif" />
+    </TableRow>
 
     <View
         android:layout_width="fill_parent"
@@ -22,9 +30,9 @@
     <Space
         android:id="@+id/spaceList"
         android:layout_width="match_parent"
-        android:layout_height="10dp" />
+        android:layout_height="20dp" />
 
-<RelativeLayout
+    <RelativeLayout
         android:layout_width="280dp"
         android:layout_height="match_parent"
         android:layout_gravity="center_horizontal" >
@@ -35,6 +43,7 @@
             android:layout_height="wrap_content"
             android:text="@string/taskName"
             android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#03436A"
             android:textStyle="bold" />
 
         <TextView
@@ -45,7 +54,8 @@
             android:layout_toRightOf="@+id/viewDescTag"
             android:paddingLeft="3dp"
             android:text=""
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#3b2c00" />
 
         <TextView
             android:id="@+id/viewDescTag"
@@ -54,6 +64,7 @@
             android:layout_below="@+id/viewNameTxt"
             android:text="@string/taskDescription"
             android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#03436A"
             android:textStyle="bold" />
 
         <TextView
@@ -65,7 +76,8 @@
             android:layout_toRightOf="@+id/viewDescTag"
             android:paddingLeft="3dp"
             android:text=""
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#3b2c00" />
 
         <TextView
             android:id="@+id/viewTypeTag"
@@ -74,6 +86,7 @@
             android:layout_below="@+id/viewDescTxt"
             android:text="@string/taskType"
             android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#03436A"
             android:textStyle="bold" />
 
         <TextView
@@ -85,7 +98,8 @@
             android:layout_toRightOf="@+id/viewDescTag"
             android:paddingLeft="3dp"
             android:text=""
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#3b2c00" />
 
         <TextView
             android:id="@+id/viewDateTag"
@@ -94,6 +108,7 @@
             android:layout_below="@+id/viewTypeTxt"
             android:text="@string/taskDate"
             android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#03436A"
             android:textStyle="bold" />
 
         <TextView
@@ -105,7 +120,8 @@
             android:layout_toRightOf="@+id/viewDescTag"
             android:paddingLeft="3dp"
             android:text=""
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#3b2c00" />
 
         <TextView
             android:id="@+id/viewTimeTag"
@@ -114,6 +130,7 @@
             android:layout_below="@+id/viewDateTxt"
             android:text="@string/taskTime"
             android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#03436A"
             android:textStyle="bold" />
 
         <TextView
@@ -125,7 +142,8 @@
             android:layout_toRightOf="@+id/viewDescTag"
             android:paddingLeft="3dp"
             android:text=""
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#3b2c00" />
 
         <TextView
             android:id="@+id/viewLocationTag"
@@ -134,6 +152,7 @@
             android:layout_below="@+id/viewTimeTxt"
             android:text="@string/taskLocation"
             android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#03436A"
             android:textStyle="bold" />
 
         <TextView
@@ -145,7 +164,8 @@
             android:layout_toRightOf="@+id/viewDescTag"
             android:paddingLeft="3dp"
             android:text=""
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#3b2c00" />
     </RelativeLayout>
 
 </LinearLayout>

@@ -2,25 +2,33 @@
 <!-- Team Triforce (36) : main login page -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFDD73"
     android:orientation="vertical" >
 
     <!-- title of login screen -->
 
-    <TextView
-        android:id="@+id/titleLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/titleLogin"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textStyle="bold"
-        android:typeface="serif" />
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#A67D00" >
+
+        <TextView
+            android:id="@+id/titleLogin"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="@string/titleLogin"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="bold"
+            android:typeface="serif" />
+    </TableRow>
 
     <View
         android:id="@+id/divider"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@drawable/black_white_gradient" />
 
@@ -47,6 +55,7 @@
             android:layout_height="wrap_content"
             android:text="@string/username"
             android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#03436A"
             android:textStyle="bold" />
     </TableRow>
 
@@ -74,6 +83,7 @@
             android:layout_height="wrap_content"
             android:text="@string/password"
             android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#03436A"
             android:textStyle="bold" />
     </TableRow>
 

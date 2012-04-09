@@ -1,26 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content" >
+    android:layout_height="match_parent"
+    android:background="#FFDD73" >
 
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:background="#FFDD73"
         android:orientation="vertical" >
 
         <!-- Title "NEW TASK" -->
 
-        <TextView
-            android:id="@+id/headerET"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="@string/titleET"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textStyle="bold"
-            android:typeface="serif" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="#A67D00" >
+
+            <TextView
+                android:id="@+id/headerET"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingLeft="20dp"
+                android:text="@string/titleET"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textStyle="bold"
+                android:typeface="serif" />
+        </TableRow>
 
         <View
             android:id="@+id/divider"
@@ -28,6 +37,9 @@
             android:layout_height="1dp"
             android:background="@drawable/black_white_gradient" />
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
         <!-- Tag asking for Task Name and its edit form -->
 
         <TableRow
@@ -41,6 +53,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/taskName"
                 android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#03436A"
                 android:textStyle="bold" />
         </TableRow>
 
@@ -71,6 +84,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/taskDescription"
                 android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#03436A"
                 android:textStyle="bold" />
         </TableRow>
 
@@ -101,6 +115,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/taskType"
                 android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#03436A"
                 android:textStyle="bold" />
 
             <Spinner
@@ -122,6 +137,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/taskDate"
+                android:textColor="#03436A"
                 android:textStyle="bold" />
 
             <Button
@@ -142,6 +158,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/taskTime"
+                android:textColor="#03436A"
                 android:textStyle="bold" />
 
             <Button
@@ -163,6 +180,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/taskLocation"
                 android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#03436A"
                 android:textStyle="bold" />
         </TableRow>
 

@@ -4,19 +4,27 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFDD73"
     android:orientation="vertical" >
 
     <!-- title of register screen -->
 
-    <TextView
-        android:id="@+id/titleRegistration"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/titleRegistration"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textStyle="bold"
-        android:typeface="serif" />
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#A67D00" >
+
+        <TextView
+            android:id="@+id/titleRegistration"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="@string/titleRegistration"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="bold"
+            android:typeface="serif" />
+    </TableRow>
 
     <View
         android:id="@+id/divider"
@@ -39,7 +47,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/username"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#03436A"
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/usernameError"
@@ -71,7 +81,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/password"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#03436A"
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/passwordError"
@@ -103,7 +115,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/name"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#03436A"
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/nameError"
@@ -135,7 +149,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/email"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#03436A"
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/emailError"

@@ -71,7 +71,7 @@ public class ListArrayAdapter extends ArrayAdapter<Task> {
 				@Override
 				public void onClick(View v) {
 					currTaskId = list.get(position).getTaskId();
-					v.setBackgroundColor(Color.rgb(255, 140, 0));
+					v.setBackgroundColor(Color.rgb(243, 183, 0));
 					Intent viewTask = new Intent(
 							"edu.gatech.cs2340.triforce.VIEWTASKACTIVITY");
 					context.startActivity(viewTask);

@@ -85,6 +85,7 @@ public class TaskValidation extends ActivityInstrumentationTestCase2<TriforceMai
 		solo.clickOnMenuItem("Edit Task");
 		solo.enterText(0, "home2");
 		solo.clickOnButton(2);
+		solo.goBackToActivity("TaskListActivity");
 		assertEquals("Task Wasn't Edited", true,solo.searchText("home2"));
 	}
 	
@@ -125,7 +126,7 @@ public class TaskValidation extends ActivityInstrumentationTestCase2<TriforceMai
 		solo.clickOnButton(0);
 		
 		solo.clickOnMenuItem("Show Locations");
-		assertEquals("Google Maps didn't open","gMap", solo.getCurrentActivity());
+		assertEquals("Google Maps didn't open","gmap", solo.getCurrentActivity());
 	}
 	
 	@Override

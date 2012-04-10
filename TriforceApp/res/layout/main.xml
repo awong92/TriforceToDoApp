@@ -36,8 +36,8 @@
 
     <ImageView
         android:id="@+id/tforceLogo"
-        android:layout_width="200dp"
-        android:layout_height="240dp"
+        android:layout_width="275dp"
+        android:layout_height="275dp"
         android:layout_gravity="center"
         android:contentDescription="@string/tforce_logo"
         android:src="@drawable/tforce_app_logo" />

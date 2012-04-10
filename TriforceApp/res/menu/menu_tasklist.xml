@@ -8,7 +8,7 @@
         android:title="@string/newTask"/>
     <item
         android:id="@+id/menuShowLocations"
-        android:icon="@drawable/globe"
+        android:icon="@android:drawable/ic_menu_mapmode"
         android:showAsAction="ifRoom"
         android:title="@string/showLocations"/>
     <item

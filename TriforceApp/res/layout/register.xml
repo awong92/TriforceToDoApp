@@ -67,7 +67,8 @@
             android:id="@+id/newUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
     </TableRow>
     <!-- Password tag above the text field where the user inputs a new password -->
 
@@ -117,7 +118,8 @@
             android:layout_height="wrap_content"
             android:text="@string/name"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="#03436A" />
+            android:textColor="#03436A"
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/nameError"
@@ -151,7 +153,8 @@
             android:layout_height="wrap_content"
             android:text="@string/email"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="#03436A" />
+            android:textColor="#03436A"
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/emailError"
@@ -169,7 +172,8 @@
             android:id="@+id/newEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
     </TableRow>
 
     <TableRow

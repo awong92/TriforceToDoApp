@@ -131,15 +131,15 @@ public class TaskValidation extends ActivityInstrumentationTestCase2<TriforceMai
 	 * Tests to make sure google maps open
 	 * 
 	 */
-//	public void testGoogleM(){
+	public void testGoogleM(){
 
-	//	solo.enterText(0, "nepp");
-		///solo.enterText(1, "nepp");
-	//	solo.clickOnButton(0);
+		solo.enterText(0, "nepp");
+		solo.enterText(1, "nepp");
+		solo.clickOnButton(0);
 		
-//		solo.clickOnMenuItem("Show Locations");
-	//	assertEquals("Google Maps didn't open","edu.gatech.cs2340", solo.getCurrentActivity());
-	//}
+		solo.clickOnMenuItem("Show Locations");
+		solo.assertCurrentActivity("google maps didn't open", gmap.class);
+	}
 	
 	@Override
 	public void tearDown() throws Exception {

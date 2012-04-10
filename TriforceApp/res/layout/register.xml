@@ -117,8 +117,7 @@
             android:layout_height="wrap_content"
             android:text="@string/name"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="#03436A"
-            android:textStyle="bold" />
+            android:textColor="#03436A" />
 
         <ImageView
             android:id="@+id/nameError"
@@ -152,8 +151,7 @@
             android:layout_height="wrap_content"
             android:text="@string/email"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="#03436A"
-            android:textStyle="bold" />
+            android:textColor="#03436A" />
 
         <ImageView
             android:id="@+id/emailError"

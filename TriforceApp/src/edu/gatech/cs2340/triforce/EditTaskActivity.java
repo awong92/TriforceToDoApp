@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -29,6 +30,7 @@ public class EditTaskActivity extends Activity implements OnClickListener {
 
 	Task task;
 	EditText nameField, descField, locationField;
+	ImageView taskNameError;
 	Button mPickDate, mPickTime, saveButton, cancelButton;
 	int mYear, mMonth, mDay, mHour, mMinute, typePosition;
 	String taskType, hourStr, minuteStr, timeStr, monthStr, dayStr, yearStr;
@@ -53,6 +55,7 @@ public class EditTaskActivity extends Activity implements OnClickListener {
 
 		// capture our View elements
 		nameField = (EditText) findViewById(R.id.editTaskNameET);
+		taskNameError = (ImageView) findViewById(R.id.taskNameErrorET);
 		descField = (EditText) findViewById(R.id.editTaskDescriptET);
 		typeSpinner = (Spinner) findViewById(R.id.newTypeOfTaskET);
 		mPickDate = (Button) findViewById(R.id.pickDateET);
@@ -60,6 +63,8 @@ public class EditTaskActivity extends Activity implements OnClickListener {
 		locationField = (EditText) findViewById(R.id.editLocationET);
 		saveButton = (Button) findViewById(R.id.saveButtonET);
 		cancelButton = (Button) findViewById(R.id.cancelButtonET);
+
+		taskNameError.setVisibility(View.INVISIBLE);
 
 		// set elements to Task attributes
 		nameField.setText(task.getName());
@@ -125,6 +130,8 @@ public class EditTaskActivity extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.saveButtonET:
+			taskNameError.setVisibility(View.INVISIBLE);
+
 			String taskName = nameField.getText().toString();
 			String taskDesc = descField.getText().toString();
 			String dayStr = "";
@@ -140,14 +147,22 @@ public class EditTaskActivity extends Activity implements OnClickListener {
 				minute = "" + mMinute;
 			String taskTime = mHour + ":" + minute;
 			String taskLocation = locationField.getText().toString();
-			SQLiteDB task = new SQLiteDB(this);
-			task.open();
-			task.updateTask(ListArrayAdapter.currTaskId, taskName, taskDesc,
-					taskType, taskDate, taskTime, taskLocation);
-			task.close();
-			Toast.makeText(getBaseContext(), "Saving task...",
-					Toast.LENGTH_SHORT).show();
-			finish();
+
+			if (nameField.getText().toString().equals("")) {
+				taskNameError.setVisibility(View.VISIBLE);
+				Dialog missingName = new Dialog(this);
+				missingName.setTitle("Fill in the Task Name field");
+				missingName.show();
+			} else {
+				SQLiteDB task = new SQLiteDB(this);
+				task.open();
+				task.updateTask(ListArrayAdapter.currTaskId, taskName,
+						taskDesc, taskType, taskDate, taskTime, taskLocation);
+				task.close();
+				Toast.makeText(getBaseContext(), "Saving task...",
+						Toast.LENGTH_SHORT).show();
+				finish();
+			}
 			break;
 		case R.id.cancelButtonET:
 			finish();

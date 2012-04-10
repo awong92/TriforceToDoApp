@@ -27,7 +27,29 @@
     </TableRow>
 
     <View
-        android:id="@+id/divider"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/solid_dark_blue" />
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="#245A7A" >
+
+        <TextView
+            android:id="@+id/registrationBanner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="2dp"
+            android:paddingLeft="20dp"
+            android:paddingTop="2dp"
+            android:text="All fields are required"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#FFFFFF" />
+    </TableRow>
+
+    <View
         android:layout_width="fill_parent"
         android:layout_height="1dp"
         android:background="@drawable/black_yellow_gradient" />

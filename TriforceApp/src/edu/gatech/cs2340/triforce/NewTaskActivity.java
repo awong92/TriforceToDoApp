@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -30,6 +31,7 @@ import android.widget.Toast;
 public class NewTaskActivity extends Activity implements OnClickListener {
 
 	EditText nameField, descField, locationField;
+	ImageView taskNameError;
 	Button mPickDate, mPickTime, saveButton, cancelButton;
 	int mYear, mMonth, mDay, mHour, mMinute;
 	String taskType = "Personal";
@@ -47,12 +49,15 @@ public class NewTaskActivity extends Activity implements OnClickListener {
 
 		// capture our View elements
 		nameField = (EditText) findViewById(R.id.editTaskName);
+		taskNameError = (ImageView) findViewById(R.id.taskNameErrorNT);
 		descField = (EditText) findViewById(R.id.editTaskDescript);
 		mPickDate = (Button) findViewById(R.id.pickDateNT);
 		mPickTime = (Button) findViewById(R.id.pickTime);
 		locationField = (EditText) findViewById(R.id.editLocation);
 		saveButton = (Button) findViewById(R.id.saveButtonNT);
 		cancelButton = (Button) findViewById(R.id.cancelButtonNT);
+
+		taskNameError.setVisibility(View.INVISIBLE);
 
 		// add a click listener to the buttons
 		mPickDate.setOnClickListener(new View.OnClickListener() {
@@ -170,6 +175,8 @@ public class NewTaskActivity extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.saveButtonNT:
+			taskNameError.setVisibility(View.INVISIBLE);
+
 			String taskName = nameField.getText().toString();
 			String taskDesc = descField.getText().toString();
 			String dayStr = "";
@@ -185,14 +192,22 @@ public class NewTaskActivity extends Activity implements OnClickListener {
 				minute = "" + mMinute;
 			String taskTime = mHour + ":" + minute;
 			String taskLocation = locationField.getText().toString();
-			SQLiteDB task = new SQLiteDB(this);
-			task.open();
-			task.createTaskEntry(TriforceMain.currentUser, taskName, taskDesc,
-					taskType, taskDate, taskTime, taskLocation);
-			task.close();
-			Toast.makeText(getBaseContext(), "Creating task...",
-					Toast.LENGTH_SHORT).show();
-			finish();
+
+			if (nameField.getText().toString().equals("")) {
+				taskNameError.setVisibility(View.VISIBLE);
+				Dialog missingName = new Dialog(this);
+				missingName.setTitle("Fill in the Task Name field");
+				missingName.show();
+			} else {
+				SQLiteDB task = new SQLiteDB(this);
+				task.open();
+				task.createTaskEntry(TriforceMain.currentUser, taskName,
+						taskDesc, taskType, taskDate, taskTime, taskLocation);
+				task.close();
+				Toast.makeText(getBaseContext(), "Creating task...",
+						Toast.LENGTH_SHORT).show();
+				finish();
+			}
 			break;
 		case R.id.cancelButtonNT:
 			finish();

@@ -1,25 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Google maps xml page -->
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="fill_parent"
-	android:layout_height="fill_parent">
-	
-	
-	<com.google.android.maps.MapView
-        android:id="@+id/mapview"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFDD73"
+    android:orientation="vertical" >
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#A67D00" >
+
+        <TextView
+            android:id="@+id/headerVT"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="TASK LOCATIONS"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="bold"
+            android:typeface="serif" />
+    </TableRow>
+
+    <View
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:state_enabled="true"
-        android:clickable="true"
-        android:apiKey="0aw0R-Thm3TfPhgEsNygc4QrgsBep7AN9RUDYgQ"
-	/>
-	
-	<LinearLayout
-		android:id="@+id/zoom"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_alignParentBottom="true"
-		android:layout_centerHorizontal="true"
-		/>
-		
-</RelativeLayout>
+        android:layout_height="1dp"
+        android:background="@drawable/black_yellow_gradient" />
+    <!-- Google maps xml page -->
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <com.google.android.maps.MapView
+            android:id="@+id/mapview"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:apiKey="0igTxXL3D4YPFlJChwlIdaTzyyn7Lz3hb8goNxA"
+            android:clickable="true"
+            android:state_enabled="true" />
+
+        <LinearLayout
+            android:id="@+id/zoom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+
+</LinearLayout>

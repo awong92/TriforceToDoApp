@@ -101,7 +101,8 @@
             android:id="@+id/newPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
     </TableRow>
     <!-- Name tag above the text field where the user inputs a new name -->
 
@@ -135,7 +136,8 @@
             android:id="@+id/newName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
     </TableRow>
     <!-- Email tag above the text field where the user inputs a new email -->
 

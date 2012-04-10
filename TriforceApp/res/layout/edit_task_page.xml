@@ -68,7 +68,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"
-                android:inputType="textMultiLine" >
+                android:inputType="textMultiLine"
+                android:textAppearance="?android:attr/textAppearanceSmall" >
             </EditText>
         </TableRow>
         <!-- Tag for Task Description and its edit form -->
@@ -99,7 +100,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"
-                android:inputType="textMultiLine" />
+                android:inputType="textMultiLine"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
         </TableRow>
 
         <!-- Prompt for selecting the type of the task -->
@@ -195,7 +197,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"
-                android:inputType="textPostalAddress" />
+                android:inputType="textPostalAddress"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
         </TableRow>
 
         <TableRow

@@ -71,7 +71,8 @@
             android:id="@+id/usernameField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
     </TableRow>
     <!-- Password tag above the text field where the user inputs password -->
 
@@ -99,7 +100,8 @@
             android:id="@+id/passwordField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
     </TableRow>
     <!-- Login button -->
 

@@ -114,11 +114,11 @@ public class ViewTaskActivity extends Activity {
 		if (hour > 12)
 			timeStr = (hour - 12) + ":" + minuteStr + " PM";
 		else if (hour == 12)
-			timeStr = hour + ":" + minute + " PM";
+			timeStr = hour + ":" + minuteStr + " PM";
 		else if (hour == 0)
-			timeStr = (hour + 12) + ":" + minute + " AM";
+			timeStr = (hour + 12) + ":" + minuteStr + " AM";
 		else
-			timeStr = hour + ":" + minute + " AM";
+			timeStr = hour + ":" + minuteStr + " AM";
 
 		name.setText(task.getName());
 		desc.setText(task.getDescription());

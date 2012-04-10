@@ -24,6 +24,12 @@ import com.google.android.maps.MapView;
 import com.google.android.maps.Overlay;
 import com.google.android.maps.MapView.LayoutParams;
 
+/**
+ * Team Triforce (36) Back-end for gmap.xml. Allows users to see all tasks pinned to a gmap
+ * 
+ * @author Nathan Eppinger, Mallory Wynn, Alex Wong
+ * @version 1.0
+ */
 public class gmap<T> extends MapActivity {
 
 	MapView mapView;
@@ -38,6 +44,9 @@ public class gmap<T> extends MapActivity {
 
 	int x;
 
+	/**
+	 * DISPLAY THE MAP AT CERTAIN COORDINATES
+	 */
 	class MapOverlay extends com.google.android.maps.Overlay {
 		@Override
 		public boolean draw(Canvas canvas, MapView mapView, boolean shadow,
@@ -61,6 +70,9 @@ public class gmap<T> extends MapActivity {
 		}
 	}
 
+	/**
+	 * Initializes variables and functionality
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -124,6 +136,9 @@ public class gmap<T> extends MapActivity {
 		mapView.invalidate();
 	}
 
+	/**
+	 * Displays a route
+	 */
 	@Override
 	protected boolean isRouteDisplayed() {
 		return false;

@@ -10,7 +10,10 @@ import android.widget.EditText;
 
 import android.test.ActivityInstrumentationTestCase2;
 
-
+/**
+ * JUNIT TESTING
+ *
+ */
 public class TriforceMainTest extends ActivityInstrumentationTestCase2<TriforceMain> {
 	
 	private Solo solo;
@@ -20,11 +23,17 @@ public class TriforceMainTest extends ActivityInstrumentationTestCase2<TriforceM
 		super(TriforceMain.class);
 	}
 
+	/**
+	 * SETS UP THE APP
+	 */
 	protected void setUp() throws Exception {
 		super.setUp();
 		solo = new Solo(getInstrumentation(), getActivity());
 	}
 
+	/**
+	 * TEST ALL THE BUTTONS
+	 */
 	public void testCreation(){
 		solo.assertCurrentActivity("Expected Login Page", "TriforceMain");	
 		solo.clickOnButton("Register");
@@ -36,6 +45,9 @@ public class TriforceMainTest extends ActivityInstrumentationTestCase2<TriforceM
 		assertTrue(solo.searchText("Username and/or Password is incorrect"));
 	}
 	
+	/**
+	 * TEST IF LOGIN SUCCESSFUL
+	 */
 	public void testGoodLogin(){
 		solo.assertCurrentActivity("Expect Login Screen", "TriforceMain");
 		solo.enterText(0, "USERNAME");
@@ -46,6 +58,9 @@ public class TriforceMainTest extends ActivityInstrumentationTestCase2<TriforceM
 		
 	}
 	
+	/**
+	 * TEST IF LOGIN NOT SUCCESFFUL
+	 */
 	public void testBadLogin(){
 		solo.assertCurrentActivity("Expect Login Screen", "TriforceMain");
 		solo.enterText(0, "bad");
@@ -55,6 +70,9 @@ public class TriforceMainTest extends ActivityInstrumentationTestCase2<TriforceM
 		assertTrue(solo.searchText("Username and/or Password is incorrect"));
 	}
 
+	/**
+	 * TEST IF REGISTRATION WORKS
+	 */
 	public void testGoodRegistration(){
 		solo.assertCurrentActivity("Expect Login Screen", "TriforceMain");
 		solo.clickOnButton("Register");
@@ -71,6 +89,9 @@ public class TriforceMainTest extends ActivityInstrumentationTestCase2<TriforceM
 	
 	}
 	
+	/**
+	 * TEST IF REGISTRATION FAILS
+	 */
 	public void testBadUsername(){
 		solo.assertCurrentActivity("Expect Login Screen", "TriforceMain");
 		solo.clickOnButton("Register");
@@ -86,6 +107,9 @@ public class TriforceMainTest extends ActivityInstrumentationTestCase2<TriforceM
 		assertTrue(solo.searchText("The username is already taken"));
 	}
 	
+	/**
+	 * TEST IS LOGIN NAME IS MISSING
+	 */
 	public void testEmptyField(){
 		solo.assertCurrentActivity("Expect Login Screen", "TriforceMain");
 		solo.clickOnButton("Register");
@@ -99,6 +123,9 @@ public class TriforceMainTest extends ActivityInstrumentationTestCase2<TriforceM
 		assertTrue(solo.searchText("Fill in all the fields"));
 	}
 	
+	/**
+	 * EXIT THE APP
+	 */
 	protected void tearDown() throws Exception {
 		solo.finishOpenedActivities();
 	}

@@ -340,6 +340,9 @@ public class TaskListActivity extends ListActivity {
 		updateFilterString();
 	}
 
+	/**
+	 * Updates the string that displays what's being filtered
+	 */
 	private void updateFilterString() {
 		String dateStr;
 		if (mDay == 0)

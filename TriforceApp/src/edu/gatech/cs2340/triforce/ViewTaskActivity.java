@@ -81,18 +81,19 @@ public class ViewTaskActivity extends Activity {
 	}
 
 	/**
-	 * Method for redisplaying the Task List page when returned to
+	 * Method for redisplaying the TaskView page when returned to
 	 */
 	public void onRestart() {
 		super.onRestart();
 		setContentView(R.layout.view_task_page);
 
-		// retrieve task again to be viewed from db
+		// retrieve task to be viewed from db
 		db.open();
 		task = db.getTask(ListArrayAdapter.currTaskId, this);
 		db.close();
 
 		// recapture our View elements
+		taskComplete = (TextView) findViewById(R.id.taskCompletedTxt);
 		name = (TextView) findViewById(R.id.viewNameTxt);
 		desc = (TextView) findViewById(R.id.viewDescTxt);
 		type = (TextView) findViewById(R.id.viewTypeTxt);
@@ -101,6 +102,11 @@ public class ViewTaskActivity extends Activity {
 		location = (TextView) findViewById(R.id.viewLocationTxt);
 
 		// reset elements to Task attributes
+		if (task.isComplete())
+			taskComplete.setText("[ task completed ]");
+		else
+			taskComplete.setText("[ task incomplete ]");
+
 		indexOfColon = task.getDueTime().indexOf(":");
 		hourStr = task.getDueTime().substring(0, indexOfColon);
 		hour = Integer.parseInt(hourStr);
@@ -139,8 +145,7 @@ public class ViewTaskActivity extends Activity {
 	}
 
 	/**
-	 * Handles when the New Task, Locations, Filter or Logout button is clicked
-	 * on the menu
+	 * Handles when the Edit, Delete, or Back button is clicked on the menu
 	 */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {

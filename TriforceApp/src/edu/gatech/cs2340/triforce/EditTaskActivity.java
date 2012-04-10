@@ -82,10 +82,10 @@ public class EditTaskActivity extends Activity implements OnClickListener {
 		typeSpinner.setSelection(typePosition);
 
 		firstHyphen = task.getDueDate().indexOf("-");
-		monthStr = task.getDueDate().substring(0, firstHyphen);
+		yearStr = task.getDueDate().substring(0, firstHyphen);
 		secondHyphen = task.getDueDate().indexOf("-", firstHyphen + 1);
-		dayStr = task.getDueDate().substring(firstHyphen + 1, secondHyphen);
-		yearStr = task.getDueDate().substring(secondHyphen + 1);
+		monthStr = task.getDueDate().substring(firstHyphen + 1, secondHyphen);
+		dayStr = task.getDueDate().substring(secondHyphen + 1);
 		mMonth = Integer.parseInt(monthStr) - 1;
 		mDay = Integer.parseInt(dayStr);
 		mYear = Integer.parseInt(yearStr);
@@ -132,7 +132,7 @@ public class EditTaskActivity extends Activity implements OnClickListener {
 				dayStr = "0" + mDay;
 			else
 				dayStr = "" + mDay;
-			String taskDate = (mMonth + 1) + "-" + dayStr + "-" + mYear;
+			String taskDate = mYear + "-" + (mMonth + 1) + "-" + dayStr;
 			String minute = "";
 			if (mMinute < 10)
 				minute = "0" + mMinute;
@@ -145,8 +145,8 @@ public class EditTaskActivity extends Activity implements OnClickListener {
 			task.updateTask(ListArrayAdapter.currTaskId, taskName, taskDesc,
 					taskType, taskDate, taskTime, taskLocation);
 			task.close();
-			Toast.makeText(getBaseContext(), "Saving task...", Toast.LENGTH_SHORT)
-					.show();
+			Toast.makeText(getBaseContext(), "Saving task...",
+					Toast.LENGTH_SHORT).show();
 			finish();
 			break;
 		case R.id.cancelButtonET:

@@ -80,6 +80,8 @@ public class TaskListActivity extends ListActivity {
 	 */
 	public void onRestart() {
 		super.onRestart();
+		setContentView(R.layout.user_tasklist);
+
 		filterText = (TextView) findViewById(R.id.filteringString);
 		filterText.setText(filterStr);
 

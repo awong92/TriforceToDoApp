@@ -329,8 +329,10 @@ public class SQLiteDB {
 	/**
 	 * Getter for a specific task
 	 * 
-	 * @param taskId id of the task needed
-	 * @param context context calling the method
+	 * @param taskId
+	 *            id of the task needed
+	 * @param context
+	 *            context calling the method
 	 * @return Task task to be used
 	 */
 	public Task getTask(int taskId, Context context) {
@@ -399,7 +401,7 @@ public class SQLiteDB {
 		int iTaskLocation = c.getColumnIndex(KEY_LOCATION);
 		int iTaskDone = c.getColumnIndex(KEY_TASKDONE);
 
-		SimpleDateFormat curFormater = new SimpleDateFormat("MM-dd-yyyy");
+		SimpleDateFormat curFormater = new SimpleDateFormat("yyyy-MM-dd");
 
 		for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
 			// Pull tasks for specific username

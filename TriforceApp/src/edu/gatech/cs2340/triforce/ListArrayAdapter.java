@@ -28,6 +28,8 @@ public class ListArrayAdapter extends ArrayAdapter<Task> {
 	private final Activity context;
 	private View view;
 	static int currTaskId = -1;
+	private int firstHyphen, secondHyphen;
+	private String monthStr, dayStr, yearStr;
 
 	/**
 	 * Adapter for the list of tasks with its checkbox
@@ -46,8 +48,10 @@ public class ListArrayAdapter extends ArrayAdapter<Task> {
 	 * Class for holding the view
 	 */
 	static class ViewHolder {
-		protected TextView text;
 		protected CheckBox checkbox;
+		protected TextView taskName;
+		protected TextView taskType;
+		protected TextView taskDue;
 	}
 
 	/**
@@ -59,6 +63,14 @@ public class ListArrayAdapter extends ArrayAdapter<Task> {
 	 */
 	@Override
 	public View getView(final int position, View convertView, ViewGroup parent) {
+
+		Task task = list.get(position);
+		firstHyphen = task.getDueDate().indexOf("-");
+		yearStr = task.getDueDate().substring(0, firstHyphen);
+		secondHyphen = task.getDueDate().indexOf("-", firstHyphen + 1);
+		monthStr = task.getDueDate().substring(firstHyphen + 1, secondHyphen);
+		dayStr = task.getDueDate().substring(secondHyphen + 1);
+
 		view = null;
 		if (convertView == null) {
 			LayoutInflater inflator = context.getLayoutInflater();
@@ -79,7 +91,11 @@ public class ListArrayAdapter extends ArrayAdapter<Task> {
 
 			});
 			final ViewHolder viewHolder = new ViewHolder();
-			viewHolder.text = (TextView) view.findViewById(R.id.label);
+			viewHolder.taskName = (TextView) view
+					.findViewById(R.id.taskNameLabel);
+			viewHolder.taskType = (TextView) view
+					.findViewById(R.id.taskTypeLabel);
+			viewHolder.taskDue = (TextView) view.findViewById(R.id.dueLabel);
 			viewHolder.checkbox = (CheckBox) view.findViewById(R.id.check);
 			viewHolder.checkbox.setFocusable(false);
 			viewHolder.checkbox
@@ -96,7 +112,7 @@ public class ListArrayAdapter extends ArrayAdapter<Task> {
 
 							View row = (View) buttonView.getParent();
 							TextView descrip = (TextView) row
-									.findViewById(R.id.label);
+									.findViewById(R.id.taskNameLabel);
 							if (isChecked) {
 								descrip.setPaintFlags(descrip.getPaintFlags()
 										| Paint.STRIKE_THRU_TEXT_FLAG);
@@ -106,14 +122,16 @@ public class ListArrayAdapter extends ArrayAdapter<Task> {
 						}
 					});
 			view.setTag(viewHolder);
-			viewHolder.checkbox.setTag(list.get(position));
+			viewHolder.checkbox.setTag(task);
 		} else {
 			view = convertView;
-			((ViewHolder) view.getTag()).checkbox.setTag(list.get(position));
+			((ViewHolder) view.getTag()).checkbox.setTag(task);
 		}
 		ViewHolder holder = (ViewHolder) view.getTag();
-		holder.text.setText(list.get(position).getName());
-		holder.checkbox.setChecked(list.get(position).isSelected());
+		holder.taskName.setText(task.getName());
+		holder.taskType.setText("Type: " + task.getType());
+		holder.taskDue.setText(monthStr + "-" + dayStr + "-" + yearStr);
+		holder.checkbox.setChecked(task.isSelected());
 		return view;
 	}
 }

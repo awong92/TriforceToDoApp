@@ -177,7 +177,7 @@ public class NewTaskActivity extends Activity implements OnClickListener {
 				dayStr = "0" + mDay;
 			else
 				dayStr = "" + mDay;
-			String taskDate = (mMonth + 1) + "-" + dayStr + "-" + mYear;
+			String taskDate = mYear + "-" + (mMonth + 1) + "-" + dayStr;
 			String minute = "";
 			if (mMinute < 10)
 				minute = "0" + mMinute;
@@ -190,7 +190,8 @@ public class NewTaskActivity extends Activity implements OnClickListener {
 			task.createTaskEntry(TriforceMain.currentUser, taskName, taskDesc,
 					taskType, taskDate, taskTime, taskLocation);
 			task.close();
-			Toast.makeText(getBaseContext(), "Creating task...", Toast.LENGTH_SHORT).show();
+			Toast.makeText(getBaseContext(), "Creating task...",
+					Toast.LENGTH_SHORT).show();
 			finish();
 			break;
 		case R.id.cancelButtonNT:

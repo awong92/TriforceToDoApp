@@ -59,19 +59,13 @@
 
     <ListView
         android:id="@android:id/list"
-        android:layout_width="280dp"
-        android:layout_height="0dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="#FFDD73"
         android:clickable="true"
-        android:divider="#555555"
+        android:divider="#999999"
         android:dividerHeight="1dp"
         android:drawSelectorOnTop="false" >
     </ListView>
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="15dp" />
 
 </LinearLayout>

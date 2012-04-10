@@ -28,9 +28,23 @@
         android:background="@drawable/black_yellow_gradient" />
 
     <Space
-        android:id="@+id/spaceList"
         android:layout_width="match_parent"
         android:layout_height="20dp" />
+
+    <TextView
+        android:id="@+id/taskCompletedTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="[ TEXT ]"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#3b2c00"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="5dp" />
 
     <RelativeLayout
         android:layout_width="280dp"

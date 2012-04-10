@@ -21,7 +21,7 @@ import android.widget.Toast;
 public class ViewTaskActivity extends Activity {
 
 	Task task;
-	TextView name, desc, type, date, time, location;
+	TextView taskComplete, name, desc, type, date, time, location;
 	String hourStr, minuteStr, timeStr;
 	int hour, minute, indexOfColon;
 	SQLiteDB db = new SQLiteDB(this);
@@ -39,6 +39,7 @@ public class ViewTaskActivity extends Activity {
 		db.close();
 
 		// capture our View elements
+		taskComplete = (TextView) findViewById(R.id.taskCompletedTxt);
 		name = (TextView) findViewById(R.id.viewNameTxt);
 		desc = (TextView) findViewById(R.id.viewDescTxt);
 		type = (TextView) findViewById(R.id.viewTypeTxt);
@@ -47,6 +48,11 @@ public class ViewTaskActivity extends Activity {
 		location = (TextView) findViewById(R.id.viewLocationTxt);
 
 		// set elements to Task attributes
+		if (task.isComplete())
+			taskComplete.setText("[ task completed ]");
+		else
+			taskComplete.setText("[ task incomplete ]");
+
 		indexOfColon = task.getDueTime().indexOf(":");
 		hourStr = task.getDueTime().substring(0, indexOfColon);
 		hour = Integer.parseInt(hourStr);

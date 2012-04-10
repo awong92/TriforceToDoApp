@@ -28,6 +28,11 @@ public class TaskValidation extends ActivityInstrumentationTestCase2<TriforceMai
 	 */
 	
 	public void testButtons(){
+		//loggin in
+		solo.enterText(0, "nepp");
+		solo.enterText(1, "nepp");
+		solo.clickOnButton(0);
+		
 		solo.clickOnMenuItem("New Task");
 		solo.assertCurrentActivity("wrong page", NewTaskActivity.class);
 		solo.goBackToActivity("TaskListActivity");
@@ -37,7 +42,7 @@ public class TaskValidation extends ActivityInstrumentationTestCase2<TriforceMai
 		solo.enterText(0, "nepp");
 		solo.enterText(1, "nepp");
 		solo.clickOnButton(0);
-	//	assertEquals("fail",false,true);
+		
 		solo.clickOnMenuItem("New Task");
 		solo.enterText(0, "elf");
 		solo.enterText(1, "Tallahassee");
@@ -48,9 +53,8 @@ public class TaskValidation extends ActivityInstrumentationTestCase2<TriforceMai
 		assertEquals("Task wasn't created", expected,actual);
 	}
 	
-	/*
+	
 	public void testAddTask(){
-		solo.assertCurrentActivity("Expected login page", "TriforceMain");
 		solo.enterText(0, "nepp");
 		solo.enterText(1, "nepp");
 		solo.clickOnButton(0);
@@ -65,31 +69,43 @@ public class TaskValidation extends ActivityInstrumentationTestCase2<TriforceMai
 		solo.goBackToActivity("TaskListActivity");
 		assertEquals("Task wasn't created", expected,actual);
 	}
-	*/
-	/**
+	
+	/*
 	 * Tests to see if editing tasks is working
 	 */
-	/*
+	
 	
 	public void testEditTask(){
+
+		solo.enterText(0, "nepp");
+		solo.enterText(1, "nepp");
+		solo.clickOnButton(0);
+		
 		solo.clickOnText("home");
-	//	solo.clickOnScreen(5, 150);
 		solo.clickOnMenuItem("Edit Task");
 		solo.enterText(0, "home2");
 		solo.clickOnButton(2);
 		assertEquals("Task Wasn't Edited", true,solo.searchText("home2"));
-		
 	}
 	
 	public void testRemoveTask(){
-		solo.clickInList(2);
-		//solo.clickLongOnScreen(5000, 5000);
+		//loggin in
+		solo.enterText(0, "nepp");
+		solo.enterText(1, "nepp");
+		solo.clickOnButton(0);
+		
+		solo.clickOnText("home2");
 		solo.clickOnMenuItem("Delete Task");
+		solo.clickOnButton(0);
 		assertEquals("Task wasn't deleted", false,solo.searchText("home2"));
 	}
-	*/
-	@SmallTest
+	
 	public void addTask2(){
+
+		solo.enterText(0, "nepp");
+		solo.enterText(1, "nepp");
+		solo.clickOnButton(0);
+		
 		solo.clickOnMenuItem("New Task");
 		solo.enterText(0, "school");
 		solo.enterText(1, "GaTech");
@@ -103,6 +119,11 @@ public class TaskValidation extends ActivityInstrumentationTestCase2<TriforceMai
 	
 	
 	public void testGoogleM(){
+
+		solo.enterText(0, "nepp");
+		solo.enterText(1, "nepp");
+		solo.clickOnButton(0);
+		
 		solo.clickOnMenuItem("Show Locations");
 		assertEquals("Google Maps didn't open","gMap", solo.getCurrentActivity());
 	}

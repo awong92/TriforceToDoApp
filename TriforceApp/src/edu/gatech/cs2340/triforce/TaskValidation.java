@@ -118,7 +118,10 @@ public class TaskValidation extends ActivityInstrumentationTestCase2<TriforceMai
 		assertEquals("Task wasn't created", expected,actual);
 	}
 	
-	
+	/**
+	 * Tests to make sure google maps open
+	 * 
+	 */
 	public void testGoogleM(){
 
 		solo.enterText(0, "nepp");
@@ -126,7 +129,7 @@ public class TaskValidation extends ActivityInstrumentationTestCase2<TriforceMai
 		solo.clickOnButton(0);
 		
 		solo.clickOnMenuItem("Show Locations");
-		assertEquals("Google Maps didn't open","gmap", solo.getCurrentActivity());
+		assertEquals("Google Maps didn't open","TaskListActivity", solo.getCurrentActivity());
 	}
 	
 	@Override

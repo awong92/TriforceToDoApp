@@ -32,12 +32,15 @@
         android:layout_height="1dp"
         android:background="@drawable/black_yellow_gradient" />
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
     <!-- logo -->
 
     <ImageView
         android:id="@+id/tforceLogo"
-        android:layout_width="275dp"
-        android:layout_height="275dp"
+        android:layout_width="240dp"
+        android:layout_height="240dp"
         android:layout_gravity="center"
         android:contentDescription="@string/tforce_logo"
         android:src="@drawable/tforce_app_logo" />

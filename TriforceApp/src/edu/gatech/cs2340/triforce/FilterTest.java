@@ -1,5 +1,7 @@
 package edu.gatech.cs2340.triforce;
 
+import java.util.ArrayList;
+
 import com.jayway.android.robotium.solo.Solo;
 import android.test.ActivityInstrumentationTestCase2;
 
@@ -79,31 +81,39 @@ public class FilterTest extends ActivityInstrumentationTestCase2<TriforceMain> {
 	/**
 	 * Tests Date Filter
 	 */
-	// public void testDateFilter(){
-	// solo.enterText(0, "meallory");
-	// solo.enterText(1, "PASSWORD");
-	// solo.clickOnButton(0);
-	//
-	// solo.clickOnMenuItem("Filter Tasks");
-	// solo.clickOnButton(0);
-	// solo.setDatePicker(0, 2012, 4, 12);
-	//
-	// assertFalse(solo.searchText("4-12-2012"));
-	//
-	// solo.enterText(0, "meallory");
-	// solo.enterText(1, "PASSWORD");
-	// solo.clickOnButton(0);
-	//
-	// solo.clickOnMenuItem("FilterTasks");
-	// solo.clickOnButton(0);
-	// solo.setDatePicker(0, 2012, 4, 15);
-	// solo.clickOnButton(0)
-	// solo.clickOnButton(1);
+	public void testDateFilter() {
+		solo.enterText(0, "meallory");
+		solo.enterText(1, "PASSWORD");
+		solo.clickOnButton(0);
 
-	// assertFalse(solo.searchText("4-12-2012"));
-	// assertFalse(solo.searchText("4-15-2012"));
-	//
-	// }
+		solo.clickOnMenuItem("Filter Tasks");
+		solo.clickOnButton(0);
+		solo.setDatePicker(0, 2012, 3, 12);
+		solo.clickOnButton(0);
+		solo.clickOnButton(1);
+
+		assertTrue(solo.searchText("4-12-2012", 1));
+
+	}
+
+	/**
+	 * Another test for the date filter
+	 */
+	public void testDateFiler2() {
+		solo.enterText(0, "meallory");
+		solo.enterText(1, "PASSWORD");
+		solo.clickOnButton(0);
+
+		solo.clickOnMenuItem("Filter Tasks");
+		solo.clickOnButton(0);
+		solo.setDatePicker(0, 2012, 3, 15);
+		solo.clickOnButton(0);
+		solo.clickOnButton(1);
+
+		assertFalse(solo.searchText("4-12-2012"));
+		assertTrue(solo.searchText("4-15-2012", 1));
+
+	}
 
 	/**
 	 * Tests Incomplete Filter
@@ -243,6 +253,36 @@ public class FilterTest extends ActivityInstrumentationTestCase2<TriforceMain> {
 		assertTrue(solo.isCheckBoxChecked(0));
 		assertFalse(solo.searchText("Personal"));
 		assertFalse(solo.searchText("Work"));
+	}
+
+	/**
+	 * Tests Show All button
+	 */
+	public void testShowAll() {
+		// logs in
+		solo.enterText(0, "meallory");
+		solo.enterText(1, "PASSWORD");
+		solo.clickOnButton(0);
+
+		// applies two different filters
+		solo.clickOnMenuItem("Filter Tasks");
+		solo.pressSpinnerItem(0, 1);
+		solo.pressSpinnerItem(1, 1);
+		solo.clickOnButton(1);
+
+		// should show all tasks
+		solo.clickOnMenuItem("Show All Tasks");
+
+		assertTrue(solo.isCheckBoxChecked(0));
+		assertFalse(solo.isCheckBoxChecked(3));
+
+		assertTrue(solo.searchText("Work"));
+		assertTrue(solo.searchText("Personal"));
+		assertTrue(solo.searchText("School"));
+		assertTrue(solo.searchText("4-12-2012"));
+		assertTrue(solo.searchText("4-15-2012"));
+		assertTrue(solo.searchText("4-24-2012"));
+
 	}
 
 	/**

@@ -2,15 +2,14 @@ package edu.gatech.cs2340.triforce;
 import com.jayway.android.robotium.solo.Solo;
 
 import android.test.ActivityInstrumentationTestCase2;
-import android.test.suitebuilder.annotation.SmallTest;
-import android.test.suitebuilder.annotation.Smoke;
 
 
 
-public class FilterTest extends ActivityInstrumentationTestCase2 {
+public class FilterTest extends ActivityInstrumentationTestCase2<TriforceMain> {
 
 	private Solo solo;
 	
+	@SuppressWarnings("deprecation")
 	public FilterTest() {
 		super("edu.gatech.cs2340.triforce", TriforceMain.class);
 	}

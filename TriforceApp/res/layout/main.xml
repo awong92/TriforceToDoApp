@@ -30,11 +30,8 @@
         android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@drawable/black_yellow_gradient" />
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="20dp" />
+        android:background="@drawable/black_yellow_gradient"
+        android:paddingBottom="20dp" />
     <!-- logo -->
 
     <ImageView

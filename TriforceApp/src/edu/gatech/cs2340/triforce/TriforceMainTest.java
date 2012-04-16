@@ -2,11 +2,6 @@ package edu.gatech.cs2340.triforce;
 
 import com.jayway.android.robotium.solo.Solo;
 
-import junit.framework.TestCase;
-import edu.gatech.cs2340.r.R;
-import android.widget.Button;
-import android.widget.EditText;
-
 import android.test.ActivityInstrumentationTestCase2;
 
 /**
@@ -17,7 +12,6 @@ public class TriforceMainTest extends ActivityInstrumentationTestCase2<TriforceM
 	
 	private Solo solo;
 	
-	@SuppressWarnings("deprecation")
 	public TriforceMainTest() {
 		super(TriforceMain.class);
 	}

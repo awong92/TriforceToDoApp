@@ -376,6 +376,10 @@ public class TaskListActivity extends ListActivity {
 				filterStr += "Work tasks";
 				if (!(dateStr.equals("no date filter")))
 					filterStr = filterStr + " after " + dateStr;
+			} else if (filterBy.equals("Other")) {
+				filterStr += "Other tasks";
+				if (!(dateStr.equals("no date filter")))
+					filterStr = filterStr + " after " + dateStr;
 			} else {
 				filterStr += "tasks";
 				if (!(dateStr.equals("no date filter")))
@@ -395,6 +399,10 @@ public class TaskListActivity extends ListActivity {
 				filterStr += "Work tasks";
 				if (!(dateStr.equals("no date filter")))
 					filterStr = filterStr + " after " + dateStr;
+			} else if (filterBy.equals("Other")) {
+				filterStr += "Other tasks";
+				if (!(dateStr.equals("no date filter")))
+					filterStr = filterStr + " after " + dateStr;
 			} else {
 				filterStr += "tasks";
 				if (!(dateStr.equals("no date filter")))
@@ -411,6 +419,10 @@ public class TaskListActivity extends ListActivity {
 					filterStr = filterStr + " after " + dateStr;
 			} else if (filterBy.equals("Work")) {
 				filterStr += "Work tasks";
+				if (!(dateStr.equals("no date filter")))
+					filterStr = filterStr + " after " + dateStr;
+			} else if (filterBy.equals("Other")) {
+				filterStr += "Other tasks";
 				if (!(dateStr.equals("no date filter")))
 					filterStr = filterStr + " after " + dateStr;
 			} else {

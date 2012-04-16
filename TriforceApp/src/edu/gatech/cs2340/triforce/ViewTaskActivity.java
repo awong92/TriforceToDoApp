@@ -29,6 +29,7 @@ public class ViewTaskActivity extends Activity {
 	/**
 	 * Initializes variables and functionality
 	 */
+	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.view_task_page);
@@ -83,6 +84,7 @@ public class ViewTaskActivity extends Activity {
 	/**
 	 * Method for redisplaying the TaskView page when returned to
 	 */
+	@Override
 	public void onRestart() {
 		super.onRestart();
 		setContentView(R.layout.view_task_page);
@@ -166,6 +168,7 @@ public class ViewTaskActivity extends Activity {
 						 * OnClickListener for Dialog option "Yes" to delete
 						 * task
 						 */
+						@Override
 						public void onClick(DialogInterface dialog, int id) {
 							db.open();
 							db.deleteTask(ListArrayAdapter.currTaskId);
@@ -182,6 +185,7 @@ public class ViewTaskActivity extends Activity {
 						 * OnClickListener for Dialog option "No" to cancel
 						 * delete
 						 */
+						@Override
 						public void onClick(DialogInterface dialog, int id) {
 							dialog.cancel();
 						}

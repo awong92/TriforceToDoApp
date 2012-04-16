@@ -1,9 +1,9 @@
 package edu.gatech.cs2340.triforce;
+import com.jayway.android.robotium.solo.Solo;
+
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.suitebuilder.annotation.SmallTest;
 import android.test.suitebuilder.annotation.Smoke;
-
-import com.jayway.android.robotium.solo.Solo;
 
 /**
  * 

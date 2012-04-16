@@ -59,6 +59,7 @@ public class TaskListActivity extends ListActivity {
 	/**
 	 * Called when the activity is first created
 	 */
+	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.user_tasklist);
@@ -78,6 +79,7 @@ public class TaskListActivity extends ListActivity {
 	/**
 	 * Method for redisplaying the Task List page when returned to
 	 */
+	@Override
 	public void onRestart() {
 		super.onRestart();
 		setContentView(R.layout.user_tasklist);
@@ -179,12 +181,14 @@ public class TaskListActivity extends ListActivity {
 		typeSpinner.setAdapter(spinnerAdapter);
 		typeSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
 			// TYPE SPINNER LISTENER TO CHANGE FILTER
+			@Override
 			public void onItemSelected(AdapterView<?> parent, View view,
 					int pos, long id) {
 				oldFilterBy = filterBy;
 				filterBy = parent.getItemAtPosition(pos).toString();
 			}
 
+			@Override
 			public void onNothingSelected(AdapterView<?> parent) {
 				// Do nothing.
 			}
@@ -206,6 +210,7 @@ public class TaskListActivity extends ListActivity {
 
 		mPickDate.setOnClickListener(new OnClickListener() {
 			// SHOWS DATE DIALOG WHEN CLICKED
+			@Override
 			@SuppressWarnings("deprecation")
 			public void onClick(View v) {
 				showDialog(DATE_ID);
@@ -230,12 +235,14 @@ public class TaskListActivity extends ListActivity {
 		checkedSpinner.setAdapter(checkedSpinnerAdapter);
 		checkedSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
 			// CHECKED SPINNER LISTENER
+			@Override
 			public void onItemSelected(AdapterView<?> parent, View view,
 					int pos, long id) {
 				oldChecked = filterChecked;
 				filterChecked = parent.getItemAtPosition(pos).toString();
 			}
 
+			@Override
 			public void onNothingSelected(AdapterView<?> parent) {
 				// Do nothing.
 			}
@@ -256,6 +263,7 @@ public class TaskListActivity extends ListActivity {
 		screenDialog.setPositiveButton("OK",
 				new DialogInterface.OnClickListener() {
 					// do something when the button is clicked
+					@Override
 					public void onClick(DialogInterface arg0, int arg1) {
 						try {
 							getModel();
@@ -270,6 +278,7 @@ public class TaskListActivity extends ListActivity {
 		// Cancel button restores filters as previous
 		screenDialog.setNegativeButton("Cancel",
 				new DialogInterface.OnClickListener() {
+					@Override
 					public void onClick(DialogInterface arg0, int arg1) {
 						filterBy = oldFilterBy;
 						mYear = oldYear;
@@ -284,6 +293,7 @@ public class TaskListActivity extends ListActivity {
 	/**
 	 * Pops-up the prompt for changing the date or time
 	 */
+	@Override
 	protected Dialog onCreateDialog(int id) {
 		switch (id) {
 		case DATE_ID:
@@ -300,6 +310,7 @@ public class TaskListActivity extends ListActivity {
 	 */
 	private DatePickerDialog.OnDateSetListener mDateSetListener = new DatePickerDialog.OnDateSetListener() {
 
+		@Override
 		public void onDateSet(DatePicker view, int year, int monthOfYear,
 				int dayOfMonth) {
 			oldYear = mYear;

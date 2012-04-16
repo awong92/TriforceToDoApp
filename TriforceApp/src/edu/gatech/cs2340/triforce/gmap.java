@@ -2,7 +2,6 @@ package edu.gatech.cs2340.triforce;
 
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -21,7 +20,6 @@ import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
-import com.google.android.maps.Overlay;
 import com.google.android.maps.MapView.LayoutParams;
 
 /**
@@ -85,7 +83,7 @@ public class gmap<T> extends MapActivity {
 		View zoomView = mapView.getZoomControls();
 
 		zoomLayout.addView(zoomView, new LinearLayout.LayoutParams(
-				LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+				android.view.ViewGroup.LayoutParams.WRAP_CONTENT, android.view.ViewGroup.LayoutParams.WRAP_CONTENT));
 		mapView.displayZoomControls(true);
 
 		mc = mapView.getController();
@@ -116,8 +114,8 @@ public class gmap<T> extends MapActivity {
 					List<Address> addressList = geocoder.getFromLocationName(
 							t.getLocation(), 5);
 					if (addressList != null && addressList.size() > 0) {
-						lat = (double) (addressList.get(0).getLatitude() * 1000000);
-						lng = (double) (addressList.get(0).getLongitude() * 1000000);
+						lat = (addressList.get(0).getLatitude() * 1000000);
+						lng = (addressList.get(0).getLongitude() * 1000000);
 
 						latt[z] = lat;
 						lnng[z] = lng;

@@ -43,6 +43,7 @@ public class NewTaskActivity extends Activity implements OnClickListener {
 	/**
 	 * Initializes variables and functionality
 	 */
+	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.new_task_page);
@@ -61,12 +62,14 @@ public class NewTaskActivity extends Activity implements OnClickListener {
 
 		// add a click listener to the buttons
 		mPickDate.setOnClickListener(new View.OnClickListener() {
+			@Override
 			@SuppressWarnings("deprecation")
 			public void onClick(View v) {
 				showDialog(DATE_DIALOG_ID);
 			}
 		});
 		mPickTime.setOnClickListener(new View.OnClickListener() {
+			@Override
 			@SuppressWarnings("deprecation")
 			public void onClick(View v) {
 				showDialog(TIME_DIALOG_ID);
@@ -112,6 +115,7 @@ public class NewTaskActivity extends Activity implements OnClickListener {
 	 */
 	private DatePickerDialog.OnDateSetListener mDateSetListener = new DatePickerDialog.OnDateSetListener() {
 
+		@Override
 		public void onDateSet(DatePicker view, int year, int monthOfYear,
 				int dayOfMonth) {
 			mYear = year;
@@ -124,6 +128,7 @@ public class NewTaskActivity extends Activity implements OnClickListener {
 	/**
 	 * Pops-up the prompt for changing the date or time
 	 */
+	@Override
 	protected Dialog onCreateDialog(int id) {
 		switch (id) {
 		case DATE_DIALOG_ID:
@@ -140,7 +145,7 @@ public class NewTaskActivity extends Activity implements OnClickListener {
 	 * Updates the time we display in the TextView
 	 */
 	private void updateTimeDisplay() {
-		int hour = (int) mHour;
+		int hour = mHour;
 		String minute = "";
 		if (mMinute < 10)
 			minute = "0" + mMinute;
@@ -161,6 +166,7 @@ public class NewTaskActivity extends Activity implements OnClickListener {
 	 * The callback received when the user "sets" the time in the dialog
 	 */
 	private TimePickerDialog.OnTimeSetListener mTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
+		@Override
 		public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
 			mHour = hourOfDay;
 			mMinute = minute;
@@ -220,11 +226,13 @@ public class NewTaskActivity extends Activity implements OnClickListener {
 	 */
 	public class MyOnItemSelectedListener implements OnItemSelectedListener {
 
+		@Override
 		public void onItemSelected(AdapterView<?> parent, View view, int pos,
 				long id) {
 			taskType = parent.getItemAtPosition(pos).toString();
 		}
 
+		@Override
 		public void onNothingSelected(AdapterView<?> parent) {
 			// Do nothing.
 		}

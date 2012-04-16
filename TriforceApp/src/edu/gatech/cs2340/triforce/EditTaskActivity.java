@@ -43,6 +43,7 @@ public class EditTaskActivity extends Activity implements OnClickListener {
 	/**
 	 * Initializes variables and functionality
 	 */
+	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.edit_task_page);
@@ -106,12 +107,14 @@ public class EditTaskActivity extends Activity implements OnClickListener {
 
 		// add a click listener to the date and time buttons
 		mPickDate.setOnClickListener(new View.OnClickListener() {
+			@Override
 			@SuppressWarnings("deprecation")
 			public void onClick(View v) {
 				showDialog(DATE_DIALOG_ID);
 			}
 		});
 		mPickTime.setOnClickListener(new View.OnClickListener() {
+			@Override
 			@SuppressWarnings("deprecation")
 			public void onClick(View v) {
 				showDialog(TIME_DIALOG_ID);
@@ -178,6 +181,7 @@ public class EditTaskActivity extends Activity implements OnClickListener {
 		/**
 		 * Method for changing Task Type to selected spinner at row pos
 		 */
+		@Override
 		public void onItemSelected(AdapterView<?> parent, View view, int pos,
 				long id) {
 			taskType = parent.getItemAtPosition(pos).toString();
@@ -186,6 +190,7 @@ public class EditTaskActivity extends Activity implements OnClickListener {
 		/**
 		 * Empty method for when nothing in the spinner is selected
 		 */
+		@Override
 		public void onNothingSelected(AdapterView<?> parent) {
 			// Do nothing.
 		}
@@ -194,6 +199,7 @@ public class EditTaskActivity extends Activity implements OnClickListener {
 	/**
 	 * Pops-up the prompt for changing the date or time
 	 */
+	@Override
 	protected Dialog onCreateDialog(int id) {
 		switch (id) {
 		case DATE_DIALOG_ID:
@@ -229,6 +235,7 @@ public class EditTaskActivity extends Activity implements OnClickListener {
 		 * @param dayOfMonth
 		 *            day to be set to
 		 */
+		@Override
 		public void onDateSet(DatePicker view, int year, int monthOfYear,
 				int dayOfMonth) {
 			mYear = year;
@@ -242,7 +249,7 @@ public class EditTaskActivity extends Activity implements OnClickListener {
 	 * Updates the time we display in the TextView
 	 */
 	private void updateTimeDisplay() {
-		int hour = (int) mHour;
+		int hour = mHour;
 		String minute = "";
 		if (mMinute < 10)
 			minute = "0" + mMinute;
@@ -263,6 +270,7 @@ public class EditTaskActivity extends Activity implements OnClickListener {
 	 * The callback received when the user "sets" the time in the dialog
 	 */
 	private TimePickerDialog.OnTimeSetListener mTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
+		@Override
 		public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
 			mHour = hourOfDay;
 			mMinute = minute;

@@ -1,10 +1,9 @@
 package edu.gatech.cs2340.triforce;
 
-import junit.framework.TestCase;
-import edu.gatech.cs2340.triforce.*;
-import edu.gatech.cs2340.r.R;
 import com.jayway.android.robotium.solo.Solo;
 
+import junit.framework.TestCase;
+import edu.gatech.cs2340.r.R;
 import android.widget.Button;
 import android.widget.EditText;
 

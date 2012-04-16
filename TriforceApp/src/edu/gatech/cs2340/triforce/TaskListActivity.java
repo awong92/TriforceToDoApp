@@ -343,7 +343,7 @@ public class TaskListActivity extends ListActivity {
 		if (mDay == 0)
 			dateStr = "no date filter";
 		else
-			dateStr = (mMonth + 1) + "-" + mDay + "-" + mYear;
+			dateStr = mYear + "-" + (mMonth + 1) + "-" + mDay;
 		tasks.open();
 		list = tasks.getUserTasks(currentUser, filterBy, dateStr,
 				filterChecked, this);

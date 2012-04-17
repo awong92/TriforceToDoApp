@@ -15,6 +15,9 @@ public class FilterTest extends ActivityInstrumentationTestCase2<TriforceMain> {
 
 	private Solo solo;
 
+	/**
+	 * Constructor; makes sure we're testing TriforceApp
+	 */
 	public FilterTest() {
 		super(TriforceMain.class);
 	}

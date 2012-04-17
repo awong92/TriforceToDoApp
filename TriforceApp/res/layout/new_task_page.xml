@@ -234,18 +234,18 @@
             android:layout_gravity="center_horizontal" >
 
             <Button
-                android:id="@+id/saveButtonNT"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/save" />
-
-            <Button
                 android:id="@+id/cancelButtonNT"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/cancel" />
+
+            <Button
+                android:id="@+id/saveButtonNT"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/save" />
         </TableRow>
     </LinearLayout>
 

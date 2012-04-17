@@ -45,7 +45,7 @@ public class CheckTest extends ActivityInstrumentationTestCase2<TriforceMain> {
 		solo.setDatePicker(0, 2012, 3, 26);
 		solo.clickOnButton(0);
 
-		solo.clickOnButton(2);
+		solo.clickOnButton(3);
 
 		// checks checkbox
 		solo.clickOnCheckBox(6);

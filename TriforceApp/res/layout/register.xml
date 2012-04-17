@@ -206,18 +206,18 @@
         <!-- Register button to create new account -->
 
         <Button
-            android:id="@+id/registerUserButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/register" />
-
-        <Button
             android:id="@+id/cancelRegButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/cancel" />
+
+        <Button
+            android:id="@+id/registerUserButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/register" />
     </TableRow>
 
 </LinearLayout>

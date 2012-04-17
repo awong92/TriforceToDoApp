@@ -21,14 +21,9 @@
 
     <!-- BUTTON TEXT -->
     <string name="enter">Enter</string>
-    <string name="viewDB">View DB</string>
-    <string name="userExample">Usernames / Passwords / Names / Emails</string>
-    <string name="exitViewDB">Exit DB View</string>
     <string name="register">Register</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
-    <string name="logoutMain">Logout</string>
-    <string name="filterTasks">Filter Tasks</string>
 
     <!-- FIELD TAGS -->
     <string name="username"> Username: </string>

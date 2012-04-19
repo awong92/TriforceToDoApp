@@ -23,6 +23,7 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -36,6 +37,8 @@ import android.widget.Toast;
  * @version 1.0
  */
 public class TaskListActivity extends ListActivity {
+
+	ImageButton addTaskBtn;
 
 	ArrayAdapter<Task> listAdapter;
 	TextView filterText;
@@ -64,6 +67,15 @@ public class TaskListActivity extends ListActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.user_tasklist);
 
+		addTaskBtn = (ImageButton) findViewById(R.id.addNewTask);
+		addTaskBtn.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				Intent createNewTask = new Intent(
+						"edu.gatech.cs2340.triforce.NEWTASKACTIVITY");
+				startActivity(createNewTask);
+			}
+		});
+
 		filterText = (TextView) findViewById(R.id.filteringString);
 		filterText.setText(filterStr);
 
@@ -83,6 +95,15 @@ public class TaskListActivity extends ListActivity {
 	public void onRestart() {
 		super.onRestart();
 		setContentView(R.layout.user_tasklist);
+
+		addTaskBtn = (ImageButton) findViewById(R.id.addNewTask);
+		addTaskBtn.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				Intent createNewTask = new Intent(
+						"edu.gatech.cs2340.triforce.NEWTASKACTIVITY");
+				startActivity(createNewTask);
+			}
+		});
 
 		filterText = (TextView) findViewById(R.id.filteringString);
 		filterText.setText(filterStr);
@@ -114,11 +135,6 @@ public class TaskListActivity extends ListActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle item selection
 		switch (item.getItemId()) {
-		case R.id.menuNewTask:
-			Intent createNewTask = new Intent(
-					"edu.gatech.cs2340.triforce.NEWTASKACTIVITY");
-			startActivity(createNewTask);
-			return true;
 		case R.id.menuShowLocations:
 			Intent showLocations = new Intent("edu.gatech.cs2340.triforce.GMAP");
 			startActivity(showLocations);

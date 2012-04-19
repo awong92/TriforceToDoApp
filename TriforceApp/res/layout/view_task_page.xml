@@ -12,7 +12,7 @@
 
         <TextView
             android:id="@+id/headerVT"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
             android:paddingLeft="20dp"
@@ -20,6 +20,14 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textStyle="bold"
             android:typeface="serif" />
+
+        <ImageButton
+            android:id="@+id/editTaskBtn"
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="110dp"
+            android:layout_marginTop="4dp"
+            android:src="@android:drawable/ic_menu_edit" />
     </TableRow>
 
     <View

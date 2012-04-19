@@ -9,6 +9,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +22,8 @@ import android.widget.Toast;
  * @version 1.0
  */
 public class ViewTaskActivity extends Activity {
+
+	ImageButton editTaskBtn;
 
 	Task task;
 	TextView taskComplete, name, desc, type, date, time, location;
@@ -40,6 +45,7 @@ public class ViewTaskActivity extends Activity {
 		db.close();
 
 		// capture our View elements
+		editTaskBtn = (ImageButton) findViewById(R.id.editTaskBtn);
 		taskComplete = (TextView) findViewById(R.id.taskCompletedTxt);
 		name = (TextView) findViewById(R.id.viewNameTxt);
 		desc = (TextView) findViewById(R.id.viewDescTxt);
@@ -49,6 +55,13 @@ public class ViewTaskActivity extends Activity {
 		location = (TextView) findViewById(R.id.viewLocationTxt);
 
 		// set elements to Task attributes
+		editTaskBtn.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				Intent editViewTask = new Intent(
+						"edu.gatech.cs2340.triforce.EDITTASKACTIVITY");
+				startActivity(editViewTask);
+			}
+		});
 		if (task.isComplete())
 			taskComplete.setText("[ task completed ]");
 		else
@@ -95,6 +108,7 @@ public class ViewTaskActivity extends Activity {
 		db.close();
 
 		// recapture our View elements
+		editTaskBtn = (ImageButton) findViewById(R.id.editTaskBtn);
 		taskComplete = (TextView) findViewById(R.id.taskCompletedTxt);
 		name = (TextView) findViewById(R.id.viewNameTxt);
 		desc = (TextView) findViewById(R.id.viewDescTxt);
@@ -104,6 +118,13 @@ public class ViewTaskActivity extends Activity {
 		location = (TextView) findViewById(R.id.viewLocationTxt);
 
 		// reset elements to Task attributes
+		editTaskBtn.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				Intent editViewTask = new Intent(
+						"edu.gatech.cs2340.triforce.EDITTASKACTIVITY");
+				startActivity(editViewTask);
+			}
+		});
 		if (task.isComplete())
 			taskComplete.setText("[ task completed ]");
 		else
@@ -153,11 +174,6 @@ public class ViewTaskActivity extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle item selection
 		switch (item.getItemId()) {
-		case R.id.menuEditTask:
-			Intent editViewTask = new Intent(
-					"edu.gatech.cs2340.triforce.EDITTASKACTIVITY");
-			startActivity(editViewTask);
-			return true;
 		case R.id.menuDeleteTask:
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
 			builder.setMessage("Are you sure you want to delete?");
